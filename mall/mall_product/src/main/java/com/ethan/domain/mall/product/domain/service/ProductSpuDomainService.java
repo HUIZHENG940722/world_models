@@ -49,4 +49,16 @@ public class ProductSpuDomainService {
         return productSpuRepository.update(productSpuBo);
         // 3 返回结果
     }
+
+    /**
+     * 领域服务：获取商品SPU
+     * @param productSpuId
+     * @return
+     */
+    public ProductSpuBo getProductSpu(Integer productSpuId) {
+        // 1 核心校验
+        // 2 核心业务
+        return productSpuRepository.getById(productSpuId);
+        // 3 返回结果
+    }
 }
