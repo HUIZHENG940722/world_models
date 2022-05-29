@@ -1,5 +1,6 @@
 package com.ethan.domain.mall.product.infrastructure.dao.po.category;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class ProductCategoryPo {
     /**
      * 商品分类编码
      */
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**

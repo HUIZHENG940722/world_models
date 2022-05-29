@@ -11,11 +11,6 @@ import lombok.Data;
 public class ProductCategoryBO {
 
     /**
-     * 商品分类编码
-     */
-    private Integer id;
-
-    /**
      * 商品分类父编码
      */
     private Integer pid;
