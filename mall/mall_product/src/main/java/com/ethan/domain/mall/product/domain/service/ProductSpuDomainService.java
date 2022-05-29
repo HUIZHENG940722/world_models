@@ -1,5 +1,7 @@
 package com.ethan.domain.mall.product.domain.service;
 
+import com.ethan.domain.mall.product.domain.bo.PageProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.PageQueryProductSpuBo;
 import com.ethan.domain.mall.product.domain.bo.ProductSpuBo;
 import com.ethan.domain.mall.product.domain.repository.ProductSpuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,7 @@ public class ProductSpuDomainService {
      * @param productSpuBo
      * @return
      */
+    @Transactional
     public int updateProductSpu(ProductSpuBo productSpuBo) {
         // 1 核心校验
         // 1.1 校验商品SPU是否存在
@@ -60,5 +63,14 @@ public class ProductSpuDomainService {
         // 2 核心业务
         return productSpuRepository.getById(productSpuId);
         // 3 返回结果
+    }
+
+    /**
+     * 领域服务：分页查询商品SPU
+     * @param queryProductSpuBo
+     * @return
+     */
+    public PageProductSpuBo pageProductSpu(PageQueryProductSpuBo queryProductSpuBo) {
+        return productSpuRepository.page(queryProductSpuBo);
     }
 }
