@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author zhenghui
- * @name ProductSpuService
  * @Description 商品SPU应用服务层
  * @Date 2022/5/28
  */

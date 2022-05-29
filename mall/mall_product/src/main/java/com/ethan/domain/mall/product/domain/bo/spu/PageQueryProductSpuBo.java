@@ -1,10 +1,9 @@
-package com.ethan.domain.mall.product.domain.bo;
+package com.ethan.domain.mall.product.domain.bo.spu;
 
 import lombok.Data;
 
 /**
  * @author zhenghui
- * @name PageQueryProductSpu
  * @Description 分页查询商品SPU BO
  * @Date 2022/5/29
  */

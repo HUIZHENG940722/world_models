@@ -1,13 +1,12 @@
 package com.ethan.domain.mall.product.domain.convert;
 
-import com.ethan.domain.mall.product.domain.bo.ProductSpuBo;
-import com.ethan.domain.mall.product.infrastructure.dao.po.ProductSpuPo;
+import com.ethan.domain.mall.product.domain.bo.spu.ProductSpuBo;
+import com.ethan.domain.mall.product.infrastructure.dao.po.spu.ProductSpuPo;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 /**
  * @author zhenghui
- * @name ProductSpuPoConvert
  * @Description 商品SPU PO转换器
  * @Date 2022/5/29
  */

@@ -1,8 +1,8 @@
 package com.ethan.domain.mall.product.domain.service;
 
-import com.ethan.domain.mall.product.domain.bo.PageProductSpuBo;
-import com.ethan.domain.mall.product.domain.bo.PageQueryProductSpuBo;
-import com.ethan.domain.mall.product.domain.bo.ProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.PageProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.PageQueryProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.ProductSpuBo;
 import com.ethan.domain.mall.product.domain.repository.ProductSpuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author zhenghui
- * @name ProductSpuDomainService
  * @Description 商品SPU领域服务
  * @Date 2022/5/28
  */

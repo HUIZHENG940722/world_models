@@ -1,4 +1,4 @@
-package com.ethan.domain.mall.product.domain.bo;
+package com.ethan.domain.mall.product.domain.bo.spu;
 
 import lombok.Data;
 
@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * @author zhenghui
- * @name PageProductSpuRespBo
  * @Description 商品SPU分页数据BO
  * @Date 2022/5/29
  */

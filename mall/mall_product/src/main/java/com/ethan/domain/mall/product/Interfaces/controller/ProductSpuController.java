@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author zhenghui
- * @name ProductSpuController
  * @Description 商品SPU用户接口层
  * @Date 2022/5/28
  */

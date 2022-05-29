@@ -1,10 +1,9 @@
-package com.ethan.domain.mall.product.infrastructure.dao.po;
+package com.ethan.domain.mall.product.infrastructure.dao.po.spu;
 
 import lombok.Data;
 
 /**
  * @author zhenghui
- * @name ProductSpuPo
  * @Description 商品SKU PO实体
  * @Date 2022/5/28
  */

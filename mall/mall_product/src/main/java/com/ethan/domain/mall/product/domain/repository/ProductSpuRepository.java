@@ -3,18 +3,17 @@ package com.ethan.domain.mall.product.domain.repository;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ethan.domain.mall.product.domain.bo.PageProductSpuBo;
-import com.ethan.domain.mall.product.domain.bo.PageQueryProductSpuBo;
-import com.ethan.domain.mall.product.domain.bo.ProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.PageProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.PageQueryProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.ProductSpuBo;
 import com.ethan.domain.mall.product.domain.convert.ProductSpuPoConvert;
 import com.ethan.domain.mall.product.infrastructure.dao.ProductSpuMapper;
-import com.ethan.domain.mall.product.infrastructure.dao.po.ProductSpuPo;
+import com.ethan.domain.mall.product.infrastructure.dao.po.spu.ProductSpuPo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
  * @author zhenghui
- * @name ProductSpuRepository
  * @Description 商品SPU数据仓库层
  * @Date 2022/5/28
  */
