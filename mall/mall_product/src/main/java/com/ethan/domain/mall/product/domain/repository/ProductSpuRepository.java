@@ -21,4 +21,12 @@ public class ProductSpuRepository {
     public int add(ProductSpuBo productSpuBo) {
         return productSpuMapper.insert(ProductSpuPoConvert.INSTANCE.toPo(productSpuBo));
     }
+
+    public ProductSpuBo getById(Integer id) {
+        return ProductSpuPoConvert.INSTANCE.toBo(productSpuMapper.selectById(id));
+    }
+
+    public int update(ProductSpuBo productSpuBo) {
+        return productSpuMapper.updateById(ProductSpuPoConvert.INSTANCE.toPo(productSpuBo));
+    }
 }

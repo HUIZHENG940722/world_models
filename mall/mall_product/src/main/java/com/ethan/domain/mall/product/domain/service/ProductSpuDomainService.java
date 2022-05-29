@@ -32,4 +32,21 @@ public class ProductSpuDomainService {
         return productSpuRepository.add(productSpuBo);
         // 3 返回结果
     }
+
+    /**
+     * 领域服务：更新商品SPU
+     * @param productSpuBo
+     * @return
+     */
+    public int updateProductSpu(ProductSpuBo productSpuBo) {
+        // 1 核心校验
+        // 1.1 校验商品SPU是否存在
+        ProductSpuBo productSpuBo1 = productSpuRepository.getById(productSpuBo.getId());
+        if (productSpuBo1 == null) {
+            throw new RuntimeException("商品SPU非法");
+        }
+        // 2 核心业务
+        return productSpuRepository.update(productSpuBo);
+        // 3 返回结果
+    }
 }
