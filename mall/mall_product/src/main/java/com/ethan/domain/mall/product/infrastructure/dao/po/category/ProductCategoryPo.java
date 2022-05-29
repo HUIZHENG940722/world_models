@@ -1,18 +1,22 @@
-package com.ethan.domain.mall.product.domain.bo.category;
+package com.ethan.domain.mall.product.infrastructure.dao.po.category;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
  * @author zhenghui
- * @Description 商品分类BO
+ * @Description 商品分类PO
  * @Date 2022/5/29
  */
 @Data
-public class ProductCategoryBO {
+@TableName(value = "product_category")
+public class ProductCategoryPo {
 
     /**
      * 商品分类编码
      */
+    @TableId
     private Integer id;
 
     /**
