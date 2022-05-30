@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @author zhenghui
  * @Description 商品分类领域服务
@@ -45,6 +47,7 @@ public class ProductCategoryDomainService {
      * @param updateProductCategoryBo
      * @return
      */
+    @Transactional
     public int updateProductCategory(UpdateProductCategoryBo updateProductCategoryBo) {
         // 1 核心校验
         // 1.1 校验分类编码是否存在
@@ -56,6 +59,29 @@ public class ProductCategoryDomainService {
         checkLegalityParent(updateProductCategoryBo.getPid());
         // 2 核心业务
         return productCategoryRepository.update(updateProductCategoryBo);
+        // 3 返回结果
+    }
+
+    /**
+     * 领域服务：删除商品分类
+     * @param id
+     * @return
+     */
+    @Transactional
+    public int deleteProductCategory(Integer id) {
+        // 1 核心校验
+        // 1.1 校验商品分类是否存在
+        DetailsProductCategoryBo byId = productCategoryRepository.getById(id);
+        if (byId == null) {
+            Asserts.fail("商品分类不存在");
+        }
+        // 1.2 校验是否存在子分类
+        List<DetailsProductCategoryBo> detailsProductCategoryBoList = productCategoryRepository.getChildListByPid(id);
+        if (!detailsProductCategoryBoList.isEmpty()) {
+            Asserts.fail("存在子商品分类");
+        }
+        // 2 核心业务
+        return productCategoryRepository.deleteById(id);
         // 3 返回结果
     }
 

@@ -11,6 +11,8 @@ import com.ethan.domain.mall.product.infrastructure.dao.po.category.ProductCateg
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author zhenghui
  * @Description 商品分类数据仓库
@@ -44,7 +46,17 @@ public class ProductCategoryRepository {
         return productCategoryMapper.updateById(ProductCategoryPoConvert.INSTANCE.updateBotoPo(updateProductCategoryBo));
     }
 
+    public List<DetailsProductCategoryBo> getChildListByPid(Integer id) {
+        LambdaQueryWrapper<ProductCategoryPo> lambdaQueryWrapper = getLambdaQueryWrapper();
+        lambdaQueryWrapper.eq(ProductCategoryPo::getPid, id);
+        return ProductCategoryPoConvert.INSTANCE.toDetailsListBo(productCategoryMapper.selectList(lambdaQueryWrapper));
+    }
+
     private LambdaQueryWrapper<ProductCategoryPo> getLambdaQueryWrapper() {
         return Wrappers.lambdaQuery(ProductCategoryPo.class);
+    }
+
+    public int deleteById(Integer id) {
+        return productCategoryMapper.deleteById(id);
     }
 }

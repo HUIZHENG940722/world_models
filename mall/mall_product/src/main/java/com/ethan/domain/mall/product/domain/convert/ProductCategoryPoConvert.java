@@ -9,6 +9,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 /**
  * @author zhenghui
  * @Description 商品分类PO转换器
@@ -30,4 +32,6 @@ public interface ProductCategoryPoConvert {
     DetailsProductCategoryBo toDetailsBo(ProductCategoryPo selectOne);
 
     ProductCategoryPo updateBotoPo(UpdateProductCategoryBo updateProductCategoryBo);
+
+    List<DetailsProductCategoryBo> toDetailsListBo(List<ProductCategoryPo> selectList);
 }
