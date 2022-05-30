@@ -1,6 +1,7 @@
 package com.ethan.domain.mall.product.domain.convert;
 
-import com.ethan.domain.mall.product.domain.bo.category.ProductCategoryBO;
+import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
+import com.ethan.domain.mall.product.domain.bo.category.DetailsProductCategoryBo;
 import com.ethan.domain.mall.product.infrastructure.dao.po.category.ProductCategoryPo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -16,12 +17,14 @@ import org.mapstruct.factory.Mappers;
 public interface ProductCategoryPoConvert {
     ProductCategoryPoConvert INSTANCE = Mappers.getMapper(ProductCategoryPoConvert.class);
 
-    ProductCategoryBO toBo(ProductCategoryPo selectById);
+    CreateProductCategoryBo toCreateBo(ProductCategoryPo selectById);
 
     @Mappings({
             @Mapping(target = "createTime", defaultExpression = "java(new java.util.Date(System.currentTimeMillis()))"),
             @Mapping(target = "updateTime", defaultExpression = "java(new java.util.Date(System.currentTimeMillis()))"),
             @Mapping(target = "id", ignore = true)
     })
-    ProductCategoryPo toPo(ProductCategoryBO productCategoryBO);
+    ProductCategoryPo toPo(CreateProductCategoryBo createProductCategoryBo);
+
+    DetailsProductCategoryBo toDetailsBo(ProductCategoryPo selectOne);
 }

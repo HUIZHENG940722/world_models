@@ -1,6 +1,7 @@
 package com.ethan.domain.mall.product.domain.service;
 
-import com.ethan.domain.mall.product.domain.bo.category.ProductCategoryBO;
+import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
+import com.ethan.domain.mall.product.domain.bo.category.DetailsProductCategoryBo;
 import com.ethan.domain.mall.product.domain.repository.ProductCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,16 +20,21 @@ public class ProductCategoryDomainService {
 
     /**
      * 领域服务：创建商品分类
-     * @param productCategoryBO
+     * @param createProductCategoryBo
      * @return
      */
     @Transactional
-    public int createProductCategory(ProductCategoryBO productCategoryBO) {
+    public int createProductCategory(CreateProductCategoryBo createProductCategoryBo) {
         // 1 核心校验
         // 1.1 校验父分类的合法性
-        checkLegalityParent(productCategoryBO.getPid());
+        checkLegalityParent(createProductCategoryBo.getPid());
+        // 1.2 校验分类名称是否重复
+        DetailsProductCategoryBo detailsProductCategoryBo = productCategoryRepository.getByName(createProductCategoryBo.getName());
+        if (detailsProductCategoryBo!=null) {
+            throw new RuntimeException("商品分类名称重复");
+        }
         // 2 核心业务
-        return productCategoryRepository.add(productCategoryBO);
+        return productCategoryRepository.add(createProductCategoryBo);
         // 3 返回结果
     }
 
@@ -38,8 +44,8 @@ public class ProductCategoryDomainService {
      */
     private void checkLegalityParent(Integer pid) {
         if (!pid.equals(0)) {
-            ProductCategoryBO productCategoryBO = productCategoryRepository.getByPid(pid);
-            if (productCategoryBO==null) {
+            CreateProductCategoryBo createProductCategoryBo = productCategoryRepository.getByPid(pid);
+            if (createProductCategoryBo ==null) {
                 throw new RuntimeException("商品父分类编码非法");
             }
         }

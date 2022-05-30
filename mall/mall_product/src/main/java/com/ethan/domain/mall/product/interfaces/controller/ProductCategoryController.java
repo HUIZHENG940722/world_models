@@ -3,7 +3,7 @@ package com.ethan.domain.mall.product.interfaces.controller;
 import com.ethan.domain.mall.product.interfaces.assembler.ProductCategoryDtoConvert;
 import com.ethan.domain.mall.product.interfaces.dto.category.CreateProductCategoryReq;
 import com.ethan.domain.mall.product.application.service.ProductCategoryService;
-import com.ethan.domain.mall.product.domain.bo.category.ProductCategoryBO;
+import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
 import com.ethan.domain.mall.product.infrastructure.api.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -33,9 +33,9 @@ public class ProductCategoryController {
     @PostMapping(value = "")
     public CommonResult<Integer> createProductCategory(@Validated @RequestBody CreateProductCategoryReq createProductCategoryReq) {
         // 1 数据转换
-        ProductCategoryBO productCategoryBO = ProductCategoryDtoConvert.INSTANCE.toBo(createProductCategoryReq);
+        CreateProductCategoryBo createProductCategoryBo = ProductCategoryDtoConvert.INSTANCE.toBo(createProductCategoryReq);
         // 2 业务
-        int create = productCategoryService.createProductCategory(productCategoryBO);
+        int create = productCategoryService.createProductCategory(createProductCategoryBo);
         // 3 返回结果
         return CommonResult.success(200, "创建商品分类成功", create);
     }

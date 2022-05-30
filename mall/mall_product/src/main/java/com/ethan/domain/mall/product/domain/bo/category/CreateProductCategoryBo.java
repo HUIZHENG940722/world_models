@@ -7,11 +7,11 @@ import java.util.Date;
 
 /**
  * @author zhenghui
- * @Description 商品分类BO
+ * @Description 创建商品分类BO
  * @Date 2022/5/29
  */
 @Data
-public class ProductCategoryBO {
+public class CreateProductCategoryBo {
 
     /**
      * 商品分类父编码

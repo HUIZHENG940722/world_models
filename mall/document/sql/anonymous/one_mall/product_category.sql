@@ -12,7 +12,9 @@ create table if not exists product_category
     create_time datetime      not null comment '创建时间',
     update_time datetime      not null comment '更新时间',
     constraint product_category_id_uindex
-        unique (id)
+        unique (id),
+    constraint product_category_name_uindex
+        unique (name)
 )
     comment '商品分类表' charset = utf8mb4;
 
