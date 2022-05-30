@@ -1,6 +1,10 @@
 package com.ethan.domain.mall.product.infrastructure.dao.po.spu;
 
+import com.baomidou.mybatisplus.annotation.FieldStrategy;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
+
+import java.sql.Date;
 
 /**
  * @author zhenghui
@@ -79,4 +83,16 @@ public class ProductSpuPo {
      */
     private Integer deleted;
 
+
+    /**
+     * 创建时间
+     */
+    @TableField(updateStrategy = FieldStrategy.NEVER, insertStrategy = FieldStrategy.NOT_NULL)
+    private Date createTime;
+
+    /**
+     * 更新时间
+     */
+    @TableField(updateStrategy = FieldStrategy.NOT_NULL, insertStrategy = FieldStrategy.NOT_NULL)
+    private Date updateTime;
 }

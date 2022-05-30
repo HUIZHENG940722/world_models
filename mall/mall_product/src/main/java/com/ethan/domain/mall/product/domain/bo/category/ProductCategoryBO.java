@@ -2,6 +2,9 @@ package com.ethan.domain.mall.product.domain.bo.category;
 
 import lombok.Data;
 
+import java.util.Date;
+
+
 /**
  * @author zhenghui
  * @Description 商品分类BO
@@ -44,4 +47,14 @@ public class ProductCategoryBO {
      * 是否被删除：0->已删除;1->未删除;
      */
     private Integer deleted;
+
+    /**
+     * 创建时间
+     */
+    private Date createTime;
+
+    /**
+     * 更新时间
+     */
+    private Date updateTime;
 }

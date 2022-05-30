@@ -1,9 +1,10 @@
 package com.ethan.domain.mall.product.infrastructure.dao.po.category;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
+
+import java.util.Date;
+
 
 /**
  * @author zhenghui
@@ -54,4 +55,16 @@ public class ProductCategoryPo {
      * 是否被删除：0->已删除;1->未删除;
      */
     private Integer deleted;
+
+    /**
+     * 创建时间
+     */
+    @TableField(updateStrategy = FieldStrategy.NEVER, insertStrategy = FieldStrategy.NOT_NULL)
+    private Date createTime;
+
+    /**
+     * 更新时间
+     */
+    @TableField(updateStrategy = FieldStrategy.NOT_NULL, insertStrategy = FieldStrategy.NOT_NULL)
+    private Date updateTime;
 }
