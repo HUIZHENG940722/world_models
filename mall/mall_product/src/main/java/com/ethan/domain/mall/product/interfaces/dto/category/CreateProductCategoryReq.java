@@ -1,4 +1,4 @@
-package com.ethan.domain.mall.product.interfaces.dto;
+package com.ethan.domain.mall.product.interfaces.dto.category;
 
 import lombok.Data;
 

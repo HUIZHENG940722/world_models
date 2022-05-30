@@ -1,6 +1,6 @@
 package com.ethan.domain.mall.product.interfaces.assembler;
 
-import com.ethan.domain.mall.product.interfaces.dto.CreateProductCategoryReq;
+import com.ethan.domain.mall.product.interfaces.dto.category.CreateProductCategoryReq;
 import com.ethan.domain.mall.product.domain.bo.category.ProductCategoryBO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
