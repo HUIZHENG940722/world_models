@@ -1,7 +1,7 @@
 package com.ethan.domain.mall.product.domain.service;
 
 import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
-import com.ethan.domain.mall.product.domain.bo.category.DetailsProductCategoryBo;
+import com.ethan.domain.mall.product.domain.bo.category.ContentProductCategoryBo;
 import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
 import com.ethan.domain.mall.product.domain.repository.ProductCategoryRepository;
 import com.ethan.domain.mall.product.infrastructure.api.Asserts;
@@ -33,8 +33,8 @@ public class ProductCategoryDomainService {
         // 1.1 校验父分类的合法性
         checkLegalityParent(createProductCategoryBo.getPid());
         // 1.2 校验分类名称是否重复
-        DetailsProductCategoryBo detailsProductCategoryBo = productCategoryRepository.getByName(createProductCategoryBo.getName());
-        if (detailsProductCategoryBo!=null) {
+        ContentProductCategoryBo contentProductCategoryBo = productCategoryRepository.getByName(createProductCategoryBo.getName());
+        if (contentProductCategoryBo !=null) {
             Asserts.fail("商品分类名称重复");
         }
         // 2 核心业务
@@ -51,8 +51,8 @@ public class ProductCategoryDomainService {
     public int updateProductCategory(UpdateProductCategoryBo updateProductCategoryBo) {
         // 1 核心校验
         // 1.1 校验分类编码是否存在
-        DetailsProductCategoryBo detailsProductCategoryBo = productCategoryRepository.getById(updateProductCategoryBo.getId());
-        if (detailsProductCategoryBo == null) {
+        ContentProductCategoryBo contentProductCategoryBo = productCategoryRepository.getById(updateProductCategoryBo.getId());
+        if (contentProductCategoryBo == null) {
             Asserts.fail("商品分类不存在");
         }
         // 1.2 校验父分类编码
@@ -71,13 +71,13 @@ public class ProductCategoryDomainService {
     public int deleteProductCategory(Integer id) {
         // 1 核心校验
         // 1.1 校验商品分类是否存在
-        DetailsProductCategoryBo byId = productCategoryRepository.getById(id);
+        ContentProductCategoryBo byId = productCategoryRepository.getById(id);
         if (byId == null) {
             Asserts.fail("商品分类不存在");
         }
         // 1.2 校验是否存在子分类
-        List<DetailsProductCategoryBo> detailsProductCategoryBoList = productCategoryRepository.getChildListByPid(id);
-        if (!detailsProductCategoryBoList.isEmpty()) {
+        List<ContentProductCategoryBo> contentProductCategoryBoList = productCategoryRepository.getChildListByPid(id);
+        if (!contentProductCategoryBoList.isEmpty()) {
             Asserts.fail("存在子商品分类");
         }
         // 2 核心业务

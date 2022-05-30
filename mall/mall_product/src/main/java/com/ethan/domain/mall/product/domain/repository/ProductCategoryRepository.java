@@ -2,8 +2,8 @@ package com.ethan.domain.mall.product.domain.repository;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.ethan.domain.mall.product.domain.bo.category.ContentProductCategoryBo;
 import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
-import com.ethan.domain.mall.product.domain.bo.category.DetailsProductCategoryBo;
 import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
 import com.ethan.domain.mall.product.domain.convert.ProductCategoryPoConvert;
 import com.ethan.domain.mall.product.infrastructure.dao.ProductCategoryMapper;
@@ -32,13 +32,13 @@ public class ProductCategoryRepository {
         return productCategoryMapper.insert(ProductCategoryPoConvert.INSTANCE.createBoToPo(createProductCategoryBo));
     }
 
-    public DetailsProductCategoryBo getByName(String name) {
+    public ContentProductCategoryBo getByName(String name) {
         LambdaQueryWrapper<ProductCategoryPo> lambdaQueryWrapper = getLambdaQueryWrapper();
         lambdaQueryWrapper.eq(ProductCategoryPo::getName, name);
         return ProductCategoryPoConvert.INSTANCE.toDetailsBo(productCategoryMapper.selectOne(lambdaQueryWrapper));
     }
 
-    public DetailsProductCategoryBo getById(Integer id) {
+    public ContentProductCategoryBo getById(Integer id) {
         return ProductCategoryPoConvert.INSTANCE.toDetailsBo(productCategoryMapper.selectById(id));
     }
 
@@ -46,7 +46,7 @@ public class ProductCategoryRepository {
         return productCategoryMapper.updateById(ProductCategoryPoConvert.INSTANCE.updateBotoPo(updateProductCategoryBo));
     }
 
-    public List<DetailsProductCategoryBo> getChildListByPid(Integer id) {
+    public List<ContentProductCategoryBo> getChildListByPid(Integer id) {
         LambdaQueryWrapper<ProductCategoryPo> lambdaQueryWrapper = getLambdaQueryWrapper();
         lambdaQueryWrapper.eq(ProductCategoryPo::getPid, id);
         return ProductCategoryPoConvert.INSTANCE.toDetailsListBo(productCategoryMapper.selectList(lambdaQueryWrapper));

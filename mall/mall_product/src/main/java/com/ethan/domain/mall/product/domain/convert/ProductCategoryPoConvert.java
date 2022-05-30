@@ -1,7 +1,7 @@
 package com.ethan.domain.mall.product.domain.convert;
 
+import com.ethan.domain.mall.product.domain.bo.category.ContentProductCategoryBo;
 import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
-import com.ethan.domain.mall.product.domain.bo.category.DetailsProductCategoryBo;
 import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
 import com.ethan.domain.mall.product.infrastructure.dao.po.category.ProductCategoryPo;
 import org.mapstruct.Mapper;
@@ -29,9 +29,9 @@ public interface ProductCategoryPoConvert {
     })
     ProductCategoryPo createBoToPo(CreateProductCategoryBo createProductCategoryBo);
 
-    DetailsProductCategoryBo toDetailsBo(ProductCategoryPo selectOne);
+    ContentProductCategoryBo toDetailsBo(ProductCategoryPo selectOne);
 
     ProductCategoryPo updateBotoPo(UpdateProductCategoryBo updateProductCategoryBo);
 
-    List<DetailsProductCategoryBo> toDetailsListBo(List<ProductCategoryPo> selectList);
+    List<ContentProductCategoryBo> toDetailsListBo(List<ProductCategoryPo> selectList);
 }
