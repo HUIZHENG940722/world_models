@@ -6,7 +6,7 @@ spring:
     name: mall_product
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/one_mall
+    url: jdbc:mysql://100.85.113.163:3306/one_mall
     username: root
     password: Imc@124!
 #  datasource:
