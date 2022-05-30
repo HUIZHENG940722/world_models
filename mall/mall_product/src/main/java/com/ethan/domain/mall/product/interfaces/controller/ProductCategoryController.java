@@ -1,7 +1,7 @@
-package com.ethan.domain.mall.product.Interfaces.controller;
+package com.ethan.domain.mall.product.interfaces.controller;
 
-import com.ethan.domain.mall.product.Interfaces.assembler.ProductCategoryDtoConvert;
-import com.ethan.domain.mall.product.Interfaces.dto.CreateProductCategoryReq;
+import com.ethan.domain.mall.product.interfaces.assembler.ProductCategoryDtoConvert;
+import com.ethan.domain.mall.product.interfaces.dto.CreateProductCategoryReq;
 import com.ethan.domain.mall.product.application.service.ProductCategoryService;
 import com.ethan.domain.mall.product.domain.bo.category.ProductCategoryBO;
 import com.ethan.domain.mall.product.infrastructure.api.CommonResult;

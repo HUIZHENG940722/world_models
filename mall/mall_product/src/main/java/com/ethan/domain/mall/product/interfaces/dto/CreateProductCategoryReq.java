@@ -1,4 +1,4 @@
-package com.ethan.domain.mall.product.Interfaces.dto;
+package com.ethan.domain.mall.product.interfaces.dto;
 
 import lombok.Data;
 

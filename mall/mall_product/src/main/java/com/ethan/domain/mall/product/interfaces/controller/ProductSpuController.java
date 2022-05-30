@@ -1,4 +1,4 @@
-package com.ethan.domain.mall.product.Interfaces.controller;
+package com.ethan.domain.mall.product.interfaces.controller;
 
 import com.ethan.domain.mall.product.application.service.ProductSpuService;
 import org.springframework.beans.factory.annotation.Autowired;
