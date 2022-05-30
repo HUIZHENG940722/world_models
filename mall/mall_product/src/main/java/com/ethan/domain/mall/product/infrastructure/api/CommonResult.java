@@ -39,7 +39,24 @@ public final class CommonResult<T> implements Serializable {
         this.data = data;
     }
 
+    /**
+     * 成功返回数据
+     * @param code
+     * @param message
+     * @param data
+     * @return
+     * @param <T>
+     */
     public static <T> CommonResult success(Integer code, String message, T data) {
         return new CommonResult(code, message, data);
+    }
+
+    /**
+     * 校验失败返回数据
+     * @param message
+     * @return
+     */
+    public static CommonResult validateFailed(String message) {
+        return new CommonResult(400, message, null);
     }
 }

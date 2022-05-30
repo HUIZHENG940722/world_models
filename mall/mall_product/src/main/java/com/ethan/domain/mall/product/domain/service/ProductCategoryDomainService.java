@@ -3,6 +3,7 @@ package com.ethan.domain.mall.product.domain.service;
 import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
 import com.ethan.domain.mall.product.domain.bo.category.DetailsProductCategoryBo;
 import com.ethan.domain.mall.product.domain.repository.ProductCategoryRepository;
+import com.ethan.domain.mall.product.infrastructure.api.Asserts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +32,7 @@ public class ProductCategoryDomainService {
         // 1.2 校验分类名称是否重复
         DetailsProductCategoryBo detailsProductCategoryBo = productCategoryRepository.getByName(createProductCategoryBo.getName());
         if (detailsProductCategoryBo!=null) {
-            throw new RuntimeException("商品分类名称重复");
+            Asserts.fail("商品分类名称重复");
         }
         // 2 核心业务
         return productCategoryRepository.add(createProductCategoryBo);
