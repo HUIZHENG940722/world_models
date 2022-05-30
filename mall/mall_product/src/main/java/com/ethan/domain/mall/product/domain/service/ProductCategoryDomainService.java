@@ -44,21 +44,22 @@ public class ProductCategoryDomainService {
 
     /**
      * 领域服务：更新商品分类
+     * @param categoryId
      * @param updateProductCategoryBo
      * @return
      */
     @Transactional
-    public int updateProductCategory(UpdateProductCategoryBo updateProductCategoryBo) {
+    public int updateProductCategory(Integer categoryId, UpdateProductCategoryBo updateProductCategoryBo) {
         // 1 核心校验
         // 1.1 校验分类编码是否存在
-        ContentProductCategoryBo contentProductCategoryBo = productCategoryRepository.getById(updateProductCategoryBo.getId());
+        ContentProductCategoryBo contentProductCategoryBo = productCategoryRepository.getById(categoryId);
         if (contentProductCategoryBo == null) {
             Asserts.fail("商品分类不存在");
         }
         // 1.2 校验父分类编码
         checkLegalityParent(updateProductCategoryBo.getPid());
         // 2 核心业务
-        return productCategoryRepository.update(updateProductCategoryBo);
+        return productCategoryRepository.updateById(categoryId, updateProductCategoryBo);
         // 3 返回结果
     }
 

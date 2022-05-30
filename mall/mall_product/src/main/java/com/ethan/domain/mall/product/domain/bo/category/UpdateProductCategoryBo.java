@@ -13,11 +13,6 @@ import java.util.Date;
 public class UpdateProductCategoryBo {
 
     /**
-     * 分类编号
-     */
-    private Integer id;
-
-    /**
      * 父分类编号
      */
     private Integer pid;

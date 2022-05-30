@@ -1,7 +1,9 @@
 package com.ethan.domain.mall.product.interfaces.assembler;
 
+import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
 import com.ethan.domain.mall.product.interfaces.dto.category.CreateProductCategoryReq;
 import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
+import com.ethan.domain.mall.product.interfaces.dto.category.UpdateProductCategoryReq;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -22,4 +24,11 @@ public interface ProductCategoryDtoConvert {
             @Mapping(target = "updateTime", ignore = true),
     })
     CreateProductCategoryBo toBo(CreateProductCategoryReq createProductCategoryReq);
+
+    @Mappings({
+            @Mapping(target = "deleted", ignore = true),
+            @Mapping(target = "createTime", ignore = true),
+            @Mapping(target = "updateTime", ignore = true),
+    })
+    UpdateProductCategoryBo toBo(UpdateProductCategoryReq updateProductCategoryReq);
 }

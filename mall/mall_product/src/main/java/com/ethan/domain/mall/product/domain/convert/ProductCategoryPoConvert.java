@@ -31,6 +31,10 @@ public interface ProductCategoryPoConvert {
 
     ContentProductCategoryBo toDetailsBo(ProductCategoryPo selectOne);
 
+    @Mappings({
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "updateTime", defaultExpression = "java(new java.util.Date(System.currentTimeMillis()))"),
+    })
     ProductCategoryPo updateBotoPo(UpdateProductCategoryBo updateProductCategoryBo);
 
     List<ContentProductCategoryBo> toDetailsListBo(List<ProductCategoryPo> selectList);

@@ -42,8 +42,10 @@ public class ProductCategoryRepository {
         return ProductCategoryPoConvert.INSTANCE.toDetailsBo(productCategoryMapper.selectById(id));
     }
 
-    public int update(UpdateProductCategoryBo updateProductCategoryBo) {
-        return productCategoryMapper.updateById(ProductCategoryPoConvert.INSTANCE.updateBotoPo(updateProductCategoryBo));
+    public int updateById(Integer id, UpdateProductCategoryBo updateProductCategoryBo) {
+        ProductCategoryPo productCategoryPo = ProductCategoryPoConvert.INSTANCE.updateBotoPo(updateProductCategoryBo);
+        productCategoryPo.setId(id);
+        return productCategoryMapper.updateById(productCategoryPo);
     }
 
     public List<ContentProductCategoryBo> getChildListByPid(Integer id) {

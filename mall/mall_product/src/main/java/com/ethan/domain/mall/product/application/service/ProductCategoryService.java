@@ -1,6 +1,7 @@
 package com.ethan.domain.mall.product.application.service;
 
 import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
+import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
 import com.ethan.domain.mall.product.domain.service.ProductCategoryDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,18 @@ public class ProductCategoryService {
         // 2 业务
         // 3 返回结果
         return productCategoryDomainService.createProductCategory(createProductCategoryBo);
+    }
+
+    /**
+     * 应用服务：更新商品分类
+     * @param categoryId
+     * @param updateProductCategoryBo
+     * @return
+     */
+    public int updateProductCategory(Integer categoryId, UpdateProductCategoryBo updateProductCategoryBo) {
+        // 1 校验
+        // 2 业务
+        // 3 返回结果
+        return productCategoryDomainService.updateProductCategory(categoryId, updateProductCategoryBo);
     }
 }
