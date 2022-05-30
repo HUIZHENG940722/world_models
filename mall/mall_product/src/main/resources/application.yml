@@ -11,7 +11,7 @@ spring:
 #    password: Imc@124!
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/one_mall
+    url: jdbc:mysql://localhost:3306/one_mall?&serverTimezone=Asia/Shanghai
     username: root
     password: ahui940722
 
