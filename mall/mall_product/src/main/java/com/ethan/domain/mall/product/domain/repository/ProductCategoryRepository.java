@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
 import com.ethan.domain.mall.product.domain.bo.category.DetailsProductCategoryBo;
+import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
 import com.ethan.domain.mall.product.domain.convert.ProductCategoryPoConvert;
 import com.ethan.domain.mall.product.infrastructure.dao.ProductCategoryMapper;
 import com.ethan.domain.mall.product.infrastructure.dao.po.category.ProductCategoryPo;
@@ -26,13 +27,21 @@ public class ProductCategoryRepository {
     }
 
     public int add(CreateProductCategoryBo createProductCategoryBo) {
-        return productCategoryMapper.insert(ProductCategoryPoConvert.INSTANCE.toPo(createProductCategoryBo));
+        return productCategoryMapper.insert(ProductCategoryPoConvert.INSTANCE.createBoToPo(createProductCategoryBo));
     }
 
     public DetailsProductCategoryBo getByName(String name) {
         LambdaQueryWrapper<ProductCategoryPo> lambdaQueryWrapper = getLambdaQueryWrapper();
         lambdaQueryWrapper.eq(ProductCategoryPo::getName, name);
         return ProductCategoryPoConvert.INSTANCE.toDetailsBo(productCategoryMapper.selectOne(lambdaQueryWrapper));
+    }
+
+    public DetailsProductCategoryBo getById(Integer id) {
+        return ProductCategoryPoConvert.INSTANCE.toDetailsBo(productCategoryMapper.selectById(id));
+    }
+
+    public int update(UpdateProductCategoryBo updateProductCategoryBo) {
+        return productCategoryMapper.updateById(ProductCategoryPoConvert.INSTANCE.updateBotoPo(updateProductCategoryBo));
     }
 
     private LambdaQueryWrapper<ProductCategoryPo> getLambdaQueryWrapper() {

@@ -2,6 +2,7 @@ package com.ethan.domain.mall.product.domain.service;
 
 import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
 import com.ethan.domain.mall.product.domain.bo.category.DetailsProductCategoryBo;
+import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
 import com.ethan.domain.mall.product.domain.repository.ProductCategoryRepository;
 import com.ethan.domain.mall.product.infrastructure.api.Asserts;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,25 @@ public class ProductCategoryDomainService {
         }
         // 2 核心业务
         return productCategoryRepository.add(createProductCategoryBo);
+        // 3 返回结果
+    }
+
+    /**
+     * 领域服务：更新商品分类
+     * @param updateProductCategoryBo
+     * @return
+     */
+    public int updateProductCategory(UpdateProductCategoryBo updateProductCategoryBo) {
+        // 1 核心校验
+        // 1.1 校验分类编码是否存在
+        DetailsProductCategoryBo detailsProductCategoryBo = productCategoryRepository.getById(updateProductCategoryBo.getId());
+        if (detailsProductCategoryBo == null) {
+            Asserts.fail("商品分类不存在");
+        }
+        // 1.2 校验父分类编码
+        checkLegalityParent(updateProductCategoryBo.getPid());
+        // 2 核心业务
+        return productCategoryRepository.update(updateProductCategoryBo);
         // 3 返回结果
     }
 
