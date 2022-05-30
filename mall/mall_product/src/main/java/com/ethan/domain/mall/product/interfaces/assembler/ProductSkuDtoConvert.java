@@ -4,9 +4,9 @@ import org.mapstruct.Mapper;
 
 /**
  * @Author zWX1058539
- * @Description 商品品牌DTO转换器
+ * @Description 商品SKU DTO转换器
  * @Date 2022/5/30
  */
 @Mapper
-public interface ProductBrandDtoConvert {
+public interface ProductSkuDtoConvert {
 }
