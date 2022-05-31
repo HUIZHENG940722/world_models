@@ -26,15 +26,13 @@ public interface ProductBrandPoConvert {
     })
     ProductBrandPo createBotoPo(CreateProductBrandBo createProductBrandBo);
 
-    @Mappings({
-            @Mapping(target = "deleted", ignore = true),
-            @Mapping(target = "createTime", ignore = true),
-            @Mapping(target = "updateTime", ignore = true),
-    })
     ContentProductBrandBo toContentBo(ProductBrandPo selectById);
 
     @Mappings({
-            @Mapping(target = "id", ignore = true)
+        @Mapping(target = "id", ignore = true),
+        @Mapping(target = "deleted", ignore = true),
+        @Mapping(target = "createTime", ignore = true),
+        @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))")
     })
     ProductBrandPo updateBotoPo(UpdateProductBrandBo updateProductBrandBo);
 }

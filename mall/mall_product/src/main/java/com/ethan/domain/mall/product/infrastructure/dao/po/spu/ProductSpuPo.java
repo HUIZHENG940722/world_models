@@ -1,7 +1,9 @@
 package com.ethan.domain.mall.product.infrastructure.dao.po.spu;
 
 import com.baomidou.mybatisplus.annotation.FieldStrategy;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.util.Date;
@@ -17,6 +19,7 @@ public class ProductSpuPo {
     /**
      * SPU 编号
      */
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
     // ========== 基本信息 =========
