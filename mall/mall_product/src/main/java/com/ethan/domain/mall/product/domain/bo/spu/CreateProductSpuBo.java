@@ -2,21 +2,15 @@ package com.ethan.domain.mall.product.domain.bo.spu;
 
 import lombok.Data;
 
-import java.util.Date;
 import java.util.List;
 
 /**
- * @author zhenghui
- * @Description 商品SPU BO
- * @Date 2022/5/28
+ * @Author zWX1058539
+ * @Description 创建商品SPU BO
+ * @Date 2022/5/31
  */
 @Data
-public class ProductSpuBo {
-
-    /**
-     * 商品 SPU 编号
-     */
-    private Integer id;
+public class CreateProductSpuBo {
 
     /**
      * SPU 名字
@@ -62,9 +56,4 @@ public class ProductSpuBo {
      * 库存数量
      */
     private Integer quantity;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
 }

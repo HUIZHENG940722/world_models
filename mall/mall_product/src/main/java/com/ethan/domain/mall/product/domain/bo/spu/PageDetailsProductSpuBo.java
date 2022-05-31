@@ -10,9 +10,9 @@ import java.util.List;
  * @Date 2022/5/29
  */
 @Data
-public class PageProductSpuBo {
+public class PageDetailsProductSpuBo {
 
     private Long total;
 
-    private List<ProductSpuBo> data;
+    private List<DetailsProductSpuBo> data;
 }

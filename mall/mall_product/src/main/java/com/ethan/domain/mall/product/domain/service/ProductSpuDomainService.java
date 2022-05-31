@@ -1,9 +1,13 @@
 package com.ethan.domain.mall.product.domain.service;
 
-import com.ethan.domain.mall.product.domain.bo.spu.PageProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.ContentProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.CreateProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.DetailsProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.PageDetailsProductSpuBo;
 import com.ethan.domain.mall.product.domain.bo.spu.PageQueryProductSpuBo;
-import com.ethan.domain.mall.product.domain.bo.spu.ProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.UpdateProductSpuBo;
 import com.ethan.domain.mall.product.domain.repository.ProductSpuRepository;
+import com.ethan.domain.mall.product.infrastructure.api.Asserts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,55 +25,58 @@ public class ProductSpuDomainService {
 
     /**
      * 领域服务：创建商品SPU
-     * @param productSpuBo
+     * @param createProductSpuBo
      * @return
      */
     @Transactional
-    public int createProductSpu(ProductSpuBo productSpuBo) {
+    public int createProductSpu(CreateProductSpuBo createProductSpuBo) {
         // 1 核心校验
-        // 1.1 校验商品SPU编号是否存在
-        // 1.2 校验商品SPU名称是否存在
+        // 1.1 校验商品SPU名称是否存在
+        ContentProductSpuBo contentProductSpuBo = productSpuRepository.getByName(createProductSpuBo.getName());
+        if (contentProductSpuBo != null) {
+            Asserts.fail("商品SPU名称已存在");
+        }
         // 2 核心业务
-        return productSpuRepository.add(productSpuBo);
+        return productSpuRepository.add(createProductSpuBo);
         // 3 返回结果
     }
 
     /**
      * 领域服务：更新商品SPU
-     * @param productSpuBo
+     * @param updateProductSpuBo
      * @return
      */
     @Transactional
-    public int updateProductSpu(ProductSpuBo productSpuBo) {
+    public int updateProductSpu(Integer id, UpdateProductSpuBo updateProductSpuBo) {
         // 1 核心校验
         // 1.1 校验商品SPU是否存在
-        ProductSpuBo productSpuBo1 = productSpuRepository.getById(productSpuBo.getId());
-        if (productSpuBo1 == null) {
-            throw new RuntimeException("商品SPU非法");
+        ContentProductSpuBo contentProductSpuBo = productSpuRepository.getById(id);
+        if (contentProductSpuBo == null) {
+            Asserts.fail("商品SPU非法");
         }
         // 2 核心业务
-        return productSpuRepository.update(productSpuBo);
+        return productSpuRepository.updateById(id, updateProductSpuBo);
         // 3 返回结果
     }
 
     /**
-     * 领域服务：获取商品SPU
+     * 领域服务：获取商品SPU详情
      * @param productSpuId
      * @return
      */
-    public ProductSpuBo getProductSpu(Integer productSpuId) {
+    public DetailsProductSpuBo getProductSpu(Integer productSpuId) {
         // 1 核心校验
         // 2 核心业务
-        return productSpuRepository.getById(productSpuId);
+        return productSpuRepository.getDetailsById(productSpuId);
         // 3 返回结果
     }
 
     /**
-     * 领域服务：分页查询商品SPU
+     * 领域服务：分页查询商品SPU详情列表
      * @param queryProductSpuBo
      * @return
      */
-    public PageProductSpuBo pageProductSpu(PageQueryProductSpuBo queryProductSpuBo) {
-        return productSpuRepository.page(queryProductSpuBo);
+    public PageDetailsProductSpuBo pageProductSpu(PageQueryProductSpuBo queryProductSpuBo) {
+        return productSpuRepository.pageDetails(queryProductSpuBo);
     }
 }

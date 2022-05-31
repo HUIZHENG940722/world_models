@@ -3,9 +3,12 @@ package com.ethan.domain.mall.product.domain.repository;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ethan.domain.mall.product.domain.bo.spu.PageProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.ContentProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.CreateProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.DetailsProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.PageDetailsProductSpuBo;
 import com.ethan.domain.mall.product.domain.bo.spu.PageQueryProductSpuBo;
-import com.ethan.domain.mall.product.domain.bo.spu.ProductSpuBo;
+import com.ethan.domain.mall.product.domain.bo.spu.UpdateProductSpuBo;
 import com.ethan.domain.mall.product.domain.convert.ProductSpuPoConvert;
 import com.ethan.domain.mall.product.infrastructure.dao.ProductSpuMapper;
 import com.ethan.domain.mall.product.infrastructure.dao.po.spu.ProductSpuPo;
@@ -23,19 +26,21 @@ public class ProductSpuRepository {
     @Autowired
     private ProductSpuMapper productSpuMapper;
 
-    public int add(ProductSpuBo productSpuBo) {
-        return productSpuMapper.insert(ProductSpuPoConvert.INSTANCE.toPo(productSpuBo));
+    public int add(CreateProductSpuBo createProductSpuBo) {
+        return productSpuMapper.insert(ProductSpuPoConvert.INSTANCE.createBoToPo(createProductSpuBo));
     }
 
-    public ProductSpuBo getById(Integer id) {
-        return ProductSpuPoConvert.INSTANCE.toBo(productSpuMapper.selectById(id));
+    public ContentProductSpuBo getById(Integer id) {
+        return ProductSpuPoConvert.INSTANCE.toContentBo(productSpuMapper.selectById(id));
     }
 
-    public int update(ProductSpuBo productSpuBo) {
-        return productSpuMapper.updateById(ProductSpuPoConvert.INSTANCE.toPo(productSpuBo));
+    public int updateById(Integer id, UpdateProductSpuBo updateProductSpuBo) {
+        ProductSpuPo productSpuPo = ProductSpuPoConvert.INSTANCE.updateBoToPo(updateProductSpuBo);
+        productSpuPo.setId(id);
+        return productSpuMapper.updateById(productSpuPo);
     }
 
-    public PageProductSpuBo page(PageQueryProductSpuBo queryProductSpuBo) {
+    public PageDetailsProductSpuBo pageDetails(PageQueryProductSpuBo queryProductSpuBo) {
         LambdaQueryWrapper<ProductSpuPo> lambdaQueryWrapper = getLambdaQueryWrapper();
         if (queryProductSpuBo.getCid()!=null) {
             lambdaQueryWrapper.eq(ProductSpuPo::getCid, queryProductSpuBo.getCid());
@@ -45,11 +50,23 @@ public class ProductSpuRepository {
         }
         lambdaQueryWrapper.eq(ProductSpuPo::getVisible, queryProductSpuBo.getVisible());
         Page<ProductSpuPo> page = new Page<>(queryProductSpuBo.getPageNo(), queryProductSpuBo.getPageSize());
-        Page pageData = productSpuMapper.selectPage(page, lambdaQueryWrapper);
-        PageProductSpuBo pageProductSpuBo = new PageProductSpuBo();
-        pageProductSpuBo.setTotal(pageData.getTotal());
-        pageProductSpuBo.setData(pageData.getRecords());
-        return pageProductSpuBo;
+        Page<ProductSpuPo> pageData = productSpuMapper.selectPage(page, lambdaQueryWrapper);
+        PageDetailsProductSpuBo pageDetailsProductSpuBo = new PageDetailsProductSpuBo();
+        pageDetailsProductSpuBo.setTotal(pageData.getTotal());
+        pageDetailsProductSpuBo.setData(ProductSpuPoConvert.INSTANCE.toDetailsBo(pageData.getRecords()));
+        return pageDetailsProductSpuBo;
+    }
+
+    public ContentProductSpuBo getByName(String name) {
+        LambdaQueryWrapper<ProductSpuPo> lambdaQueryWrapper = getLambdaQueryWrapper();
+        lambdaQueryWrapper.eq(ProductSpuPo::getName, name);
+        return ProductSpuPoConvert.INSTANCE.toContentBo(productSpuMapper.selectOne(lambdaQueryWrapper));
+    }
+
+    public DetailsProductSpuBo getDetailsById(Integer productSpuId) {
+        LambdaQueryWrapper<ProductSpuPo> lambdaQueryWrapper = getLambdaQueryWrapper();
+        lambdaQueryWrapper.eq(ProductSpuPo::getId, productSpuId);
+        return ProductSpuPoConvert.INSTANCE.toDetailsBo(productSpuMapper.selectOne(lambdaQueryWrapper));
     }
 
     /**
