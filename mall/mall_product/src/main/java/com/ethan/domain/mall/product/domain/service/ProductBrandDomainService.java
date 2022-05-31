@@ -58,4 +58,20 @@ public class ProductBrandDomainService {
         return productBrandRepository.updateById(brandId, updateProductBrandBo);
         // 3 返回结果
     }
+
+    /**
+     * 领域服务：删除商品品牌
+     * @param brandId
+     */
+    public int deleteProductBrand(Integer brandId) {
+        // 1 核心校验
+        // 1.1 校验商品品牌是否存在
+        ContentProductBrandBo byId = productBrandRepository.getById(brandId);
+        if (byId == null) {
+            Asserts.fail("商品品牌不存在");
+        }
+        // 2 核心业务
+        return productBrandRepository.deleteById(brandId);
+        // 3 返回结果
+    }
 }

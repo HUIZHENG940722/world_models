@@ -42,7 +42,13 @@ public class ProductBrandRepository {
         return productBrandMapper.updateById(productBrandPo);
     }
 
+    public int deleteById(Integer brandId) {
+        return productBrandMapper.deleteById(brandId);
+    }
+
     private LambdaQueryWrapper<ProductBrandPo> getLambdaQueryWrapper() {
         return Wrappers.lambdaQuery(ProductBrandPo.class);
     }
+
+
 }
