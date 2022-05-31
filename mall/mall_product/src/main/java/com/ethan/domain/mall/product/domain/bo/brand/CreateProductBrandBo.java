@@ -10,7 +10,7 @@ import java.util.Date;
  * @Date 2022/5/30
  */
 @Data
-public class ProductBrandBo {
+public class CreateProductBrandBo {
 
     /**
      * 商品品牌名称

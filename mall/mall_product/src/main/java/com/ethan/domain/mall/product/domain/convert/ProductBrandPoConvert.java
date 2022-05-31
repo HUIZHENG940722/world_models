@@ -1,7 +1,7 @@
 package com.ethan.domain.mall.product.domain.convert;
 
 import com.ethan.domain.mall.product.domain.bo.brand.ContentProductBrandBo;
-import com.ethan.domain.mall.product.domain.bo.brand.ProductBrandBo;
+import com.ethan.domain.mall.product.domain.bo.brand.CreateProductBrandBo;
 import com.ethan.domain.mall.product.domain.bo.brand.UpdateProductBrandBo;
 import com.ethan.domain.mall.product.infrastructure.dao.po.brand.ProductBrandPo;
 import org.mapstruct.Mapper;
@@ -18,7 +18,10 @@ import org.mapstruct.factory.Mappers;
 public interface ProductBrandPoConvert {
     ProductBrandPoConvert INSTANCE = Mappers.getMapper(ProductBrandPoConvert.class);
 
-    ProductBrandPo toPo(ProductBrandBo productBrandBo);
+    @Mappings({
+            @Mapping(target = "id", ignore = true)
+    })
+    ProductBrandPo createBotoPo(CreateProductBrandBo createProductBrandBo);
 
     @Mappings({
             @Mapping(target = "deleted", ignore = true),

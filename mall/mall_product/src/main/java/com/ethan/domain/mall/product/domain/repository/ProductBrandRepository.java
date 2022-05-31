@@ -3,7 +3,7 @@ package com.ethan.domain.mall.product.domain.repository;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ethan.domain.mall.product.domain.bo.brand.ContentProductBrandBo;
-import com.ethan.domain.mall.product.domain.bo.brand.ProductBrandBo;
+import com.ethan.domain.mall.product.domain.bo.brand.CreateProductBrandBo;
 import com.ethan.domain.mall.product.domain.bo.brand.UpdateProductBrandBo;
 import com.ethan.domain.mall.product.domain.convert.ProductBrandPoConvert;
 import com.ethan.domain.mall.product.infrastructure.dao.ProductBrandMapper;
@@ -28,8 +28,8 @@ public class ProductBrandRepository {
         return ProductBrandPoConvert.INSTANCE.toContentBo((productBrandMapper.selectOne(lambdaQueryWrapper)));
     }
 
-    public int add(ProductBrandBo productBrandBo) {
-        return productBrandMapper.insert(ProductBrandPoConvert.INSTANCE.toPo(productBrandBo));
+    public int add(CreateProductBrandBo createProductBrandBo) {
+        return productBrandMapper.insert(ProductBrandPoConvert.INSTANCE.createBotoPo(createProductBrandBo));
     }
 
     public ContentProductBrandBo getById(Integer brandId) {

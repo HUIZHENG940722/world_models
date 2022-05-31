@@ -1,7 +1,7 @@
 package com.ethan.domain.mall.product.domain.service;
 
 import com.ethan.domain.mall.product.domain.bo.brand.ContentProductBrandBo;
-import com.ethan.domain.mall.product.domain.bo.brand.ProductBrandBo;
+import com.ethan.domain.mall.product.domain.bo.brand.CreateProductBrandBo;
 import com.ethan.domain.mall.product.domain.bo.brand.UpdateProductBrandBo;
 import com.ethan.domain.mall.product.domain.repository.ProductBrandRepository;
 import com.ethan.domain.mall.product.infrastructure.api.Asserts;
@@ -21,18 +21,18 @@ public class ProductBrandDomainService {
 
     /**
      * 领域服务：创建商品品牌
-     * @param productBrandBo
+     * @param createProductBrandBo
      * @return
      */
-    public int createProductBrand(ProductBrandBo productBrandBo) {
+    public int createProductBrand(CreateProductBrandBo createProductBrandBo) {
         // 1 核心校验
         // 1.1 校验商品品牌名称是否重复
-        ContentProductBrandBo byName = productBrandRepository.getByName(productBrandBo.getName());
+        ContentProductBrandBo byName = productBrandRepository.getByName(createProductBrandBo.getName());
         if (byName != null) {
             throw new RuntimeException("该商品品牌已添加");
         }
         // 2 核心业务
-        return productBrandRepository.add(productBrandBo);
+        return productBrandRepository.add(createProductBrandBo);
         // 3 返回结果
     }
 
