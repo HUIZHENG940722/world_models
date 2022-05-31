@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.FieldStrategy;
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * @author zhenghui
