@@ -18,17 +18,7 @@ import org.mapstruct.factory.Mappers;
 public interface ProductCategoryDtoConvert {
     ProductCategoryDtoConvert INSTANCE = Mappers.getMapper(ProductCategoryDtoConvert.class);
 
-    @Mappings({
-            @Mapping(target = "deleted", expression = "java(1)"),
-            @Mapping(target = "createTime", ignore = true),
-            @Mapping(target = "updateTime", ignore = true),
-    })
     CreateProductCategoryBo toBo(CreateProductCategoryReq createProductCategoryReq);
 
-    @Mappings({
-            @Mapping(target = "deleted", ignore = true),
-            @Mapping(target = "createTime", ignore = true),
-            @Mapping(target = "updateTime", ignore = true),
-    })
     UpdateProductCategoryBo toBo(UpdateProductCategoryReq updateProductCategoryReq);
 }

@@ -23,17 +23,20 @@ public interface ProductCategoryPoConvert {
     CreateProductCategoryBo toCreateBo(ProductCategoryPo selectById);
 
     @Mappings({
-            @Mapping(target = "createTime", defaultExpression = "java(new java.util.Date(System.currentTimeMillis()))"),
-            @Mapping(target = "updateTime", defaultExpression = "java(new java.util.Date(System.currentTimeMillis()))"),
-            @Mapping(target = "id", ignore = true)
+        @Mapping(target = "deleted", expression = "java(1)"),
+        @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
+        @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
+        @Mapping(target = "id", ignore = true)
     })
     ProductCategoryPo createBoToPo(CreateProductCategoryBo createProductCategoryBo);
 
     ContentProductCategoryBo toDetailsBo(ProductCategoryPo selectOne);
 
     @Mappings({
-            @Mapping(target = "id", ignore = true),
-            @Mapping(target = "updateTime", defaultExpression = "java(new java.util.Date(System.currentTimeMillis()))"),
+        @Mapping(target = "id", ignore = true),
+        @Mapping(target = "deleted", ignore = true),
+        @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
+        @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
     })
     ProductCategoryPo updateBotoPo(UpdateProductCategoryBo updateProductCategoryBo);
 

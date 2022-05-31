@@ -29,7 +29,7 @@ public class ProductBrandDomainService {
         // 1.1 校验商品品牌名称是否重复
         ContentProductBrandBo byName = productBrandRepository.getByName(createProductBrandBo.getName());
         if (byName != null) {
-            throw new RuntimeException("该商品品牌已添加");
+            Asserts.fail("该商品品牌已添加");
         }
         // 2 核心业务
         return productBrandRepository.add(createProductBrandBo);
