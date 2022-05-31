@@ -19,7 +19,10 @@ public interface ProductBrandPoConvert {
     ProductBrandPoConvert INSTANCE = Mappers.getMapper(ProductBrandPoConvert.class);
 
     @Mappings({
-            @Mapping(target = "id", ignore = true)
+        @Mapping(target = "id", ignore = true),
+        @Mapping(target = "deleted", expression = "java(1)"),
+        @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
+        @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))")
     })
     ProductBrandPo createBotoPo(CreateProductBrandBo createProductBrandBo);
 

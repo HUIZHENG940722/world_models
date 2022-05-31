@@ -1,6 +1,9 @@
 package com.ethan.domain.mall.product.interfaces.assembler;
 
+import com.ethan.domain.mall.product.domain.bo.brand.CreateProductBrandBo;
+import com.ethan.domain.mall.product.interfaces.dto.brand.CreateProductBrandReq;
 import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
 /**
  * @Author zWX1058539
@@ -9,4 +12,8 @@ import org.mapstruct.Mapper;
  */
 @Mapper
 public interface ProductBrandDtoConvert {
+    ProductBrandDtoConvert INSTANCE = Mappers.getMapper(ProductBrandDtoConvert.class);
+
+
+    CreateProductBrandBo toBo(CreateProductBrandReq createProductBrandReq);
 }
