@@ -4,9 +4,13 @@ import com.ethan.domain.mall.product.application.service.ProductSpuService;
 import com.ethan.domain.mall.product.infrastructure.api.CommonResult;
 import com.ethan.domain.mall.product.interfaces.dto.spu.CreateProductSpuAndSkuReq;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 /**
  * @author zhenghui
@@ -26,7 +30,7 @@ public class ProductSpuController {
      * @return
      */
     @PostMapping(value = "")
-    public CommonResult<Boolean> createProductSpu(CreateProductSpuAndSkuReq createProductSpuAndSkuReq) {
+    public CommonResult<Integer> createProductSpu(@Validated @RequestBody CreateProductSpuAndSkuReq createProductSpuAndSkuReq) {
         // 1 数据转换
         // 2 业务逻辑
         int create = productSpuService.createProductSpu(createProductSpuAndSkuReq);

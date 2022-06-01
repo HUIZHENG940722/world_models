@@ -10,6 +10,7 @@ import com.ethan.domain.mall.product.interfaces.dto.spu.CreateProductSpuAndSkuRe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -37,9 +38,15 @@ public class ProductSpuService {
         // 2.1 初始化数据
         // 2.1.1 初始化创建SKU列表数据
         List<CreateProductSkuBo> createProductSkuBoList = ProductSkuDtoConvert.INSTANCE.toBo(createProductSpuAndSkuReq.getSkus());
-        // 2.2.2 初始化创建商品SPU列表数据
+        // 2.1.2 初始化创建商品SPU列表数据
         CreateProductSpuBo createProductSpuBo = ProductSpuDtoConvert.INSTANCE.toBo(createProductSpuAndSkuReq);
         // 2.2 创建商品SPU
+        createProductSpuBo.setSort(0);
+        // 找出最小价格
+        Integer price = createProductSkuBoList.stream().min(Comparator.comparing(CreateProductSkuBo::getPrice)).get().getPrice();
+        createProductSpuBo.setPrice(price);
+        Integer reduce = createProductSkuBoList.stream().map(CreateProductSkuBo::getQuantity).reduce(0, Integer::sum);
+        createProductSpuBo.setQuantity(reduce);
         Integer spuId = productSpuDomainService.createProductSpu(createProductSpuBo);
         // 2.3 创建商品SKU列表
         productSkuDomainService.createProductSkus(spuId, createProductSkuBoList);

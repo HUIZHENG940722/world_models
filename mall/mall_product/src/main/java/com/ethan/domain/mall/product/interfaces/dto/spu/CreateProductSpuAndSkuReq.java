@@ -36,7 +36,7 @@ public class CreateProductSpuAndSkuReq {
     /**
      * 分类编号
      */
-    @NotEmpty(message = "分类编号不能为空")
+    @NotNull(message = "分类编号不能为空")
     private Integer cid;
 
     /**
