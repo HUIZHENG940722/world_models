@@ -29,7 +29,9 @@ public class ProductCategoryRepository {
     }
 
     public int add(CreateProductCategoryBo createProductCategoryBo) {
-        return productCategoryMapper.insert(ProductCategoryPoConvert.INSTANCE.createBoToPo(createProductCategoryBo));
+        ProductCategoryPo boToPo = ProductCategoryPoConvert.INSTANCE.createBoToPo(createProductCategoryBo);
+        productCategoryMapper.insert(boToPo);
+        return boToPo.getId();
     }
 
     public ContentProductCategoryBo getByName(String name) {

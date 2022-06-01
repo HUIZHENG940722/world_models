@@ -3,6 +3,7 @@ package com.ethan.domain.mall.product.infrastructure.dao.po.category;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -13,7 +14,7 @@ import java.util.Date;
  */
 @Data
 @TableName(value = "product_category")
-public class ProductCategoryPo {
+public class ProductCategoryPo implements Serializable {
 
     /**
      * 商品分类编码

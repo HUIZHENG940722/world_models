@@ -29,7 +29,9 @@ public class ProductBrandRepository {
     }
 
     public int add(CreateProductBrandBo createProductBrandBo) {
-        return productBrandMapper.insert(ProductBrandPoConvert.INSTANCE.createBotoPo(createProductBrandBo));
+        ProductBrandPo botoPo = ProductBrandPoConvert.INSTANCE.createBotoPo(createProductBrandBo);
+        productBrandMapper.insert(botoPo);
+        return botoPo.getId();
     }
 
     public ContentProductBrandBo getById(Integer brandId) {
