@@ -1,6 +1,11 @@
 package com.ethan.domain.mall.product.interfaces.assembler;
 
+import com.ethan.domain.mall.product.domain.bo.spu.CreateProductSpuBo;
+import com.ethan.domain.mall.product.interfaces.dto.spu.CreateProductSpuAndSkuReq;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.factory.Mappers;
 
 /**
  * @Author zWX1058539
@@ -9,4 +14,14 @@ import org.mapstruct.Mapper;
  */
 @Mapper
 public interface ProductSpuDtoConvert {
+
+    ProductSpuDtoConvert INSTANCE = Mappers.getMapper(ProductSpuDtoConvert.class);
+
+
+    @Mappings({
+        @Mapping(target = "price", ignore = true),
+        @Mapping(target = "sort", ignore = true),
+        @Mapping(target = "quantity", ignore = true)
+    })
+    CreateProductSpuBo toBo(CreateProductSpuAndSkuReq createProductSpuAndSkuReq);
 }

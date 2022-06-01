@@ -26,8 +26,10 @@ public class ProductSpuRepository {
     @Autowired
     private ProductSpuMapper productSpuMapper;
 
-    public int add(CreateProductSpuBo createProductSpuBo) {
-        return productSpuMapper.insert(ProductSpuPoConvert.INSTANCE.createBoToPo(createProductSpuBo));
+    public Integer add(CreateProductSpuBo createProductSpuBo) {
+        ProductSpuPo boToPo = ProductSpuPoConvert.INSTANCE.createBoToPo(createProductSpuBo);
+        productSpuMapper.insert(boToPo);
+        return boToPo.getId();
     }
 
     public ContentProductSpuBo getById(Integer id) {

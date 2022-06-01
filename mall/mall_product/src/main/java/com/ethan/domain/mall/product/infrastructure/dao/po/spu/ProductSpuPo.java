@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Date;
  * @Date 2022/5/28
  */
 @Data
-public class ProductSpuPo {
+public class ProductSpuPo implements Serializable {
 
     /**
      * SPU 编号

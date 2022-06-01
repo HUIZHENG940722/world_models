@@ -29,7 +29,7 @@ public class ProductSpuDomainService {
      * @return
      */
     @Transactional
-    public int createProductSpu(CreateProductSpuBo createProductSpuBo) {
+    public Integer createProductSpu(CreateProductSpuBo createProductSpuBo) {
         // 1 核心校验
         // 1.1 校验商品SPU名称是否存在
         ContentProductSpuBo contentProductSpuBo = productSpuRepository.getByName(createProductSpuBo.getName());

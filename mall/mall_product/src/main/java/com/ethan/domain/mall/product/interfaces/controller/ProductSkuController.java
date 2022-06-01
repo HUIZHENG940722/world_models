@@ -1,5 +1,7 @@
 package com.ethan.domain.mall.product.interfaces.controller;
 
+import com.ethan.domain.mall.product.application.service.ProductSkuService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -9,4 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class ProductSkuController {
+
+    @Autowired
+    private ProductSkuService productSkuService;
+
+
 }
