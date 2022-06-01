@@ -2,6 +2,7 @@ package com.ethan.domain.mall.product.domain.service;
 
 import com.ethan.domain.mall.product.domain.bo.attr.ContentProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.CreateProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.UpdateProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.repository.ProductAttrKeyRepository;
 import com.ethan.domain.mall.product.domain.repository.ProductAttrValueRepository;
 import com.ethan.domain.mall.product.infrastructure.api.Asserts;
@@ -35,7 +36,31 @@ public class ProductAttrDomainService {
             Asserts.fail("商品规格键重复");
         }
         // 2 核心业务
-        return productAttrKeyRepository.add(contentProductAttrKeyBo);
+        return productAttrKeyRepository.add(createProductAttrKeyBo);
+        // 3 返回结果
+    }
+
+
+    /**
+     * 领域服务：更新商品规格键
+     * @param attrKeyId
+     * @param updateProductAttrKeyBo
+     * @return
+     */
+    public int updateProductAttrKey(Integer attrKeyId, UpdateProductAttrKeyBo updateProductAttrKeyBo) {
+        // 1 核心校验
+        // 1.1 校验规格键是否存在
+        ContentProductAttrKeyBo contentProductAttrKeyBo = productAttrKeyRepository.getById(attrKeyId);
+        if (contentProductAttrKeyBo == null) {
+            Asserts.fail("无效的商品规格键");
+        }
+        // 1.2 校验规格键的名字是否重复
+        ContentProductAttrKeyBo byName = productAttrKeyRepository.getByName(updateProductAttrKeyBo.getName());
+        if (byName!=null && !byName.getId().equals(attrKeyId)) {
+            Asserts.fail("商品规格键名字重复");
+        }
+        // 2 核心业务
+        return productAttrKeyRepository.updateById(attrKeyId, updateProductAttrKeyBo);
         // 3 返回结果
     }
 }

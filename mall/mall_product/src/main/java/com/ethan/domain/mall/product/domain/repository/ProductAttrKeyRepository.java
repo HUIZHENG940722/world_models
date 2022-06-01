@@ -3,6 +3,8 @@ package com.ethan.domain.mall.product.domain.repository;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ethan.domain.mall.product.domain.bo.attr.ContentProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.CreateProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.UpdateProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.convert.ProductAttrKeyPoConvert;
 import com.ethan.domain.mall.product.infrastructure.dao.ProductAttrKeyMapper;
 import com.ethan.domain.mall.product.infrastructure.dao.po.attr.ProductAttrKeyPo;
@@ -26,10 +28,20 @@ public class ProductAttrKeyRepository {
         return ProductAttrKeyPoConvert.INSTANCE.toContent(productAttrKeyMapper.selectOne(lambdaQueryWrapper));
     }
 
-    public Integer add(ContentProductAttrKeyBo contentProductAttrKeyBo) {
-        ProductAttrKeyPo productAttrKeyPo = ProductAttrKeyPoConvert.INSTANCE.contentBotoPo(contentProductAttrKeyBo);
+    public Integer add(CreateProductAttrKeyBo createProductAttrKeyBo) {
+        ProductAttrKeyPo productAttrKeyPo = ProductAttrKeyPoConvert.INSTANCE.createBotoPo(createProductAttrKeyBo);
         productAttrKeyMapper.insert(productAttrKeyPo);
         return productAttrKeyPo.getId();
+    }
+
+    public ContentProductAttrKeyBo getById(Integer attrKeyId) {
+        return ProductAttrKeyPoConvert.INSTANCE.toContent(productAttrKeyMapper.selectById(attrKeyId));
+    }
+
+    public int updateById(Integer attrKeyId, UpdateProductAttrKeyBo updateProductAttrKeyBo) {
+        ProductAttrKeyPo productAttrKeyPo = ProductAttrKeyPoConvert.INSTANCE.updateBoToPo(updateProductAttrKeyBo);
+        productAttrKeyPo.setId(attrKeyId);
+        return productAttrKeyMapper.updateById(productAttrKeyPo);
     }
 
     private LambdaQueryWrapper<ProductAttrKeyPo> getLambdaQueryWrapper() {

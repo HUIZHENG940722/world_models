@@ -1,6 +1,8 @@
 package com.ethan.domain.mall.product.domain.convert;
 
 import com.ethan.domain.mall.product.domain.bo.attr.ContentProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.CreateProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.UpdateProductAttrKeyBo;
 import com.ethan.domain.mall.product.infrastructure.dao.po.attr.ProductAttrKeyPo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -25,5 +27,14 @@ public interface ProductAttrKeyPoConvert {
         @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
         @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))")
     })
-    ProductAttrKeyPo contentBotoPo(ContentProductAttrKeyBo contentProductAttrKeyBo);
+    ProductAttrKeyPo createBotoPo(CreateProductAttrKeyBo createProductAttrKeyBo);
+
+
+    @Mappings({
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "deleted", expression = "java(1)"),
+            @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
+            @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))")
+    })
+    ProductAttrKeyPo updateBoToPo(UpdateProductAttrKeyBo updateProductAttrKeyBo);
 }
