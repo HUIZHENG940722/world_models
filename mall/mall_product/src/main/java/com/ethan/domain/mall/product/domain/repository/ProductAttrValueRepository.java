@@ -1,5 +1,13 @@
 package com.ethan.domain.mall.product.domain.repository;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.ethan.domain.mall.product.domain.bo.attr.value.ContentProductAttrValueBo;
+import com.ethan.domain.mall.product.domain.bo.attr.value.CreateProductAttrValueBo;
+import com.ethan.domain.mall.product.domain.convert.ProductAttrValuePoConvert;
+import com.ethan.domain.mall.product.infrastructure.dao.ProductAttrValueMapper;
+import com.ethan.domain.mall.product.infrastructure.dao.po.attr.ProductAttrValuePo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,4 +17,21 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class ProductAttrValueRepository {
+
+    @Autowired
+    private ProductAttrValueMapper productAttrValueMapper;
+
+    public ContentProductAttrValueBo getByName(String name) {
+        LambdaQueryWrapper<ProductAttrValuePo> lambdaQueryWrapper = getLambdaQueryWrapper();
+        lambdaQueryWrapper.eq(ProductAttrValuePo::getName, name);
+        return ProductAttrValuePoConvert.INSTANCE.toContent(productAttrValueMapper.selectOne(lambdaQueryWrapper));
+    }
+
+    public Integer add(CreateProductAttrValueBo createProductAttrValueBo) {
+        return null;
+    }
+
+    private LambdaQueryWrapper<ProductAttrValuePo> getLambdaQueryWrapper() {
+        return Wrappers.lambdaQuery(ProductAttrValuePo.class);
+    }
 }

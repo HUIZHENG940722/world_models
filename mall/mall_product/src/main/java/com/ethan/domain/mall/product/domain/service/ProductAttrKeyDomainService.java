@@ -1,27 +1,24 @@
 package com.ethan.domain.mall.product.domain.service;
 
-import com.ethan.domain.mall.product.domain.bo.attr.ContentProductAttrKeyBo;
-import com.ethan.domain.mall.product.domain.bo.attr.CreateProductAttrKeyBo;
-import com.ethan.domain.mall.product.domain.bo.attr.UpdateProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.key.ContentProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.key.CreateProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.key.UpdateProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.repository.ProductAttrKeyRepository;
-import com.ethan.domain.mall.product.domain.repository.ProductAttrValueRepository;
 import com.ethan.domain.mall.product.infrastructure.api.Asserts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
  * @Author zWX1058539
- * @Description 商品规格领域服务
+ * @Description 商品规格键领域服务
  * @Date 2022/6/1
  */
 @Service
-public class ProductAttrDomainService {
+public class ProductAttrKeyDomainService {
 
     @Autowired
     private ProductAttrKeyRepository productAttrKeyRepository;
 
-    @Autowired
-    private ProductAttrValueRepository productAttrValueRepository;
 
     /**
      * 领域服务：创建商品规格键
@@ -62,5 +59,9 @@ public class ProductAttrDomainService {
         // 2 核心业务
         return productAttrKeyRepository.updateById(attrKeyId, updateProductAttrKeyBo);
         // 3 返回结果
+    }
+
+    public ContentProductAttrKeyBo getById(Integer attrKeyId) {
+        return productAttrKeyRepository.getById(attrKeyId);
     }
 }

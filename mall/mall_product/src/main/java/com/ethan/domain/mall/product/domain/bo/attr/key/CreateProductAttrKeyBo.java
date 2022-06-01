@@ -1,4 +1,4 @@
-package com.ethan.domain.mall.product.domain.bo.attr;
+package com.ethan.domain.mall.product.domain.bo.attr.key;
 
 import lombok.Data;
 

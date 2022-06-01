@@ -1,5 +1,7 @@
 package com.ethan.domain.mall.product.infrastructure.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.ethan.domain.mall.product.infrastructure.dao.po.attr.ProductAttrValuePo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -8,5 +10,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @Date 2022/6/1
  */
 @Mapper
-public interface ProductAttrValueMapper {
+public interface ProductAttrValueMapper extends BaseMapper<ProductAttrValuePo> {
 }

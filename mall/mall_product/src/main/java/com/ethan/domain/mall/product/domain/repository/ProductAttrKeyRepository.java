@@ -2,9 +2,9 @@ package com.ethan.domain.mall.product.domain.repository;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.ethan.domain.mall.product.domain.bo.attr.ContentProductAttrKeyBo;
-import com.ethan.domain.mall.product.domain.bo.attr.CreateProductAttrKeyBo;
-import com.ethan.domain.mall.product.domain.bo.attr.UpdateProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.key.ContentProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.key.CreateProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.key.UpdateProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.convert.ProductAttrKeyPoConvert;
 import com.ethan.domain.mall.product.infrastructure.dao.ProductAttrKeyMapper;
 import com.ethan.domain.mall.product.infrastructure.dao.po.attr.ProductAttrKeyPo;

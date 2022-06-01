@@ -1,8 +1,8 @@
 package com.ethan.domain.mall.product.domain.convert;
 
-import com.ethan.domain.mall.product.domain.bo.attr.ContentProductAttrKeyBo;
-import com.ethan.domain.mall.product.domain.bo.attr.CreateProductAttrKeyBo;
-import com.ethan.domain.mall.product.domain.bo.attr.UpdateProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.key.ContentProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.key.CreateProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.key.UpdateProductAttrKeyBo;
 import com.ethan.domain.mall.product.infrastructure.dao.po.attr.ProductAttrKeyPo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
