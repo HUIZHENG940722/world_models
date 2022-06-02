@@ -1,7 +1,7 @@
 package com.ethan.domain.mall.product.interfaces.assembler;
 
 import com.ethan.domain.mall.product.domain.bo.sku.CreateProductSkuBo;
-import com.ethan.domain.mall.product.interfaces.dto.spu.CreateProductSpuAndSkuReq;
+import com.ethan.domain.mall.product.interfaces.dto.sku.SkuDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -24,5 +24,5 @@ public interface ProductSkuDtoConvert {
         @Mapping(target = "status", expression = "java(1)"),
         @Mapping(target = "picUrl", ignore = true)
     })
-    List<CreateProductSkuBo> toBo(List<CreateProductSpuAndSkuReq.Sku> skus);
+    List<CreateProductSkuBo> toBo(List<SkuDto> skus);
 }

@@ -1,5 +1,6 @@
 package com.ethan.domain.mall.product.interfaces.dto.spu;
 
+import com.ethan.domain.mall.product.interfaces.dto.sku.SkuDto;
 import lombok.Data;
 
 import javax.validation.Valid;
@@ -56,30 +57,6 @@ public class CreateProductSpuAndSkuReq {
      */
     @NotNull(message = "SKU不能为空")
     @Valid
-    private List<Sku> skus;
+    private List<SkuDto> skus;
 
-    /**
-     * SKU信息
-     */
-    @Data
-    public static class Sku {
-
-        /**
-         * 规格值数组
-         */
-        @NotNull(message = "规格值数组不能为空")
-        private List<Integer> attrValueIds;
-
-        /**
-         * 价格，单位：分
-         */
-        @NotNull(message = "价格不能为空")
-        private Integer price;
-
-        /**
-         * 库存数量
-         */
-        @NotNull(message = "库存数量不能为空")
-        private Integer quantity;
-    }
 }
