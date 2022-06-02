@@ -29,7 +29,7 @@ public class ProductAttrKeyDomainService {
         // 1 核心校验
         // 1.1 校验规格键名字是否重复
         ContentProductAttrKeyBo contentProductAttrKeyBo = productAttrKeyRepository.getByName(createProductAttrKeyBo.getName());
-        if (contentProductAttrKeyBo == null) {
+        if (contentProductAttrKeyBo != null) {
             Asserts.fail("商品规格键重复");
         }
         // 2 核心业务
