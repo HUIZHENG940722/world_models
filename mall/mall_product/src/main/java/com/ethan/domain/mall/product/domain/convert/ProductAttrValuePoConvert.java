@@ -1,8 +1,11 @@
 package com.ethan.domain.mall.product.domain.convert;
 
 import com.ethan.domain.mall.product.domain.bo.attr.value.ContentProductAttrValueBo;
+import com.ethan.domain.mall.product.domain.bo.attr.value.UpdateProductAttrValueBo;
 import com.ethan.domain.mall.product.infrastructure.dao.po.attr.ProductAttrValuePo;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -16,4 +19,12 @@ public interface ProductAttrValuePoConvert {
     ProductAttrValuePoConvert INSTANCE = Mappers.getMapper(ProductAttrValuePoConvert.class);
 
     ContentProductAttrValueBo toContent(ProductAttrValuePo selectOne);
+
+    @Mappings({
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "deleted", ignore = true),
+            @Mapping(target = "createTime", ignore = true),
+            @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))")
+    })
+    ProductAttrValuePo updateBoToPo(UpdateProductAttrValueBo updateProductAttrValueBo);
 }

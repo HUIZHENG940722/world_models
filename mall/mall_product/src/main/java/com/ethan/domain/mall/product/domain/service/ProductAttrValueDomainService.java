@@ -3,6 +3,7 @@ package com.ethan.domain.mall.product.domain.service;
 import com.ethan.domain.mall.product.domain.bo.attr.key.ContentProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.value.ContentProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.bo.attr.value.CreateProductAttrValueBo;
+import com.ethan.domain.mall.product.domain.bo.attr.value.UpdateProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.repository.ProductAttrValueRepository;
 import com.ethan.domain.mall.product.infrastructure.api.Asserts;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,29 @@ public class ProductAttrValueDomainService {
         // 2 核心业务
         createProductAttrValueBo.setAttrKeyId(attrKeyId);
         return productAttrValueRepository.add(createProductAttrValueBo);
+        // 3 返回结果
+    }
+
+    /**
+     * 领域服务：更新商品规格值
+     * @param attrValueId
+     * @param updateProductAttrValueBo
+     * @return
+     */
+    public Integer updateProductAttrValue(Integer attrValueId, UpdateProductAttrValueBo updateProductAttrValueBo) {
+        // 1 核心校验
+        // 1.1 校验商品规格值是否存在
+        ContentProductAttrValueBo contentProductAttrValueBo = productAttrValueRepository.getById(attrValueId);
+        if (contentProductAttrValueBo == null) {
+            Asserts.fail("商品规格值不存在");
+        }
+        // 1.2 校验商品规格名称是否重复
+        ContentProductAttrValueBo byName = productAttrValueRepository.getByName(updateProductAttrValueBo.getName());
+        if (byName!=null && !byName.getId().equals(contentProductAttrValueBo.getId())) {
+            Asserts.fail("商品规格值名称重复");
+        }
+        // 2 核心业务
+        return productAttrValueRepository.updateById(attrValueId, updateProductAttrValueBo);
         // 3 返回结果
     }
 }

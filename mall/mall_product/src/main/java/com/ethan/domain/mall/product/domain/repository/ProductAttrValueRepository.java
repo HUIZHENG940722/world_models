@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ethan.domain.mall.product.domain.bo.attr.value.ContentProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.bo.attr.value.CreateProductAttrValueBo;
+import com.ethan.domain.mall.product.domain.bo.attr.value.UpdateProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.convert.ProductAttrValuePoConvert;
 import com.ethan.domain.mall.product.infrastructure.dao.ProductAttrValueMapper;
 import com.ethan.domain.mall.product.infrastructure.dao.po.attr.ProductAttrValuePo;
@@ -31,7 +32,17 @@ public class ProductAttrValueRepository {
         return null;
     }
 
+    public ContentProductAttrValueBo getById(Integer attrValueId) {
+        return ProductAttrValuePoConvert.INSTANCE.toContent(productAttrValueMapper.selectById(attrValueId));
+    }
+
     private LambdaQueryWrapper<ProductAttrValuePo> getLambdaQueryWrapper() {
         return Wrappers.lambdaQuery(ProductAttrValuePo.class);
+    }
+
+    public Integer updateById(Integer attrValueId, UpdateProductAttrValueBo updateProductAttrValueBo) {
+        ProductAttrValuePo productAttrValuePo = ProductAttrValuePoConvert.INSTANCE.updateBoToPo(updateProductAttrValueBo);
+        productAttrValuePo.setId(attrValueId);
+        return productAttrValueMapper.updateById(productAttrValuePo);
     }
 }
