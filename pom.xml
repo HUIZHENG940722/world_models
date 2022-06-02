@@ -11,6 +11,7 @@
     <description>世界的领域建模</description>
     <modules>
         <module>mall</module>
+        <module>pay</module>
     </modules>
 
     <properties>
