@@ -12,6 +12,7 @@
     <modules>
         <module>mall</module>
         <module>pay</module>
+        <module>account</module>
     </modules>
 
     <properties>
