@@ -26,9 +26,4 @@ public class CreateProductBrandBo {
      * 商品品牌图片
      */
     private String picUrl;
-
-    /**
-     * 状态：0->关闭;1->开启;
-     */
-    private Integer status;
 }

@@ -28,10 +28,4 @@ public class CreateProductBrandReq {
      * 品牌名图片
      */
     private String picUrl;
-
-    /**
-     * 状态
-     */
-    @NotNull(message = "状态不能为空")
-    private Integer status;
 }
