@@ -10,6 +10,8 @@ import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 /**
  * @Author zWX1058539
  * @Description 商品品牌PO转换器
@@ -29,6 +31,8 @@ public interface ProductBrandPoConvert {
     ProductBrandPo createBotoPo(CreateProductBrandBo createProductBrandBo);
 
     ContentProductBrandBo toContentBo(ProductBrandPo selectById);
+
+    List<ContentProductBrandBo> toContentBo(List<ProductBrandPo> productBrandPoList);
 
     @Mappings({
         @Mapping(target = "id", ignore = true),

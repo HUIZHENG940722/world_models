@@ -2,12 +2,12 @@ package com.ethan.domain.mall.product.domain.repository;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.ethan.domain.mall.product.domain.bo.brand.ContentProductBrandBo;
-import com.ethan.domain.mall.product.domain.bo.brand.CreateProductBrandBo;
-import com.ethan.domain.mall.product.domain.bo.brand.UpdateProductBrandBo;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ethan.domain.mall.product.domain.bo.brand.*;
 import com.ethan.domain.mall.product.domain.convert.ProductBrandPoConvert;
 import com.ethan.domain.mall.product.infrastructure.dao.ProductBrandMapper;
 import com.ethan.domain.mall.product.infrastructure.dao.po.brand.ProductBrandPo;
+import com.ethan.domain.mall.product.interfaces.assembler.ProductBrandDtoConvert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -44,6 +44,28 @@ public class ProductBrandRepository {
         return productBrandMapper.updateById(productBrandPo);
     }
 
+    public PageProductBrandBo page(PageQueryProductBrandBo pageQueryProductBrandBo) {
+        LambdaQueryWrapper<ProductBrandPo> lambdaQueryWrapper = getLambdaQueryWrapper();
+        if (pageQueryProductBrandBo.getId() != null) {
+            lambdaQueryWrapper.eq(ProductBrandPo::getId, pageQueryProductBrandBo.getId());
+        }
+        if (pageQueryProductBrandBo.getName() != null) {
+            lambdaQueryWrapper.like(ProductBrandPo::getName, pageQueryProductBrandBo.getName());
+        }
+        if (pageQueryProductBrandBo.getDeleted() != null) {
+            lambdaQueryWrapper.eq(ProductBrandPo::getDeleted, pageQueryProductBrandBo.getDeleted());
+        }
+        if (pageQueryProductBrandBo.getStatus()!=null) {
+            lambdaQueryWrapper.eq(ProductBrandPo::getStatus, pageQueryProductBrandBo.getStatus());
+        }
+        Page<ProductBrandPo> productBrandPoPage = productBrandMapper.selectPage(
+            new Page<>(pageQueryProductBrandBo.getPageNo(), pageQueryProductBrandBo.getPageSize()), lambdaQueryWrapper);
+        PageProductBrandBo pageProductBrandBo = new PageProductBrandBo();
+        pageProductBrandBo.setTotal((int) productBrandPoPage.getTotal());
+        pageProductBrandBo.setData(ProductBrandPoConvert.INSTANCE.toContentBo(productBrandPoPage.getRecords()));
+        return pageProductBrandBo;
+    }
+
     public int deleteById(Integer brandId) {
         return productBrandMapper.deleteById(brandId);
     }
@@ -51,6 +73,5 @@ public class ProductBrandRepository {
     private LambdaQueryWrapper<ProductBrandPo> getLambdaQueryWrapper() {
         return Wrappers.lambdaQuery(ProductBrandPo.class);
     }
-
 
 }

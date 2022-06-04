@@ -1,8 +1,6 @@
 package com.ethan.domain.mall.product.domain.service;
 
-import com.ethan.domain.mall.product.domain.bo.brand.ContentProductBrandBo;
-import com.ethan.domain.mall.product.domain.bo.brand.CreateProductBrandBo;
-import com.ethan.domain.mall.product.domain.bo.brand.UpdateProductBrandBo;
+import com.ethan.domain.mall.product.domain.bo.brand.*;
 import com.ethan.domain.mall.product.domain.repository.ProductBrandRepository;
 import com.ethan.domain.mall.product.infrastructure.api.Asserts;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +74,19 @@ public class ProductBrandDomainService {
         }
         // 2 核心业务
         return productBrandRepository.getById(brandId);
+        // 3 返回结果
+    }
+
+    /**
+     * 分页查询商品品牌
+     *
+     * @param pageQueryProductBrandBo
+     * @return
+     */
+    public PageProductBrandBo page(PageQueryProductBrandBo pageQueryProductBrandBo) {
+        // 1 核心校验
+        // 2 核心业务
+        return productBrandRepository.page(pageQueryProductBrandBo);
         // 3 返回结果
     }
 

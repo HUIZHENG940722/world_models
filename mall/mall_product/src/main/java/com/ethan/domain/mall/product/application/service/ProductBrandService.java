@@ -45,6 +45,11 @@ public class ProductBrandService {
         return productBrandDomainService.updateProductBrand(brandId, updateProductBrandBo);
     }
 
+    /**
+     * 应用服务：获取商品品牌内容
+     * @param brandId
+     * @return
+     */
     public ContentProductBrandBo get(Integer brandId) {
         return productBrandDomainService.get(brandId);
     }
