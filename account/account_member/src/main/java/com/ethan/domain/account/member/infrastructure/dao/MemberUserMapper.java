@@ -1,5 +1,7 @@
 package com.ethan.domain.account.member.infrastructure.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.ethan.domain.account.member.infrastructure.dao.po.MemberUserPo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -8,5 +10,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @Date 2022/6/3
  */
 @Mapper
-public interface MemberUserMapper {
+public interface MemberUserMapper extends BaseMapper<MemberUserPo> {
 }
