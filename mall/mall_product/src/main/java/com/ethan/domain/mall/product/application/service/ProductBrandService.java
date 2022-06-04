@@ -1,5 +1,6 @@
 package com.ethan.domain.mall.product.application.service;
 
+import com.ethan.domain.mall.product.domain.bo.brand.ContentProductBrandBo;
 import com.ethan.domain.mall.product.domain.bo.brand.CreateProductBrandBo;
 import com.ethan.domain.mall.product.domain.bo.brand.UpdateProductBrandBo;
 import com.ethan.domain.mall.product.domain.service.ProductBrandDomainService;
@@ -42,5 +43,9 @@ public class ProductBrandService {
         // 2 业务
         // 3 返回结果
         return productBrandDomainService.updateProductBrand(brandId, updateProductBrandBo);
+    }
+
+    public ContentProductBrandBo get(Integer brandId) {
+        return productBrandDomainService.get(brandId);
     }
 }

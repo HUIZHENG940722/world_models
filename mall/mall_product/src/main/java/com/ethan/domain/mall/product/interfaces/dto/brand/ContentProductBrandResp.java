@@ -1,4 +1,4 @@
-package com.ethan.domain.mall.product.domain.bo.brand;
+package com.ethan.domain.mall.product.interfaces.dto.brand;
 
 import lombok.Data;
 
@@ -6,11 +6,11 @@ import java.util.Date;
 
 /**
  * @author zhenghui
- * @Description 商品内容BO
- * @Date 2022/5/31
+ * @Description 商品品牌内容响应DTO
+ * @Date 2022/6/4
  */
 @Data
-public class ContentProductBrandBo {
+public class ContentProductBrandResp {
 
     /**
      * 品牌id

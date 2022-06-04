@@ -1,10 +1,12 @@
 package com.ethan.domain.mall.product.interfaces.controller;
 
 import com.ethan.domain.mall.product.application.service.ProductBrandService;
+import com.ethan.domain.mall.product.domain.bo.brand.ContentProductBrandBo;
 import com.ethan.domain.mall.product.domain.bo.brand.CreateProductBrandBo;
 import com.ethan.domain.mall.product.domain.bo.brand.UpdateProductBrandBo;
 import com.ethan.domain.mall.product.infrastructure.api.CommonResult;
 import com.ethan.domain.mall.product.interfaces.assembler.ProductBrandDtoConvert;
+import com.ethan.domain.mall.product.interfaces.dto.brand.ContentProductBrandResp;
 import com.ethan.domain.mall.product.interfaces.dto.brand.CreateProductBrandReq;
 import com.ethan.domain.mall.product.interfaces.dto.brand.UpdateProductBrandReq;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +48,7 @@ public class ProductBrandController {
      * @param updateProductBrandReq
      * @return
      */
-    @PutMapping("/{brand_id}")
+    @PutMapping(value = "/{brand_id}")
     public CommonResult<Integer> updateProductBrand(
         @PathVariable(value = "brand_id") Integer brandId,
         @Validated @RequestBody UpdateProductBrandReq updateProductBrandReq) {
@@ -56,5 +58,22 @@ public class ProductBrandController {
         int update = productBrandService.updateProductBrand(brandId, updateProductBrandBo);
         // 3 返回结果
         return CommonResult.success(200, "更新商品品牌成功", update);
+    }
+
+    /**
+     * 用户接口：获取品牌内容
+     *
+     * @param brandId
+     * @return
+     */
+    @GetMapping(value = "/{brand_id}")
+    public CommonResult<ContentProductBrandResp> getProductBrandContent(
+        @PathVariable(value = "brand_id") Integer brandId) {
+        // 1 数据转换
+        // 2 业务
+        ContentProductBrandBo contentProductBrandBo = productBrandService.get(brandId);
+        // 3 返回结果
+        ContentProductBrandResp contentProductBrandResp = ProductBrandDtoConvert.INSTANCE.toContentVo(contentProductBrandBo);
+        return CommonResult.success(200, "获取品牌内容", contentProductBrandResp);
     }
 }
