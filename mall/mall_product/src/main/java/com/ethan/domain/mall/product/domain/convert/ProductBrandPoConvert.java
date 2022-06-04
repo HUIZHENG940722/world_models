@@ -7,6 +7,7 @@ import com.ethan.domain.mall.product.infrastructure.dao.po.brand.ProductBrandPo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -14,7 +15,7 @@ import org.mapstruct.factory.Mappers;
  * @Description 商品品牌PO转换器
  * @Date 2022/5/30
  */
-@Mapper
+@Mapper(unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface ProductBrandPoConvert {
     ProductBrandPoConvert INSTANCE = Mappers.getMapper(ProductBrandPoConvert.class);
 

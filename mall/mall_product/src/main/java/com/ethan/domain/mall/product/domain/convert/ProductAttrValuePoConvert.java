@@ -6,6 +6,7 @@ import com.ethan.domain.mall.product.infrastructure.dao.po.attr.ProductAttrValue
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -13,7 +14,7 @@ import org.mapstruct.factory.Mappers;
  * @Description 商品规格值转换器
  * @Date 2022/6/1
  */
-@Mapper
+@Mapper(unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface ProductAttrValuePoConvert {
 
     ProductAttrValuePoConvert INSTANCE = Mappers.getMapper(ProductAttrValuePoConvert.class);

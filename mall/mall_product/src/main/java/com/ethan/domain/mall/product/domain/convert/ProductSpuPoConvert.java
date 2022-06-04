@@ -6,10 +6,7 @@ import com.ethan.domain.mall.product.domain.bo.spu.CreateProductSpuBo;
 import com.ethan.domain.mall.product.domain.bo.spu.DetailsProductSpuBo;
 import com.ethan.domain.mall.product.domain.bo.spu.UpdateProductSpuBo;
 import com.ethan.domain.mall.product.infrastructure.dao.po.spu.ProductSpuPo;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
-import org.mapstruct.Named;
+import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -19,7 +16,7 @@ import java.util.List;
  * @Description 商品SPU PO转换器
  * @Date 2022/5/29
  */
-@Mapper
+@Mapper(unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface ProductSpuPoConvert {
 
     ProductSpuPoConvert INSTANCE = Mappers.getMapper(ProductSpuPoConvert.class);

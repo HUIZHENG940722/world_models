@@ -3,6 +3,7 @@ package com.ethan.domain.mall.product.interfaces.assembler;
 import com.ethan.domain.mall.product.domain.bo.attr.key.CreateProductAttrKeyBo;
 import com.ethan.domain.mall.product.interfaces.dto.attr.CreateProductAttrKeyReq;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -10,7 +11,7 @@ import org.mapstruct.factory.Mappers;
  * @Description 商品规格DTO转换器
  * @Date 2022/6/2
  */
-@Mapper
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ProductAttrDtoConvert {
 
     ProductAttrDtoConvert INSTANCE = Mappers.getMapper(ProductAttrDtoConvert.class);

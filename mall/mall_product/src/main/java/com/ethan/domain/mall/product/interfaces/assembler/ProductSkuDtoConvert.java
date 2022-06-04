@@ -5,6 +5,7 @@ import com.ethan.domain.mall.product.interfaces.dto.sku.SkuDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  * @Description 商品SKU DTO转换器
  * @Date 2022/5/30
  */
-@Mapper
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ProductSkuDtoConvert {
 
     ProductSkuDtoConvert INSTANCE = Mappers.getMapper(ProductSkuDtoConvert.class);

@@ -7,6 +7,7 @@ import com.ethan.domain.mall.product.interfaces.dto.category.UpdateProductCatego
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -14,7 +15,7 @@ import org.mapstruct.factory.Mappers;
  * @Description 商品分类DTO转换器
  * @Date 2022/5/29
  */
-@Mapper
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ProductCategoryDtoConvert {
     ProductCategoryDtoConvert INSTANCE = Mappers.getMapper(ProductCategoryDtoConvert.class);
 

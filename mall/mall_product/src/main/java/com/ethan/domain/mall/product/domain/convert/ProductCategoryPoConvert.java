@@ -7,6 +7,7 @@ import com.ethan.domain.mall.product.infrastructure.dao.po.category.ProductCateg
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  * @Description 商品分类PO转换器
  * @Date 2022/5/29
  */
-@Mapper
+@Mapper(unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface ProductCategoryPoConvert {
     ProductCategoryPoConvert INSTANCE = Mappers.getMapper(ProductCategoryPoConvert.class);
 

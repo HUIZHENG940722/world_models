@@ -3,10 +3,7 @@ package com.ethan.domain.mall.product.domain.convert;
 import cn.hutool.core.util.StrUtil;
 import com.ethan.domain.mall.product.domain.bo.sku.CreateProductSkuBo;
 import com.ethan.domain.mall.product.infrastructure.dao.po.sku.ProductSkuPo;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
-import org.mapstruct.Named;
+import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -16,7 +13,7 @@ import java.util.List;
  * @Description 商品SKU PO转换器
  * @Date 2022/5/30
  */
-@Mapper
+@Mapper(unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface ProductSkuPoConvert {
     ProductSkuPoConvert INSTANCE = Mappers.getMapper(ProductSkuPoConvert.class);
 
