@@ -21,6 +21,7 @@ public class ProductBrandDomainService {
 
     /**
      * 领域服务：创建商品品牌
+     *
      * @param createProductBrandBo
      * @return
      */
@@ -38,6 +39,7 @@ public class ProductBrandDomainService {
 
     /**
      * 领域服务：更新商品品牌
+     *
      * @param brandId
      * @param updateProductBrandBo
      * @return
@@ -61,6 +63,7 @@ public class ProductBrandDomainService {
 
     /**
      * 领域服务：删除商品品牌
+     *
      * @param brandId
      */
     public int deleteProductBrand(Integer brandId) {
