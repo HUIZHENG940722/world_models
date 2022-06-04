@@ -2,6 +2,7 @@ package com.ethan.domain.account.member.domain.convert;
 
 import com.ethan.domain.account.member.domain.bo.ContentMemberUserBo;
 import com.ethan.domain.account.member.domain.bo.CreateMemberUserBo;
+import com.ethan.domain.account.member.domain.bo.UpdateMemberUserBo;
 import com.ethan.domain.account.member.infrastructure.dao.po.MemberUserPo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -29,4 +30,13 @@ public interface MemberUserPoConvert {
         @Mapping(target = "updateTime", ignore = true)
     })
     MemberUserPo createBotoPo(CreateMemberUserBo createMemberUserBo);
+
+    @Mappings({
+        @Mapping(target = "id", ignore = true),
+        @Mapping(target = "registerIp", ignore = true),
+        @Mapping(target = "loginDate", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
+        @Mapping(target = "createTime", ignore = true),
+        @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))")
+    })
+    MemberUserPo updateBoToPo(UpdateMemberUserBo updateMemberUserBo);
 }

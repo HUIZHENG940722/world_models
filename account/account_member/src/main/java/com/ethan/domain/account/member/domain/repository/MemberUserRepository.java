@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ethan.domain.account.member.domain.bo.ContentMemberUserBo;
 import com.ethan.domain.account.member.domain.bo.CreateMemberUserBo;
+import com.ethan.domain.account.member.domain.bo.UpdateMemberUserBo;
 import com.ethan.domain.account.member.domain.convert.MemberUserPoConvert;
 import com.ethan.domain.account.member.infrastructure.dao.MemberUserMapper;
 import com.ethan.domain.account.member.infrastructure.dao.po.MemberUserPo;
@@ -38,7 +39,18 @@ public class MemberUserRepository {
         return Long.valueOf(memberUserMapper.insert(memberUserPo));
     }
 
+    public ContentMemberUserBo getById(Long memberUserId) {
+        return MemberUserPoConvert.INSTANCE.toContentBo(memberUserMapper.selectById(memberUserId));
+    }
+
+    public Integer updateById(Long memberUserId, UpdateMemberUserBo updateMemberUserBo) {
+        MemberUserPo memberUserPo = MemberUserPoConvert.INSTANCE.updateBoToPo(updateMemberUserBo);
+        memberUserPo.setId(memberUserId);
+        return memberUserMapper.updateById(memberUserPo);
+    }
+
     private LambdaQueryWrapper<MemberUserPo> getLambdaQueryWrapper() {
         return Wrappers.lambdaQuery(MemberUserPo.class);
     }
+
 }
