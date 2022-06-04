@@ -1,8 +1,6 @@
 package com.ethan.domain.mall.product.application.service;
 
-import com.ethan.domain.mall.product.domain.bo.brand.ContentProductBrandBo;
-import com.ethan.domain.mall.product.domain.bo.brand.CreateProductBrandBo;
-import com.ethan.domain.mall.product.domain.bo.brand.UpdateProductBrandBo;
+import com.ethan.domain.mall.product.domain.bo.brand.*;
 import com.ethan.domain.mall.product.domain.service.ProductBrandDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,10 +45,27 @@ public class ProductBrandService {
 
     /**
      * 应用服务：获取商品品牌内容
+     *
      * @param brandId
      * @return
      */
     public ContentProductBrandBo get(Integer brandId) {
+        // 1 校验
+        // 2 业务
+        // 3 返回结果
         return productBrandDomainService.get(brandId);
+    }
+
+    /**
+     * 应用服务：分页查询商品品牌
+     *
+     * @param pageQueryProductBrandBo
+     * @return
+     */
+    public PageProductBrandBo pageProductBrandContent(PageQueryProductBrandBo pageQueryProductBrandBo) {
+        // 1 校验
+        // 2 业务
+        // 3 返回结果
+        return productBrandDomainService.page(pageQueryProductBrandBo);
     }
 }

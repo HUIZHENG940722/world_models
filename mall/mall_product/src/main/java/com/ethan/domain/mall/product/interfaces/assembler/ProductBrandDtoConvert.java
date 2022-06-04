@@ -1,11 +1,7 @@
 package com.ethan.domain.mall.product.interfaces.assembler;
 
-import com.ethan.domain.mall.product.domain.bo.brand.ContentProductBrandBo;
-import com.ethan.domain.mall.product.domain.bo.brand.CreateProductBrandBo;
-import com.ethan.domain.mall.product.domain.bo.brand.UpdateProductBrandBo;
-import com.ethan.domain.mall.product.interfaces.dto.brand.ContentProductBrandResp;
-import com.ethan.domain.mall.product.interfaces.dto.brand.CreateProductBrandReq;
-import com.ethan.domain.mall.product.interfaces.dto.brand.UpdateProductBrandReq;
+import com.ethan.domain.mall.product.domain.bo.brand.*;
+import com.ethan.domain.mall.product.interfaces.dto.brand.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
@@ -24,5 +20,9 @@ public interface ProductBrandDtoConvert {
 
     UpdateProductBrandBo toBo(UpdateProductBrandReq updateProductBrandReq);
 
+    PageQueryProductBrandBo toBo(PageQueryProductBrandReq pageQueryProductBrandReq);
+
     ContentProductBrandResp toContentVo(ContentProductBrandBo contentProductBrandBo);
+
+    PageProductBrandResp toContentVo(PageProductBrandBo pageProductBrandBo);
 }

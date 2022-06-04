@@ -1,14 +1,10 @@
 package com.ethan.domain.mall.product.interfaces.controller;
 
 import com.ethan.domain.mall.product.application.service.ProductBrandService;
-import com.ethan.domain.mall.product.domain.bo.brand.ContentProductBrandBo;
-import com.ethan.domain.mall.product.domain.bo.brand.CreateProductBrandBo;
-import com.ethan.domain.mall.product.domain.bo.brand.UpdateProductBrandBo;
+import com.ethan.domain.mall.product.domain.bo.brand.*;
 import com.ethan.domain.mall.product.infrastructure.api.CommonResult;
 import com.ethan.domain.mall.product.interfaces.assembler.ProductBrandDtoConvert;
-import com.ethan.domain.mall.product.interfaces.dto.brand.ContentProductBrandResp;
-import com.ethan.domain.mall.product.interfaces.dto.brand.CreateProductBrandReq;
-import com.ethan.domain.mall.product.interfaces.dto.brand.UpdateProductBrandReq;
+import com.ethan.domain.mall.product.interfaces.dto.brand.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -75,5 +71,23 @@ public class ProductBrandController {
         // 3 返回结果
         ContentProductBrandResp contentProductBrandResp = ProductBrandDtoConvert.INSTANCE.toContentVo(contentProductBrandBo);
         return CommonResult.success(200, "获取品牌内容", contentProductBrandResp);
+    }
+
+    /**
+     * 用户接口：分页查询商品品牌
+     *
+     * @param pageQueryProductBrandReq
+     * @return
+     */
+    @GetMapping(value = "/page")
+    public CommonResult<PageProductBrandResp> pageProductBrandContent(
+        @Validated @RequestBody PageQueryProductBrandReq pageQueryProductBrandReq) {
+        // 1 数据转换
+        PageQueryProductBrandBo pageQueryProductBrandBo = ProductBrandDtoConvert.INSTANCE.toBo(pageQueryProductBrandReq);
+        // 2 业务
+        PageProductBrandBo pageProductBrandBo = productBrandService.pageProductBrandContent(pageQueryProductBrandBo);
+        // 3 返回结果
+        PageProductBrandResp pageProductBrandResp = ProductBrandDtoConvert.INSTANCE.toContentVo(pageProductBrandBo);
+        return CommonResult.success(200, "分页查询商品品牌成功", pageProductBrandResp);
     }
 }
