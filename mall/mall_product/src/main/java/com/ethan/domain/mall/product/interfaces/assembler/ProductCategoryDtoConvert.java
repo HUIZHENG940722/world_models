@@ -1,6 +1,8 @@
 package com.ethan.domain.mall.product.interfaces.assembler;
 
+import com.ethan.domain.mall.product.domain.bo.category.ContentProductCategoryBo;
 import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
+import com.ethan.domain.mall.product.interfaces.dto.category.ContentProductCategoryResp;
 import com.ethan.domain.mall.product.interfaces.dto.category.CreateProductCategoryReq;
 import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
 import com.ethan.domain.mall.product.interfaces.dto.category.UpdateProductCategoryReq;
@@ -22,4 +24,6 @@ public interface ProductCategoryDtoConvert {
     CreateProductCategoryBo toBo(CreateProductCategoryReq createProductCategoryReq);
 
     UpdateProductCategoryBo toBo(UpdateProductCategoryReq updateProductCategoryReq);
+
+    ContentProductCategoryResp toContentResp(ContentProductCategoryBo contentProductCategoryBo);
 }

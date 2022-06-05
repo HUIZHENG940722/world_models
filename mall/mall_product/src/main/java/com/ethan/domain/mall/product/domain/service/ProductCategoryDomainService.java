@@ -66,6 +66,24 @@ public class ProductCategoryDomainService {
     }
 
     /**
+     * 领域服务：获取商品分类内容
+     *
+     * @param categoryId
+     * @return
+     */
+    public ContentProductCategoryBo get(Integer categoryId) {
+        // 1 核心校验
+        // 1.1 校验商品分类是否存在
+        ContentProductCategoryBo byId = productCategoryRepository.getById(categoryId);
+        if (byId == null) {
+            Asserts.fail("商品分类不存在");
+        }
+        // 2 核心业务
+        // 3 返回结果
+        return byId;
+    }
+
+    /**
      * 领域服务：删除商品分类
      *
      * @param id

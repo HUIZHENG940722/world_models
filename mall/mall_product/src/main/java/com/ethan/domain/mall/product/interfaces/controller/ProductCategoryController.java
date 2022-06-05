@@ -1,8 +1,10 @@
 package com.ethan.domain.mall.product.interfaces.controller;
 
 import com.ethan.domain.common.api.CommonResult;
+import com.ethan.domain.mall.product.domain.bo.category.ContentProductCategoryBo;
 import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
 import com.ethan.domain.mall.product.interfaces.assembler.ProductCategoryDtoConvert;
+import com.ethan.domain.mall.product.interfaces.dto.category.ContentProductCategoryResp;
 import com.ethan.domain.mall.product.interfaces.dto.category.CreateProductCategoryReq;
 import com.ethan.domain.mall.product.application.service.ProductCategoryService;
 import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
@@ -54,5 +56,22 @@ public class ProductCategoryController {
         int update = productCategoryService.updateProductCategory(categoryId, updateProductCategoryBo);
         // 3 返回结果
         return CommonResult.success(200, "更新商品分类成功", update);
+    }
+
+
+    /**
+     * 用户接口：获取商品分类内容
+     *
+     * @param categoryId
+     * @return
+     */
+    @GetMapping(value = "/{category_id}")
+    public CommonResult<ContentProductCategoryResp> getProductCategoryContent(@PathVariable(value = "category_id") Integer categoryId) {
+        // 1 数据转换
+        // 2 业务
+        ContentProductCategoryBo contentProductCategoryBo = productCategoryService.getProductCategoryContent(categoryId);
+        // 3 返回结果
+        ContentProductCategoryResp contentProductCategoryResp = ProductCategoryDtoConvert.INSTANCE.toContentResp(contentProductCategoryBo);
+        return CommonResult.success(200, "获取商品分类内容成功", contentProductCategoryResp);
     }
 }
