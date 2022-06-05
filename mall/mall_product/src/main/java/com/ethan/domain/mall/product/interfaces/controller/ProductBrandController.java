@@ -1,8 +1,8 @@
 package com.ethan.domain.mall.product.interfaces.controller;
 
+import com.ethan.domain.common.api.CommonResult;
 import com.ethan.domain.mall.product.application.service.ProductBrandService;
 import com.ethan.domain.mall.product.domain.bo.brand.*;
-import com.ethan.domain.mall.product.infrastructure.api.CommonResult;
 import com.ethan.domain.mall.product.interfaces.assembler.ProductBrandDtoConvert;
 import com.ethan.domain.mall.product.interfaces.dto.brand.*;
 import org.springframework.beans.factory.annotation.Autowired;

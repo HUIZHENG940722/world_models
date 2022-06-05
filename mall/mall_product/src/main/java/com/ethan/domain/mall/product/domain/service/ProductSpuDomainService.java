@@ -7,7 +7,7 @@ import com.ethan.domain.mall.product.domain.bo.spu.PageDetailsProductSpuBo;
 import com.ethan.domain.mall.product.domain.bo.spu.PageQueryProductSpuBo;
 import com.ethan.domain.mall.product.domain.bo.spu.UpdateProductSpuBo;
 import com.ethan.domain.mall.product.domain.repository.ProductSpuRepository;
-import com.ethan.domain.mall.product.infrastructure.api.Asserts;
+import com.ethan.domain.common.api.Asserts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

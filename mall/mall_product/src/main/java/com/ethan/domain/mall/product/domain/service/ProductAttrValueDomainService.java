@@ -5,7 +5,7 @@ import com.ethan.domain.mall.product.domain.bo.attr.value.ContentProductAttrValu
 import com.ethan.domain.mall.product.domain.bo.attr.value.CreateProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.bo.attr.value.UpdateProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.repository.ProductAttrValueRepository;
-import com.ethan.domain.mall.product.infrastructure.api.Asserts;
+import com.ethan.domain.common.api.Asserts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

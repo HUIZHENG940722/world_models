@@ -1,11 +1,11 @@
 package com.ethan.domain.mall.product.interfaces.controller;
 
+import com.ethan.domain.common.api.CommonResult;
 import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
 import com.ethan.domain.mall.product.interfaces.assembler.ProductCategoryDtoConvert;
 import com.ethan.domain.mall.product.interfaces.dto.category.CreateProductCategoryReq;
 import com.ethan.domain.mall.product.application.service.ProductCategoryService;
 import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
-import com.ethan.domain.mall.product.infrastructure.api.CommonResult;
 import com.ethan.domain.mall.product.interfaces.dto.category.UpdateProductCategoryReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;

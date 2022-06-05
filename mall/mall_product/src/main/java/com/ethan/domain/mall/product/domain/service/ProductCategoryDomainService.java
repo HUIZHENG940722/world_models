@@ -4,7 +4,7 @@ import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
 import com.ethan.domain.mall.product.domain.bo.category.ContentProductCategoryBo;
 import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
 import com.ethan.domain.mall.product.domain.repository.ProductCategoryRepository;
-import com.ethan.domain.mall.product.infrastructure.api.Asserts;
+import com.ethan.domain.common.api.Asserts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

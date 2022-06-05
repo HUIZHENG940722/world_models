@@ -1,10 +1,10 @@
 package com.ethan.domain.mall.product.interfaces.controller;
 
+import com.ethan.domain.common.api.CommonResult;
 import com.ethan.domain.mall.product.application.service.ProductSpuService;
 import com.ethan.domain.mall.product.domain.bo.sku.CreateProductSkuBo;
 import com.ethan.domain.mall.product.domain.bo.sku.CreateProductSpuAndSkuBo;
 import com.ethan.domain.mall.product.domain.bo.spu.CreateProductSpuBo;
-import com.ethan.domain.mall.product.infrastructure.api.CommonResult;
 import com.ethan.domain.mall.product.interfaces.assembler.ProductSkuDtoConvert;
 import com.ethan.domain.mall.product.interfaces.assembler.ProductSpuDtoConvert;
 import com.ethan.domain.mall.product.interfaces.dto.spu.CreateProductSpuAndSkuReq;

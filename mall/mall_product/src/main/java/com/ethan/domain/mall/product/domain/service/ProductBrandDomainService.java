@@ -2,7 +2,7 @@ package com.ethan.domain.mall.product.domain.service;
 
 import com.ethan.domain.mall.product.domain.bo.brand.*;
 import com.ethan.domain.mall.product.domain.repository.ProductBrandRepository;
-import com.ethan.domain.mall.product.infrastructure.api.Asserts;
+import com.ethan.domain.common.api.Asserts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

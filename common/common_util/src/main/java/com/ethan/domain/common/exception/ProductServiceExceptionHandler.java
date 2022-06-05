@@ -1,13 +1,12 @@
-package com.ethan.domain.mall.product.infrastructure.exception;
+package com.ethan.domain.common.exception;
 
-import com.ethan.domain.mall.product.infrastructure.api.CommonResult;
+import com.ethan.domain.common.api.CommonResult;
+import com.ethan.domain.mall.product.infrastructure.exception.ProductServiceException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import java.util.List;
 
 /**
  * @author zhenghui

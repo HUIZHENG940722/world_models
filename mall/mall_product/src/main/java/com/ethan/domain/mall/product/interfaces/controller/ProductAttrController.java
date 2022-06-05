@@ -1,8 +1,8 @@
 package com.ethan.domain.mall.product.interfaces.controller;
 
+import com.ethan.domain.common.api.CommonResult;
 import com.ethan.domain.mall.product.application.service.ProductAttrService;
 import com.ethan.domain.mall.product.domain.bo.attr.key.CreateProductAttrKeyBo;
-import com.ethan.domain.mall.product.infrastructure.api.CommonResult;
 import com.ethan.domain.mall.product.interfaces.assembler.ProductAttrDtoConvert;
 import com.ethan.domain.mall.product.interfaces.dto.attr.CreateProductAttrKeyReq;
 import org.springframework.beans.factory.annotation.Autowired;

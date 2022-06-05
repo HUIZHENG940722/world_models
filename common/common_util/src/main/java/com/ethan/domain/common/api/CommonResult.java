@@ -1,4 +1,4 @@
-package com.ethan.domain.mall.product.infrastructure.api;
+package com.ethan.domain.common.api;
 
 import lombok.Data;
 
