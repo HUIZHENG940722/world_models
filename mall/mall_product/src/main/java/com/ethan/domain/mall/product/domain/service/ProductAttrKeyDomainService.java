@@ -26,7 +26,7 @@ public class ProductAttrKeyDomainService {
      * @param createProductAttrKeyBo
      * @return
      */
-    public Integer createProductAttrKey(CreateProductAttrKeyBo createProductAttrKeyBo) {
+    public Integer create(CreateProductAttrKeyBo createProductAttrKeyBo) {
         // 1 核心校验
         // 1.1 校验规格键名字是否重复
         ContentProductAttrKeyBo contentProductAttrKeyBo = productAttrKeyRepository.getByName(createProductAttrKeyBo.getName());
@@ -46,7 +46,7 @@ public class ProductAttrKeyDomainService {
      * @param updateProductAttrKeyBo
      * @return
      */
-    public int updateProductAttrKey(Integer attrKeyId, UpdateProductAttrKeyBo updateProductAttrKeyBo) {
+    public int updateById(Integer attrKeyId, UpdateProductAttrKeyBo updateProductAttrKeyBo) {
         // 1 核心校验
         // 1.1 校验规格键是否存在
         ContentProductAttrKeyBo contentProductAttrKeyBo = productAttrKeyRepository.getById(attrKeyId);
