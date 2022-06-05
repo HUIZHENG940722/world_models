@@ -2,9 +2,8 @@ package com.ethan.domain.mall.product.domain.repository;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.ethan.domain.mall.product.domain.bo.category.ContentProductCategoryBo;
-import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
-import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ethan.domain.mall.product.domain.bo.category.*;
 import com.ethan.domain.mall.product.domain.convert.ProductCategoryPoConvert;
 import com.ethan.domain.mall.product.infrastructure.dao.ProductCategoryMapper;
 import com.ethan.domain.mall.product.infrastructure.dao.po.category.ProductCategoryPo;
@@ -53,14 +52,40 @@ public class ProductCategoryRepository {
     public List<ContentProductCategoryBo> getChildListByPid(Integer id) {
         LambdaQueryWrapper<ProductCategoryPo> lambdaQueryWrapper = getLambdaQueryWrapper();
         lambdaQueryWrapper.eq(ProductCategoryPo::getPid, id);
-        return ProductCategoryPoConvert.INSTANCE.toDetailsListBo(productCategoryMapper.selectList(lambdaQueryWrapper));
+        return ProductCategoryPoConvert.INSTANCE.toContentPo(productCategoryMapper.selectList(lambdaQueryWrapper));
+    }
+
+    public PageProductCategoryBo page(PageQueryProductCategoryBo pageQueryProductCategoryBo) {
+        LambdaQueryWrapper<ProductCategoryPo> lambdaQueryWrapper = getLambdaQueryWrapper();
+        if (pageQueryProductCategoryBo.getId() != null) {
+            lambdaQueryWrapper.eq(ProductCategoryPo::getId, pageQueryProductCategoryBo.getId());
+        }
+        if (pageQueryProductCategoryBo.getPid() != null) {
+            lambdaQueryWrapper.eq(ProductCategoryPo::getPid, pageQueryProductCategoryBo.getPid());
+        }
+
+        if (pageQueryProductCategoryBo.getName() != null) {
+            lambdaQueryWrapper.like(ProductCategoryPo::getName, pageQueryProductCategoryBo.getName());
+        }
+        if (pageQueryProductCategoryBo.getStatus() != null) {
+            lambdaQueryWrapper.eq(ProductCategoryPo::getStatus, pageQueryProductCategoryBo.getStatus());
+        }
+        Page<ProductCategoryPo> productCategoryPoPage = productCategoryMapper.selectPage(
+            new Page<>(pageQueryProductCategoryBo.getPageNo(), pageQueryProductCategoryBo.getPageSize()),
+            lambdaQueryWrapper);
+        PageProductCategoryBo pageProductCategoryBo = new PageProductCategoryBo();
+        pageProductCategoryBo.setTotal((int) productCategoryPoPage.getTotal());
+        pageProductCategoryBo.setData(ProductCategoryPoConvert.INSTANCE.toContentPo(productCategoryPoPage.getRecords()));
+        return pageProductCategoryBo;
+    }
+
+    public int deleteById(Integer id) {
+        return productCategoryMapper.deleteById(id);
     }
 
     private LambdaQueryWrapper<ProductCategoryPo> getLambdaQueryWrapper() {
         return Wrappers.lambdaQuery(ProductCategoryPo.class);
     }
 
-    public int deleteById(Integer id) {
-        return productCategoryMapper.deleteById(id);
-    }
+
 }

@@ -1,8 +1,6 @@
 package com.ethan.domain.mall.product.application.service;
 
-import com.ethan.domain.mall.product.domain.bo.category.ContentProductCategoryBo;
-import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
-import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
+import com.ethan.domain.mall.product.domain.bo.category.*;
 import com.ethan.domain.mall.product.domain.service.ProductCategoryDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,5 +54,18 @@ public class ProductCategoryService {
         // 2 业务
         // 3 返回结果
         return productCategoryDomainService.get(categoryId);
+    }
+
+    /**
+     * 应用服务：分页获取商品分类内容
+     *
+     * @param pageQueryProductCategoryBo
+     * @return
+     */
+    public PageProductCategoryBo pageProductCategoryContent(PageQueryProductCategoryBo pageQueryProductCategoryBo) {
+        // 1 校验
+        // 2 业务
+        return productCategoryDomainService.page(pageQueryProductCategoryBo);
+        // 3 返回结果
     }
 }

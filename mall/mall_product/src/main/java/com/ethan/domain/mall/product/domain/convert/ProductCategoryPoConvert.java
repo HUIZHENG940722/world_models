@@ -42,5 +42,5 @@ public interface ProductCategoryPoConvert {
     })
     ProductCategoryPo updateBotoPo(UpdateProductCategoryBo updateProductCategoryBo);
 
-    List<ContentProductCategoryBo> toDetailsListBo(List<ProductCategoryPo> selectList);
+    List<ContentProductCategoryBo> toContentPo(List<ProductCategoryPo> records);
 }

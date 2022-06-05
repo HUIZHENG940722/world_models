@@ -1,11 +1,7 @@
 package com.ethan.domain.mall.product.interfaces.assembler;
 
-import com.ethan.domain.mall.product.domain.bo.category.ContentProductCategoryBo;
-import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
-import com.ethan.domain.mall.product.interfaces.dto.category.ContentProductCategoryResp;
-import com.ethan.domain.mall.product.interfaces.dto.category.CreateProductCategoryReq;
-import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
-import com.ethan.domain.mall.product.interfaces.dto.category.UpdateProductCategoryReq;
+import com.ethan.domain.mall.product.domain.bo.category.*;
+import com.ethan.domain.mall.product.interfaces.dto.category.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -25,5 +21,9 @@ public interface ProductCategoryDtoConvert {
 
     UpdateProductCategoryBo toBo(UpdateProductCategoryReq updateProductCategoryReq);
 
+    PageQueryProductCategoryBo toBo(PageQueryProductCategoryReq pageQueryProductCategoryReq);
+
     ContentProductCategoryResp toContentResp(ContentProductCategoryBo contentProductCategoryBo);
+
+    PageProductCategoryResp toContentResp(PageProductCategoryBo pageProductCategoryBo);
 }

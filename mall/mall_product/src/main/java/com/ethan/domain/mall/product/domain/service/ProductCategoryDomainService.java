@@ -1,10 +1,8 @@
 package com.ethan.domain.mall.product.domain.service;
 
-import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
-import com.ethan.domain.mall.product.domain.bo.category.ContentProductCategoryBo;
-import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
-import com.ethan.domain.mall.product.domain.repository.ProductCategoryRepository;
 import com.ethan.domain.common.api.Asserts;
+import com.ethan.domain.mall.product.domain.bo.category.*;
+import com.ethan.domain.mall.product.domain.repository.ProductCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -81,6 +79,19 @@ public class ProductCategoryDomainService {
         // 2 核心业务
         // 3 返回结果
         return byId;
+    }
+
+    /**
+     * 领域服务：分页获取商品分类内容
+     *
+     * @param pageQueryProductCategoryBo
+     * @return
+     */
+    public PageProductCategoryBo page(PageQueryProductCategoryBo pageQueryProductCategoryBo) {
+        // 1 核心校验
+        // 2 核心业务
+        return productCategoryRepository.page(pageQueryProductCategoryBo);
+        // 3 返回结果
     }
 
     /**

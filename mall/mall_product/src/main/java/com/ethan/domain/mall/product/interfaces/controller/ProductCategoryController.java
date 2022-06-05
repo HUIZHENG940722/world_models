@@ -1,14 +1,10 @@
 package com.ethan.domain.mall.product.interfaces.controller;
 
 import com.ethan.domain.common.api.CommonResult;
-import com.ethan.domain.mall.product.domain.bo.category.ContentProductCategoryBo;
-import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
+import com.ethan.domain.mall.product.domain.bo.category.*;
 import com.ethan.domain.mall.product.interfaces.assembler.ProductCategoryDtoConvert;
-import com.ethan.domain.mall.product.interfaces.dto.category.ContentProductCategoryResp;
-import com.ethan.domain.mall.product.interfaces.dto.category.CreateProductCategoryReq;
+import com.ethan.domain.mall.product.interfaces.dto.category.*;
 import com.ethan.domain.mall.product.application.service.ProductCategoryService;
-import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
-import com.ethan.domain.mall.product.interfaces.dto.category.UpdateProductCategoryReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -73,5 +69,22 @@ public class ProductCategoryController {
         // 3 返回结果
         ContentProductCategoryResp contentProductCategoryResp = ProductCategoryDtoConvert.INSTANCE.toContentResp(contentProductCategoryBo);
         return CommonResult.success(200, "获取商品分类内容成功", contentProductCategoryResp);
+    }
+
+    /**
+     * 用户接口：分页获取商品分类内容
+     *
+     * @param pageQueryProductCategoryReq
+     * @return
+     */
+    @GetMapping(value = "/page")
+    public CommonResult<PageProductCategoryResp> pageProductCategoryContent(@Validated PageQueryProductCategoryReq pageQueryProductCategoryReq) {
+        // 1 数据转换
+        PageQueryProductCategoryBo pageQueryProductCategoryBo = ProductCategoryDtoConvert.INSTANCE.toBo(pageQueryProductCategoryReq);
+        // 2 业务
+        PageProductCategoryBo pageProductCategoryBo = productCategoryService.pageProductCategoryContent(pageQueryProductCategoryBo);
+        // 3 返回结果
+        PageProductCategoryResp pageProductCategoryContent = ProductCategoryDtoConvert.INSTANCE.toContentResp(pageProductCategoryBo);
+        return CommonResult.success(200, "分页获取商品分类内容成功", pageProductCategoryContent);
     }
 }
