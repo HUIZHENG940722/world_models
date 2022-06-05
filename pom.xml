@@ -23,6 +23,7 @@
         <mybatis-plus.version>3.4.2</mybatis-plus.version>
         <mapstruct.version>1.4.1.Final</mapstruct.version>
         <hutool-all.version>5.6.1</hutool-all.version>
+        <openapi-generator-maven-plugin.version>5.4.0</openapi-generator-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -53,6 +54,11 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool-all.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${openapi-generator-maven-plugin.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
