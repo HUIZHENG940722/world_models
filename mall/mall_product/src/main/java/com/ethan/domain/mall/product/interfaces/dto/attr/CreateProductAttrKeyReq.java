@@ -18,10 +18,4 @@ public class CreateProductAttrKeyReq {
      */
     @NotEmpty(message = "规格键名称不能为空")
     private String name;
-
-    /**
-     * 状态
-     */
-    @NotNull(message = "状态不能为空")
-    private Integer status;
 }

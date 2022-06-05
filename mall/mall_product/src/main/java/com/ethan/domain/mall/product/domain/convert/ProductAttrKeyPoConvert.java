@@ -24,6 +24,7 @@ public interface ProductAttrKeyPoConvert {
 
     @Mappings({
         @Mapping(target = "id", ignore = true),
+        @Mapping(target = "status", expression = "java(1)"),
         @Mapping(target = "deleted", expression = "java(1)"),
         @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
         @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))")
@@ -32,10 +33,10 @@ public interface ProductAttrKeyPoConvert {
 
 
     @Mappings({
-            @Mapping(target = "id", ignore = true),
-            @Mapping(target = "deleted", expression = "java(1)"),
-            @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
-            @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))")
+        @Mapping(target = "id", ignore = true),
+        @Mapping(target = "deleted", expression = "java(1)"),
+        @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
+        @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))")
     })
     ProductAttrKeyPo updateBoToPo(UpdateProductAttrKeyBo updateProductAttrKeyBo);
 }

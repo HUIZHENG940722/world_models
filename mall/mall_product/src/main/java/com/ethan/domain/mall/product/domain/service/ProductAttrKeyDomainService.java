@@ -22,6 +22,7 @@ public class ProductAttrKeyDomainService {
 
     /**
      * 领域服务：创建商品规格键
+     *
      * @param createProductAttrKeyBo
      * @return
      */
@@ -40,6 +41,7 @@ public class ProductAttrKeyDomainService {
 
     /**
      * 领域服务：更新商品规格键
+     *
      * @param attrKeyId
      * @param updateProductAttrKeyBo
      * @return
@@ -53,7 +55,7 @@ public class ProductAttrKeyDomainService {
         }
         // 1.2 校验规格键的名字是否重复
         ContentProductAttrKeyBo byName = productAttrKeyRepository.getByName(updateProductAttrKeyBo.getName());
-        if (byName!=null && !byName.getId().equals(attrKeyId)) {
+        if (byName != null && !byName.getId().equals(attrKeyId)) {
             Asserts.fail("商品规格键名字重复");
         }
         // 2 核心业务

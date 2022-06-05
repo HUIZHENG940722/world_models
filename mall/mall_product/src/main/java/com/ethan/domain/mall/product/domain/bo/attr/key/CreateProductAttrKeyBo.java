@@ -14,9 +14,4 @@ public class CreateProductAttrKeyBo {
      * 规格键名称
      */
     private String name;
-
-    /**
-     * 状态
-     */
-    private Integer status;
 }
