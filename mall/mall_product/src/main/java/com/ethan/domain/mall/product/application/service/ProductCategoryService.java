@@ -19,6 +19,7 @@ public class ProductCategoryService {
 
     /**
      * 应用服务：创建商品分类
+     *
      * @param createProductCategoryBo
      * @return
      */
@@ -31,6 +32,7 @@ public class ProductCategoryService {
 
     /**
      * 应用服务：更新商品分类
+     *
      * @param categoryId
      * @param updateProductCategoryBo
      * @return

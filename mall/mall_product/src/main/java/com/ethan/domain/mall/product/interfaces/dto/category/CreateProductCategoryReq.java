@@ -40,10 +40,4 @@ public class CreateProductCategoryReq {
      */
     @NotNull(message = "分类排序不能为空")
     private Integer sort;
-
-    /**
-     * 分类状态
-     */
-    @NotNull(message = "状态不能为空")
-    private Integer status;
 }

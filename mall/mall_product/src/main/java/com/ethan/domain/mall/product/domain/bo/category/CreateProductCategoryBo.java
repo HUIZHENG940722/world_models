@@ -37,9 +37,4 @@ public class CreateProductCategoryBo {
      * 商品分类排序
      */
     private Integer sort;
-
-    /**
-     * 状态：0->关闭;1->开启;
-     */
-    private Integer status;
 }

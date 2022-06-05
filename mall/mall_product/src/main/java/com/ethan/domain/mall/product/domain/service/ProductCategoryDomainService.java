@@ -24,6 +24,7 @@ public class ProductCategoryDomainService {
 
     /**
      * 领域服务：创建商品分类
+     *
      * @param createProductCategoryBo
      * @return
      */
@@ -34,7 +35,7 @@ public class ProductCategoryDomainService {
         checkLegalityParent(createProductCategoryBo.getPid());
         // 1.2 校验分类名称是否重复
         ContentProductCategoryBo contentProductCategoryBo = productCategoryRepository.getByName(createProductCategoryBo.getName());
-        if (contentProductCategoryBo !=null) {
+        if (contentProductCategoryBo != null) {
             Asserts.fail("商品分类名称重复");
         }
         // 2 核心业务
@@ -44,6 +45,7 @@ public class ProductCategoryDomainService {
 
     /**
      * 领域服务：更新商品分类
+     *
      * @param categoryId
      * @param updateProductCategoryBo
      * @return
@@ -65,6 +67,7 @@ public class ProductCategoryDomainService {
 
     /**
      * 领域服务：删除商品分类
+     *
      * @param id
      * @return
      */
@@ -88,12 +91,13 @@ public class ProductCategoryDomainService {
 
     /**
      * 校验父分类编码的合法性
+     *
      * @param pid
      */
     private void checkLegalityParent(Integer pid) {
         if (!pid.equals(0)) {
             CreateProductCategoryBo createProductCategoryBo = productCategoryRepository.getByPid(pid);
-            if (createProductCategoryBo ==null) {
+            if (createProductCategoryBo == null) {
                 throw new RuntimeException("商品父分类编码非法");
             }
         }

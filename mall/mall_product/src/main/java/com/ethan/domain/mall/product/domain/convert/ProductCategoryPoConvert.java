@@ -24,10 +24,11 @@ public interface ProductCategoryPoConvert {
     CreateProductCategoryBo toCreateBo(ProductCategoryPo selectById);
 
     @Mappings({
+        @Mapping(target = "id", ignore = true),
+        @Mapping(target = "status", expression = "java(1)"),
         @Mapping(target = "deleted", expression = "java(1)"),
         @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
         @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
-        @Mapping(target = "id", ignore = true)
     })
     ProductCategoryPo createBoToPo(CreateProductCategoryBo createProductCategoryBo);
 
