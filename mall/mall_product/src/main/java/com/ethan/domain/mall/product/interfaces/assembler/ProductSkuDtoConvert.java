@@ -1,7 +1,7 @@
 package com.ethan.domain.mall.product.interfaces.assembler;
 
 import com.ethan.domain.mall.product.domain.bo.sku.CreateProductSkuBo;
-import com.ethan.domain.mall.product.interfaces.dto.sku.SkuDto;
+import com.ethan.domain.mall.product.interfaces.api.dto.SkuDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

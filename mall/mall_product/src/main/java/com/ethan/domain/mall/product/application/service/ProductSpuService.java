@@ -5,9 +5,6 @@ import com.ethan.domain.mall.product.domain.bo.sku.CreateProductSpuAndSkuBo;
 import com.ethan.domain.mall.product.domain.bo.spu.CreateProductSpuBo;
 import com.ethan.domain.mall.product.domain.service.ProductSkuDomainService;
 import com.ethan.domain.mall.product.domain.service.ProductSpuDomainService;
-import com.ethan.domain.mall.product.interfaces.assembler.ProductSkuDtoConvert;
-import com.ethan.domain.mall.product.interfaces.assembler.ProductSpuDtoConvert;
-import com.ethan.domain.mall.product.interfaces.dto.spu.CreateProductSpuAndSkuReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

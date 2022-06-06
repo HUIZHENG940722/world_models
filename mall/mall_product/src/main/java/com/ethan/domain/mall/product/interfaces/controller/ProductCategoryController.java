@@ -1,13 +1,19 @@
 package com.ethan.domain.mall.product.interfaces.controller;
 
-import com.ethan.domain.common.api.CommonResult;
-import com.ethan.domain.mall.product.domain.bo.category.*;
-import com.ethan.domain.mall.product.interfaces.assembler.ProductCategoryDtoConvert;
-import com.ethan.domain.mall.product.interfaces.dto.category.*;
 import com.ethan.domain.mall.product.application.service.ProductCategoryService;
+import com.ethan.domain.mall.product.domain.bo.category.ContentProductCategoryBo;
+import com.ethan.domain.mall.product.domain.bo.category.CreateProductCategoryBo;
+import com.ethan.domain.mall.product.domain.bo.category.UpdateProductCategoryBo;
+import com.ethan.domain.mall.product.interfaces.api.MallProductCategoryApi;
+import com.ethan.domain.mall.product.interfaces.api.dto.ContentProductCategoryResp;
+import com.ethan.domain.mall.product.interfaces.api.dto.CreateProductCategoryReq;
+import com.ethan.domain.mall.product.interfaces.api.dto.UpdateProductCategoryReq;
+import com.ethan.domain.mall.product.interfaces.assembler.ProductCategoryDtoConvert;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author zhenghui
@@ -15,61 +21,45 @@ import org.springframework.web.bind.annotation.*;
  * @Date 2022/5/29
  */
 @RestController
-@RequestMapping(value = "/product/category")
-public class ProductCategoryController {
+public class ProductCategoryController implements MallProductCategoryApi {
 
     @Autowired
     private ProductCategoryService productCategoryService;
 
-    /**
-     * 用户接口：创建商品分类
-     *
-     * @param createProductCategoryReq
-     * @return
-     */
-    @PostMapping(value = "")
-    public CommonResult<Integer> createProductCategory(@Validated @RequestBody CreateProductCategoryReq createProductCategoryReq) {
+    @Override
+    public ResponseEntity<Integer> createProductCategory(CreateProductCategoryReq createProductCategoryReq) {
         // 1 数据转换
         CreateProductCategoryBo createProductCategoryBo = ProductCategoryDtoConvert.INSTANCE.toBo(createProductCategoryReq);
         // 2 业务
         int create = productCategoryService.createProductCategory(createProductCategoryBo);
         // 3 返回结果
-        return CommonResult.success(200, "创建商品分类成功", create);
+        // 创建商品分类成功
+        return new ResponseEntity<>(create, HttpStatus.OK);
     }
 
-    /**
-     * 用户接口：更新商品分类
-     *
-     * @param updateProductCategoryReq
-     * @return
-     */
-    @PutMapping(value = "/{category_id}")
-    public CommonResult<Integer> updateProductCategory(@PathVariable(value = "category_id") Integer categoryId,
-                                                       @Validated @RequestBody UpdateProductCategoryReq updateProductCategoryReq) {
-        // 1 数据转换
-        UpdateProductCategoryBo updateProductCategoryBo = ProductCategoryDtoConvert.INSTANCE.toBo(updateProductCategoryReq);
-        // 2 业务
-        int update = productCategoryService.updateProductCategory(categoryId, updateProductCategoryBo);
-        // 3 返回结果
-        return CommonResult.success(200, "更新商品分类成功", update);
-    }
-
-
-    /**
-     * 用户接口：获取商品分类内容
-     *
-     * @param categoryId
-     * @return
-     */
-    @GetMapping(value = "/{category_id}")
-    public CommonResult<ContentProductCategoryResp> getProductCategoryContent(@PathVariable(value = "category_id") Integer categoryId) {
+    @Override
+    public ResponseEntity<ContentProductCategoryResp> getProductCategoryContent(Integer categoryId) {
         // 1 数据转换
         // 2 业务
         ContentProductCategoryBo contentProductCategoryBo = productCategoryService.getProductCategoryContent(categoryId);
         // 3 返回结果
         ContentProductCategoryResp contentProductCategoryResp = ProductCategoryDtoConvert.INSTANCE.toContentResp(contentProductCategoryBo);
-        return CommonResult.success(200, "获取商品分类内容成功", contentProductCategoryResp);
+        // 获取商品分类内容成功
+        return new ResponseEntity<>(contentProductCategoryResp, HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<Integer> updateProductCategory(Integer categoryId, UpdateProductCategoryReq updateProductCategoryReq) {
+        // 1 数据转换
+        UpdateProductCategoryBo updateProductCategoryBo = ProductCategoryDtoConvert.INSTANCE.toBo(updateProductCategoryReq);
+        // 2 业务
+        int update = productCategoryService.updateProductCategory(categoryId, updateProductCategoryBo);
+        // 3 返回结果
+        // 更新商品分类成功
+        return new ResponseEntity<>(update, HttpStatus.OK);
+    }
+
+
 
     /**
      * 用户接口：分页获取商品分类内容
@@ -77,7 +67,7 @@ public class ProductCategoryController {
      * @param pageQueryProductCategoryReq
      * @return
      */
-    @GetMapping(value = "/page")
+    /*@GetMapping(value = "/page")
     public CommonResult<PageProductCategoryResp> pageProductCategoryContent(@Validated PageQueryProductCategoryReq pageQueryProductCategoryReq) {
         // 1 数据转换
         PageQueryProductCategoryBo pageQueryProductCategoryBo = ProductCategoryDtoConvert.INSTANCE.toBo(pageQueryProductCategoryReq);
@@ -86,5 +76,5 @@ public class ProductCategoryController {
         // 3 返回结果
         PageProductCategoryResp pageProductCategoryContent = ProductCategoryDtoConvert.INSTANCE.toContentResp(pageProductCategoryBo);
         return CommonResult.success(200, "分页获取商品分类内容成功", pageProductCategoryContent);
-    }
+    }*/
 }

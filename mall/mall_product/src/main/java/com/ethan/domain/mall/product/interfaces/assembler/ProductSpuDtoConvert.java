@@ -1,7 +1,7 @@
 package com.ethan.domain.mall.product.interfaces.assembler;
 
 import com.ethan.domain.mall.product.domain.bo.spu.CreateProductSpuBo;
-import com.ethan.domain.mall.product.interfaces.dto.spu.CreateProductSpuAndSkuReq;
+import com.ethan.domain.mall.product.interfaces.api.dto.CreateProductSpuAndSkuReq;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

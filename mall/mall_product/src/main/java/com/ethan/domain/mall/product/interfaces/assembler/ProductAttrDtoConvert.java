@@ -2,8 +2,8 @@ package com.ethan.domain.mall.product.interfaces.assembler;
 
 import com.ethan.domain.mall.product.domain.bo.attr.key.CreateProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.key.UpdateProductAttrKeyBo;
-import com.ethan.domain.mall.product.interfaces.dto.attr.CreateProductAttrKeyReq;
-import com.ethan.domain.mall.product.interfaces.dto.attr.UpdateProductAttrKeyReq;
+import com.ethan.domain.mall.product.interfaces.api.dto.CreateProductAttrKeyReq;
+import com.ethan.domain.mall.product.interfaces.api.dto.UpdateProductAttrKeyReq;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;

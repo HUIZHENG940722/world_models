@@ -1,7 +1,7 @@
 package com.ethan.domain.mall.product.interfaces.assembler;
 
 import com.ethan.domain.mall.product.domain.bo.brand.*;
-import com.ethan.domain.mall.product.interfaces.dto.brand.*;
+import com.ethan.domain.mall.product.interfaces.api.dto.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;

@@ -1,10 +1,8 @@
 package com.ethan.domain.mall.product.interfaces.assembler;
 
 import com.ethan.domain.mall.product.domain.bo.category.*;
-import com.ethan.domain.mall.product.interfaces.dto.category.*;
+import com.ethan.domain.mall.product.interfaces.api.dto.*;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 

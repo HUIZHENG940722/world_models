@@ -153,7 +153,7 @@
                             <groupId>com.ethan.domain</groupId>
                             <artifactId>mall_product</artifactId>
                             <artifactVersion>${project.version}</artifactVersion>
-                            <inputSpec>${project.basedir}/src/main/resources/openapi/yaml/openapi.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/openapi/json/openapi.json</inputSpec>
                             <generatorName>spring</generatorName>
                             <apiPackage>com.ethan.domain.mall.product.interfaces.api</apiPackage>
                             <modelPackage>com.ethan.domain.mall.product.interfaces.api.dto</modelPackage>
