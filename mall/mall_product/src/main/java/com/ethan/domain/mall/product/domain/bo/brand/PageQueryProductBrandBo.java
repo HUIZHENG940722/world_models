@@ -1,5 +1,7 @@
 package com.ethan.domain.mall.product.domain.bo.brand;
 
+import com.ethan.domain.mall.product.infrastructure.dao.enums.DeletedEnum;
+import com.ethan.domain.mall.product.infrastructure.dao.enums.StatusEnum;
 import lombok.Data;
 
 /**
@@ -27,12 +29,5 @@ public class PageQueryProductBrandBo {
     /**
      * 状态：0->关闭;1->开启;
      */
-    private Integer status;
-
-    /**
-     * 是否被删除：0->已删除;1->未删除;
-     */
-    private Integer deleted;
-
-
+    private StatusEnum status;
 }

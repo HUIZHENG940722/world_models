@@ -47,7 +47,7 @@ public class ProductBrandController implements MallProductBrandApi {
     }
 
     @Override
-    public ResponseEntity<Object> createProductBrand(CreateProductBrandReq createProductBrandReq) {
+    public ResponseEntity<Integer> createProductBrand(CreateProductBrandReq createProductBrandReq) {
         // 1 数据转换
         CreateProductBrandBo createProductBrandBo = ProductBrandDtoConvert.INSTANCE.toBo(createProductBrandReq);
         // 2 业务
@@ -58,7 +58,7 @@ public class ProductBrandController implements MallProductBrandApi {
     }
 
     @Override
-    public ResponseEntity<Object> updateProductBrand(Integer brandId, UpdateProductBrandReq updateProductBrandReq) {
+    public ResponseEntity<Integer> updateProductBrand(Integer brandId, UpdateProductBrandReq updateProductBrandReq) {
         // 1 数据转换
         UpdateProductBrandBo updateProductBrandBo = ProductBrandDtoConvert.INSTANCE.toBo(updateProductBrandReq);
         // 2 业务

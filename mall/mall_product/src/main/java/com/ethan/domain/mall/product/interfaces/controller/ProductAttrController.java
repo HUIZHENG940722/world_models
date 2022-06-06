@@ -24,7 +24,7 @@ public class ProductAttrController implements MallProductAttrApi {
     private ProductAttrService productAttrService;
 
     @Override
-    public ResponseEntity<Object> createProductAttrKey(CreateProductAttrKeyReq createProductAttrKeyReq) {
+    public ResponseEntity<Integer> createProductAttrKey(CreateProductAttrKeyReq createProductAttrKeyReq) {
         // 1 数据转换
         CreateProductAttrKeyBo createProductAttrKeyBo = ProductAttrDtoConvert.INSTANCE.toBo(createProductAttrKeyReq);
         // 2 业务
@@ -35,7 +35,7 @@ public class ProductAttrController implements MallProductAttrApi {
     }
 
     @Override
-    public ResponseEntity<Object> updateProductAttrKey(Integer attrKeyId, UpdateProductAttrKeyReq updateProductAttrKeyReq) {
+    public ResponseEntity<Integer> updateProductAttrKey(Integer attrKeyId, UpdateProductAttrKeyReq updateProductAttrKeyReq) {
         // 1 数据转换
         UpdateProductAttrKeyBo updateProductAttrKeyBo = ProductAttrDtoConvert.INSTANCE.toBo(updateProductAttrKeyReq);
         // 2 业务

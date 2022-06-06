@@ -52,9 +52,6 @@ public class ProductBrandRepository {
         if (pageQueryProductBrandBo.getName() != null) {
             lambdaQueryWrapper.like(ProductBrandPo::getName, pageQueryProductBrandBo.getName());
         }
-        if (pageQueryProductBrandBo.getDeleted() != null) {
-            lambdaQueryWrapper.eq(ProductBrandPo::getDeleted, pageQueryProductBrandBo.getDeleted());
-        }
         if (pageQueryProductBrandBo.getStatus()!=null) {
             lambdaQueryWrapper.eq(ProductBrandPo::getStatus, pageQueryProductBrandBo.getStatus());
         }

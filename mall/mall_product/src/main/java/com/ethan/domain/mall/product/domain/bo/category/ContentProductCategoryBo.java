@@ -1,5 +1,7 @@
 package com.ethan.domain.mall.product.domain.bo.category;
 
+import com.ethan.domain.mall.product.infrastructure.dao.enums.DeletedEnum;
+import com.ethan.domain.mall.product.infrastructure.dao.enums.StatusEnum;
 import lombok.Data;
 
 import java.util.Date;
@@ -45,12 +47,12 @@ public class ContentProductCategoryBo {
     /**
      * 状态：0->关闭;1->开启;
      */
-    private Integer status;
+    private StatusEnum status;
 
     /**
      * 是否被删除：0->已删除;1->未删除;
      */
-    private Integer deleted;
+    private DeletedEnum deleted;
 
     /**
      * 创建时间

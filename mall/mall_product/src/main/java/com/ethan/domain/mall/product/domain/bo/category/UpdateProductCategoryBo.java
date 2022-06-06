@@ -1,5 +1,6 @@
 package com.ethan.domain.mall.product.domain.bo.category;
 
+import com.ethan.domain.mall.product.infrastructure.dao.enums.StatusEnum;
 import lombok.Data;
 
 import java.util.Date;
@@ -40,5 +41,5 @@ public class UpdateProductCategoryBo {
     /**
      * 状态：0->关闭;1->开启;
      */
-    private Integer status;
+    private StatusEnum status;
 }

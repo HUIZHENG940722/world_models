@@ -23,8 +23,8 @@ public interface ProductBrandPoConvert {
 
     @Mappings({
         @Mapping(target = "id", ignore = true),
-        @Mapping(target = "status", expression = "java(1)"),
-        @Mapping(target = "deleted", expression = "java(1)"),
+        @Mapping(target = "status", expression = "java(com.ethan.domain.mall.product.infrastructure.dao.enums.StatusEnum.NUMBER_1)"),
+        @Mapping(target = "deleted", expression = "java(com.ethan.domain.mall.product.infrastructure.dao.enums.DeletedEnum.NUMBER_1)"),
         @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
         @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))")
     })
