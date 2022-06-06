@@ -15,6 +15,7 @@
 
     <modules>
         <module>account_member</module>
+        <module>account_admin</module>
     </modules>
 
     <properties>

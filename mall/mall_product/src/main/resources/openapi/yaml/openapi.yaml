@@ -1,17 +1,263 @@
-openapi: 3.0.1
+openapi: 3.0.3
 info:
   title: 世界的领域模型
   version: 1.0.0
 servers:
 - url: /
 tags:
-- name: 电商领域
-- name: 电商领域/商品API
-- name: 电商领域/商品API/商品分类
-- name: 电商领域/商品API/商品品牌
-- name: 电商领域/商品API/商品SPU
-- name: 电商领域/商品API/商品规格
+- name: mall
+- name: mall/product
+- name: mall/product/category
+- name: mall/product/brand
+- name: mall/product/spu
+- name: mall/product/attr
 paths:
+  /product/brand:
+    post:
+      deprecated: false
+      description: 添加商品品牌
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductBrandReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              examples: {}
+              schema:
+                properties: {}
+                type: object
+                x-apifox-ignore-properties: []
+          description: 成功
+      summary: 添加商品品牌
+      tags:
+      - mall/product/brand
+      x-apifox-folder: mall/product/brand
+      x-apifox-status: developing
+      x-contentType: application/json
+      x-accepts: application/json
+  /product/attr/key/{attr_key_id}:
+    put:
+      deprecated: false
+      description: 更新商品规格键
+      operationId: updateProductAttrKey
+      parameters:
+      - description: 商品规格键编码
+        explode: false
+        in: path
+        name: attr_key_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProductAttrKeyReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              examples: {}
+              schema:
+                properties: {}
+                type: object
+                x-apifox-ignore-properties: []
+          description: 成功
+      summary: 更新商品规格键
+      tags:
+      - mall/product/attr
+      x-apifox-folder: mall/product/attr
+      x-apifox-status: developing
+      x-contentType: application/json
+      x-accepts: application/json
+  /product/brand/{brand_id}:
+    get:
+      deprecated: false
+      description: 获取商品品牌内容
+      operationId: getProductBrandContent
+      parameters:
+      - description: 商品品牌编码
+        example: "1"
+        explode: false
+        in: path
+        name: brand_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples: {}
+              schema:
+                $ref: '#/components/schemas/ContentProductBrandResp'
+          description: 成功
+      summary: 获取商品品牌内容
+      tags:
+      - mall/product/brand
+      x-apifox-folder: mall/product/brand
+      x-apifox-status: developing
+      x-accepts: application/json
+    put:
+      deprecated: false
+      description: 更新商品品牌
+      operationId: updateProductBrand
+      parameters:
+      - description: 商品品牌编码
+        example: ""
+        explode: false
+        in: path
+        name: brand_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProductBrandReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              examples: {}
+              schema:
+                properties: {}
+                type: object
+                x-apifox-ignore-properties: []
+          description: 成功
+      summary: 更新商品品牌
+      tags:
+      - mall/product/brand
+      x-apifox-folder: mall/product/brand
+      x-apifox-status: developing
+      x-contentType: application/json
+      x-accepts: application/json
+  /product/category/{category_id}:
+    get:
+      deprecated: false
+      description: 获取商品分类内容
+      operationId: getProductCategoryContent
+      parameters:
+      - description: 商品分类编码
+        example: ""
+        explode: false
+        in: path
+        name: category_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples: {}
+              schema:
+                $ref: '#/components/schemas/ContentProductCategoryResp'
+          description: 成功
+      summary: 获取商品分类内容
+      tags:
+      - mall/product/category
+      x-apifox-folder: mall/product/category
+      x-apifox-status: developing
+      x-accepts: application/json
+    put:
+      deprecated: false
+      description: 更新商品分类
+      operationId: updateProductCategory
+      parameters:
+      - description: 商品分类id
+        example: ""
+        explode: false
+        in: path
+        name: category_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProductCategoryReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              examples: {}
+              schema:
+                type: integer
+          description: 成功
+      summary: 更新商品分类
+      tags:
+      - mall/product/category
+      x-apifox-folder: mall/product/category
+      x-apifox-status: developing
+      x-contentType: application/json
+      x-accepts: application/json
+  /product/spu:
+    post:
+      deprecated: false
+      description: 创建商品SPU
+      operationId: createProductSpu
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductSpuAndSkuReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              examples: {}
+              schema:
+                title: 商品spu编码
+                type: integer
+          description: 成功
+      summary: 创建商品SPU
+      tags:
+      - mall/product/spu
+      x-apifox-folder: mall/product/spu
+      x-apifox-status: developing
+      x-contentType: application/json
+      x-accepts: application/json
+  /product/attr/key:
+    post:
+      deprecated: false
+      description: 添加商品规格键
+      operationId: createProductAttrKey
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductAttrKeyReq'
+      responses:
+        "200":
+          content:
+            application/json:
+              examples: {}
+              schema:
+                properties: {}
+                type: object
+                x-apifox-ignore-properties: []
+          description: 成功
+      summary: 添加商品规格键
+      tags:
+      - mall/product/attr
+      x-apifox-folder: mall/product/attr
+      x-apifox-status: developing
+      x-contentType: application/json
+      x-accepts: application/json
   /product/brand/page:
     get:
       deprecated: false
@@ -41,74 +287,8 @@ paths:
           description: 成功
       summary: 分页查询商品品牌
       tags:
-      - 电商领域/商品API/商品品牌
-      x-apifox-folder: 电商领域/商品API/商品品牌
-      x-apifox-status: developing
-      x-contentType: application/json
-      x-accepts: application/json
-  /product/brand/{brand_id}:
-    get:
-      deprecated: false
-      description: 获取商品品牌内容
-      operationId: getProductBrandContent
-      parameters:
-      - description: 商品品牌编码
-        example: "1"
-        explode: false
-        in: path
-        name: brand_id
-        required: true
-        schema:
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              examples: {}
-              schema:
-                $ref: '#/components/schemas/ContentProductBrandResp'
-          description: 成功
-      summary: 获取商品品牌内容
-      tags:
-      - 电商领域/商品API/商品品牌
-      x-apifox-folder: 电商领域/商品API/商品品牌
-      x-apifox-status: developing
-      x-accepts: application/json
-    put:
-      deprecated: false
-      description: 更新商品品牌
-      operationId: updateProductBrand
-      parameters:
-      - description: 商品品牌编码
-        example: ""
-        explode: false
-        in: path
-        name: brand_id
-        required: true
-        schema:
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateProductBrandReq'
-      responses:
-        "200":
-          content:
-            application/json:
-              examples: {}
-              schema:
-                properties: {}
-                type: object
-                x-apifox-ignore-properties: []
-                x-apifox-orders: []
-          description: 成功
-      summary: 更新商品品牌
-      tags:
-      - 电商领域/商品API/商品品牌
-      x-apifox-folder: 电商领域/商品API/商品品牌
+      - mall/product/brand
+      x-apifox-folder: mall/product/brand
       x-apifox-status: developing
       x-contentType: application/json
       x-accepts: application/json
@@ -133,192 +313,8 @@ paths:
           description: 成功
       summary: 添加商品分类
       tags:
-      - 电商领域/商品API/商品分类
-      x-apifox-folder: 电商领域/商品API/商品分类
-      x-apifox-status: developing
-      x-contentType: application/json
-      x-accepts: application/json
-  /product/attr/key:
-    post:
-      deprecated: false
-      description: 添加商品规格键
-      operationId: createProductAttrKey
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateProductAttrKeyReq'
-      responses:
-        "200":
-          content:
-            application/json:
-              examples: {}
-              schema:
-                properties: {}
-                type: object
-                x-apifox-ignore-properties: []
-                x-apifox-orders: []
-          description: 成功
-      summary: 添加商品规格键
-      tags:
-      - 电商领域/商品API/商品规格
-      x-apifox-folder: 电商领域/商品API/商品规格
-      x-apifox-status: developing
-      x-contentType: application/json
-      x-accepts: application/json
-  /product/attr/key/{attr_key_id}:
-    put:
-      deprecated: false
-      description: 更新商品规格键
-      operationId: updateProductAttrKey
-      parameters:
-      - description: 商品规格键编码
-        explode: false
-        in: path
-        name: attr_key_id
-        required: true
-        schema:
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateProductAttrKeyReq'
-      responses:
-        "200":
-          content:
-            application/json:
-              examples: {}
-              schema:
-                properties: {}
-                type: object
-                x-apifox-ignore-properties: []
-                x-apifox-orders: []
-          description: 成功
-      summary: 更新商品规格键
-      tags:
-      - 电商领域/商品API/商品规格
-      x-apifox-folder: 电商领域/商品API/商品规格
-      x-apifox-status: developing
-      x-contentType: application/json
-      x-accepts: application/json
-  /product/brand:
-    post:
-      deprecated: false
-      description: 添加商品品牌
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateProductBrandReq'
-      responses:
-        "200":
-          content:
-            application/json:
-              examples: {}
-              schema:
-                properties: {}
-                type: object
-                x-apifox-ignore-properties: []
-                x-apifox-orders: []
-          description: 成功
-      summary: 添加商品品牌
-      tags:
-      - 电商领域/商品API/商品品牌
-      x-apifox-folder: 电商领域/商品API/商品品牌
-      x-apifox-status: developing
-      x-contentType: application/json
-      x-accepts: application/json
-  /product/category/{category_id}:
-    get:
-      deprecated: false
-      description: 获取商品分类内容
-      operationId: getProductCategoryContent
-      parameters:
-      - description: 商品分类编码
-        example: ""
-        explode: false
-        in: path
-        name: category_id
-        required: true
-        schema:
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              examples: {}
-              schema:
-                $ref: '#/components/schemas/ContentProductCategoryResp'
-          description: 成功
-      summary: 获取商品分类内容
-      tags:
-      - 电商领域/商品API/商品分类
-      x-apifox-folder: 电商领域/商品API/商品分类
-      x-apifox-status: developing
-      x-accepts: application/json
-    put:
-      deprecated: false
-      description: 更新商品分类
-      operationId: updateProductCategory
-      parameters:
-      - description: 商品分类id
-        example: ""
-        explode: false
-        in: path
-        name: category_id
-        required: true
-        schema:
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateProductCategoryReq'
-      responses:
-        "200":
-          content:
-            application/json:
-              examples: {}
-              schema:
-                type: integer
-          description: 成功
-      summary: 更新商品分类
-      tags:
-      - 电商领域/商品API/商品分类
-      x-apifox-folder: 电商领域/商品API/商品分类
-      x-apifox-status: developing
-      x-contentType: application/json
-      x-accepts: application/json
-  /product/spu:
-    post:
-      deprecated: false
-      description: 创建商品SPU
-      operationId: createProductSpu
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateProductSpuAndSkuReq'
-      responses:
-        "200":
-          content:
-            application/json:
-              examples: {}
-              schema:
-                title: 商品spu编码
-                type: integer
-          description: 成功
-      summary: 创建商品SPU
-      tags:
-      - 电商领域/商品API/商品SPU
-      x-apifox-folder: 电商领域/商品API/商品SPU
+      - mall/product/category
+      x-apifox-folder: mall/product/category
       x-apifox-status: developing
       x-contentType: application/json
       x-accepts: application/json
@@ -352,124 +348,71 @@ components:
               "1": 开启
       type: object
       x-apifox-ignore-properties: []
-      x-apifox-orders:
-      - name
-      - description
-      - picUrl
-      - status
-      x-apifox-folder: 电商领域/商品模块/商品品牌
-    UpdateProductAttrKeyReq:
+      x-apifox-folder: mall/product/brand
+    PageQueryProductBrandReq:
+      example:
+        deleted: 5
+        pageNo: 1
+        name: name
+        pageSize: 1
+        id: 1
+        status: 5
+      properties:
+        pageNo:
+          minimum: 1
+          title: 页码
+          type: integer
+        pageSize:
+          minimum: 1
+          title: 页面大小
+          type: integer
+        id:
+          title: 品牌编码
+          type: integer
+        name:
+          title: 品牌名称
+          type: string
+        status:
+          enum:
+          - 0
+          - 1
+          title: 状态
+          type: integer
+          x-apifox:
+            enumDescriptions:
+              "0": 关闭
+              "1": 开启
+        deleted:
+          enum:
+          - 0
+          - 1
+          title: 是否删除
+          type: integer
+          x-apifox:
+            enumDescriptions:
+              "0": 已删除
+              "1": 未删除
+      required:
+      - pageNo
+      - pageSize
+      type: object
+      x-apifox-ignore-properties: []
+      x-apifox-folder: mall/product/brand
+    CreateProductAttrKeyReq:
       example:
         name: name
-        status: 0
       properties:
         name:
           title: 规格键名称
           type: string
-        status:
-          title: 规格键状态
-          type: integer
+      required:
+      - name
       type: object
       x-apifox-orders:
       - name
       - status
       x-apifox-ignore-properties: []
-      x-apifox-folder: 电商领域/商品模块/商品规格
-    PageProductBrandResp:
-      example:
-        total: 0
-        data:
-        - picUrl: picUrl
-          deleted: 5
-          createTime: createTime
-          name: name
-          description: description
-          updateTime: updateTime
-          id: 6
-          status: 1
-        - picUrl: picUrl
-          deleted: 5
-          createTime: createTime
-          name: name
-          description: description
-          updateTime: updateTime
-          id: 6
-          status: 1
-      properties:
-        total:
-          title: 条数
-          type: integer
-        data:
-          items:
-            $ref: '#/components/schemas/ContentProductBrandResp'
-          title: 商品品牌内容数据集
-          type: array
-      required:
-      - data
-      - total
-      type: object
-      x-apifox-ignore-properties: []
-      x-apifox-orders:
-      - total
-      - data
-      x-apifox-folder: 电商领域/商品模块/商品品牌
-    CreateProductSpuAndSkuReq:
-      example:
-        sellPoint: sellPoint
-        visible: true
-        skus:
-          quantity: 1
-          attrValueIds:
-          - 6
-          - 6
-          price: 1
-        name: name
-        description: description
-        picUrls:
-        - picUrls
-        - picUrls
-        cid: 0
-      properties:
-        name:
-          title: SPU名称
-          type: string
-        sellPoint:
-          title: 卖点
-          type: string
-        description:
-          title: 描述
-          type: string
-        cid:
-          title: 商品分类编码
-          type: integer
-        picUrls:
-          items:
-            type: string
-          title: 商品主图地址
-          type: array
-        visible:
-          title: 是否上架
-          type: boolean
-        skus:
-          $ref: '#/components/schemas/SkuDto'
-      required:
-      - cid
-      - name
-      - picUrls
-      - skus
-      - visible
-      title: 创建商品SPU以及SKU列表DTO
-      type: object
-      x-apifox-orders:
-      - name
-      - sellPoint
-      - description
-      - cid
-      - picUrls
-      - visible
-      - skus
-      x-apifox-ignore-properties: []
-      x-apifox-folder: 电商领域/商品模块/商品SPU
+      x-apifox-folder: mall/product/attr
     SkuDto:
       example:
         quantity: 1
@@ -498,11 +441,40 @@ components:
       - quantity
       type: object
       x-apifox-ignore-properties: []
-      x-apifox-orders:
-      - attrValueIds
-      - price
-      - quantity
-      x-apifox-folder: 电商领域/商品模块/商品SPU
+      x-apifox-folder: mall/product/spu
+    CreateProductCategoryReq:
+      example:
+        picUrl: picUrl
+        name: name
+        description: description
+        pid: 0
+        sort: 0
+      properties:
+        pid:
+          title: 父分类编码
+          type: integer
+        name:
+          maxLength: 20
+          minLength: 3
+          title: 分类名称
+          type: string
+        description:
+          title: 分类描述
+          type: string
+        picUrl:
+          title: 分类图片
+          type: string
+        sort:
+          minimum: 0
+          title: 分类排序
+          type: integer
+      required:
+      - name
+      - pid
+      - sort
+      type: object
+      x-apifox-ignore-properties: []
+      x-apifox-folder: mall/product/category
     ContentProductCategoryResp:
       example:
         picUrl: picUrl
@@ -572,28 +544,89 @@ components:
       - status
       type: object
       x-apifox-ignore-properties: []
-      x-apifox-orders:
-      - id
-      - pid
-      - name
-      - description
-      - picUrl
-      - sort
-      - status
-      - deleted
-      - createTime
-      - updateTime
-      x-apifox-folder: 电商领域/商品模块/商品分类
+      x-apifox-folder: mall/product/category
+    PageProductBrandResp:
+      example:
+        total: 0
+        data:
+        - picUrl: picUrl
+          deleted: 1
+          createTime: createTime
+          name: name
+          description: description
+          updateTime: updateTime
+          id: 0
+          status: 6
+        - picUrl: picUrl
+          deleted: 1
+          createTime: createTime
+          name: name
+          description: description
+          updateTime: updateTime
+          id: 0
+          status: 6
+      properties:
+        total:
+          title: 条数
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/ContentProductBrandResp'
+          title: 商品品牌内容数据集
+          type: array
+      required:
+      - data
+      - total
+      type: object
+      x-apifox-ignore-properties: []
+      x-apifox-folder: mall/product/brand
+    UpdateProductCategoryReq:
+      example:
+        picUrl: picUrl
+        name: name
+        description: description
+        pid: 0
+        sort: 6
+        status: 1
+      properties:
+        pid:
+          title: 父分类编码
+          type: integer
+        name:
+          title: 分类名称
+          type: string
+        description:
+          title: 分类描述
+          type: string
+        picUrl:
+          title: 分类图片
+          type: string
+        sort:
+          title: 分类排序
+          type: integer
+        status:
+          enum:
+          - 0
+          - 1
+          title: 分类状态
+          type: integer
+          x-apifox:
+            enumDescriptions:
+              "0": 关闭
+              "1": 开启
+      type: object
+      x-apifox-ignore-properties: []
+      x-apifox-folder: mall/product/category
     ContentProductBrandResp:
       example:
         picUrl: picUrl
-        deleted: 5
+        deleted: 1
         createTime: createTime
         name: name
         description: description
         updateTime: updateTime
-        id: 6
-        status: 1
+        id: 0
+        status: 6
       properties:
         id:
           title: 品牌编码
@@ -642,169 +675,81 @@ components:
       - updateTime
       type: object
       x-apifox-ignore-properties: []
-      x-apifox-orders:
-      - id
-      - name
-      - description
-      - picUrl
-      - status
-      - deleted
-      - createTime
-      - updateTime
-      x-apifox-folder: 电商领域/商品模块/商品品牌
-    UpdateProductCategoryReq:
-      example:
-        picUrl: picUrl
-        name: name
-        description: description
-        pid: 0
-        sort: 6
-        status: 1
-      properties:
-        pid:
-          title: 父分类编码
-          type: integer
-        name:
-          title: 分类名称
-          type: string
-        description:
-          title: 分类描述
-          type: string
-        picUrl:
-          title: 分类图片
-          type: string
-        sort:
-          title: 分类排序
-          type: integer
-        status:
-          enum:
-          - 0
-          - 1
-          title: 分类状态
-          type: integer
-          x-apifox:
-            enumDescriptions:
-              "0": 关闭
-              "1": 开启
-      type: object
-      x-apifox-ignore-properties: []
-      x-apifox-orders:
-      - pid
-      - name
-      - description
-      - picUrl
-      - sort
-      - status
-      x-apifox-folder: 电商领域/商品模块/商品分类
-    CreateProductCategoryReq:
-      example:
-        picUrl: picUrl
-        name: name
-        description: description
-        pid: 0
-        sort: 0
-      properties:
-        pid:
-          title: 父分类编码
-          type: integer
-        name:
-          maxLength: 20
-          minLength: 3
-          title: 分类名称
-          type: string
-        description:
-          title: 分类描述
-          type: string
-        picUrl:
-          title: 分类图片
-          type: string
-        sort:
-          minimum: 0
-          title: 分类排序
-          type: integer
-      required:
-      - name
-      - pid
-      - sort
-      type: object
-      x-apifox-ignore-properties: []
-      x-apifox-orders:
-      - pid
-      - name
-      - description
-      - picUrl
-      - sort
-      x-apifox-folder: 电商领域/商品模块/商品分类
-    PageQueryProductBrandReq:
-      example:
-        deleted: 5
-        pageNo: 1
-        name: name
-        pageSize: 1
-        id: 1
-        status: 5
-      properties:
-        pageNo:
-          minimum: 1
-          title: 页码
-          type: integer
-        pageSize:
-          minimum: 1
-          title: 页面大小
-          type: integer
-        id:
-          title: 品牌编码
-          type: integer
-        name:
-          title: 品牌名称
-          type: string
-        status:
-          enum:
-          - 0
-          - 1
-          title: 状态
-          type: integer
-          x-apifox:
-            enumDescriptions:
-              "0": 关闭
-              "1": 开启
-        deleted:
-          enum:
-          - 0
-          - 1
-          title: 是否删除
-          type: integer
-          x-apifox:
-            enumDescriptions:
-              "0": 已删除
-              "1": 未删除
-      required:
-      - pageNo
-      - pageSize
-      type: object
-      x-apifox-ignore-properties: []
-      x-apifox-orders:
-      - pageNo
-      - pageSize
-      - id
-      - name
-      - status
-      - deleted
-      x-apifox-folder: 电商领域/商品模块/商品品牌
-    CreateProductAttrKeyReq:
+      x-apifox-folder: mall/product/brand
+    UpdateProductAttrKeyReq:
       example:
         name: name
+        status: 0
       properties:
         name:
           title: 规格键名称
           type: string
-      required:
-      - name
+        status:
+          title: 规格键状态
+          type: integer
       type: object
       x-apifox-orders:
       - name
+      - status
       x-apifox-ignore-properties: []
-      x-apifox-folder: 电商领域/商品模块/商品规格
+      x-apifox-folder: mall/product/attr
+    CreateProductSpuAndSkuReq:
+      example:
+        sellPoint: sellPoint
+        visible: true
+        skus:
+          quantity: 1
+          attrValueIds:
+          - 6
+          - 6
+          price: 1
+        name: name
+        description: description
+        picUrls:
+        - picUrls
+        - picUrls
+        cid: 0
+      properties:
+        name:
+          title: SPU名称
+          type: string
+        sellPoint:
+          title: 卖点
+          type: string
+        description:
+          title: 描述
+          type: string
+        cid:
+          title: 商品分类编码
+          type: integer
+        picUrls:
+          items:
+            type: string
+          title: 商品主图地址
+          type: array
+        visible:
+          title: 是否上架
+          type: boolean
+        skus:
+          $ref: '#/components/schemas/SkuDto'
+      required:
+      - cid
+      - name
+      - picUrls
+      - skus
+      - visible
+      title: 创建商品SPU以及SKU列表DTO
+      type: object
+      x-apifox-orders:
+      - name
+      - sellPoint
+      - description
+      - cid
+      - picUrls
+      - visible
+      - skus
+      x-apifox-ignore-properties: []
+      x-apifox-folder: mall/product/spu
     CreateProductBrandReq:
       example:
         picUrl: picUrl
@@ -829,6 +774,7 @@ components:
       - name
       - description
       - picUrl
+      - status
       x-apifox-ignore-properties: []
-      x-apifox-folder: 电商领域/商品模块/商品品牌
+      x-apifox-folder: mall/product/brand
 

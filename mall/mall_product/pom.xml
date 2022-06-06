@@ -149,7 +149,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/swagger/openapi.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/openapi/yaml/openapi.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <apiPackage>com.ethan.domain.mall.product.interfaces.api</apiPackage>
                             <modelPackage>com.ethan.domain.mall.product.interfaces.api.dto</modelPackage>
