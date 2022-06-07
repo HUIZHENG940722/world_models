@@ -1,5 +1,6 @@
 package com.ethan.domain.mall.product.infrastructure.dao.enums;
 
+import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
@@ -8,8 +9,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * @Date 2022/6/7
  */
 public enum DeletedEnum {
+
+    @EnumValue
     NUMBER_0(0),
 
+    @EnumValue
     NUMBER_1(1);
 
     private Integer value;
