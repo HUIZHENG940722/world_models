@@ -52,13 +52,11 @@ public class ProductCategoryPo implements Serializable {
     /**
      * 状态：0->关闭;1->开启;
      */
-    @EnumValue
     private StatusEnum status;
 
     /**
      * 是否被删除：0->已删除;1->未删除;
      */
-    @EnumValue
     private DeletedEnum deleted;
 
     /**

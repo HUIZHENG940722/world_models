@@ -3,6 +3,8 @@ package com.ethan.domain.mall.product.domain.convert;
 import com.ethan.domain.mall.product.domain.bo.attr.key.ContentProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.key.CreateProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.key.UpdateProductAttrKeyBo;
+import com.ethan.domain.mall.product.infrastructure.dao.enums.DeletedEnum;
+import com.ethan.domain.mall.product.infrastructure.dao.enums.StatusEnum;
 import com.ethan.domain.mall.product.infrastructure.dao.po.attr.ProductAttrKeyPo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -24,8 +26,8 @@ public interface ProductAttrKeyPoConvert {
 
     @Mappings({
         @Mapping(target = "id", ignore = true),
-        @Mapping(target = "status", expression = "java(1)"),
-        @Mapping(target = "deleted", expression = "java(1)"),
+        @Mapping(target = "status", expression = "java(com.ethan.domain.mall.product.infrastructure.dao.enums.StatusEnum.NUMBER_1)"),
+        @Mapping(target = "deleted", expression = "java(com.ethan.domain.mall.product.infrastructure.dao.enums.DeletedEnum.NUMBER_1)"),
         @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
         @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))")
     })
@@ -34,7 +36,7 @@ public interface ProductAttrKeyPoConvert {
 
     @Mappings({
         @Mapping(target = "id", ignore = true),
-        @Mapping(target = "deleted", expression = "java(1)"),
+        @Mapping(target = "deleted", expression = "java(com.ethan.domain.mall.product.infrastructure.dao.enums.DeletedEnum.NUMBER_1)"),
         @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
         @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))")
     })

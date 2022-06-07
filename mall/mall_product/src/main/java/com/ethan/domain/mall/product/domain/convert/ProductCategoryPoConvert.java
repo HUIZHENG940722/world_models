@@ -37,7 +37,7 @@ public interface ProductCategoryPoConvert {
     @Mappings({
         @Mapping(target = "id", ignore = true),
         @Mapping(target = "deleted", ignore = true),
-        @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
+        @Mapping(target = "createTime",ignore = true),
         @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
     })
     ProductCategoryPo updateBotoPo(UpdateProductCategoryBo updateProductCategoryBo);

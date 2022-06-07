@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.ethan.domain.mall.product.infrastructure.dao.enums.DeletedEnum;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -87,7 +88,7 @@ public class ProductSpuPo implements Serializable {
     /**
      * 是否被删除：0->已删除;1->未删除;
      */
-    private Integer deleted;
+    private DeletedEnum deleted;
 
 
     /**

@@ -1,5 +1,6 @@
 package com.ethan.domain.mall.product.domain.bo.spu;
 
+import com.ethan.domain.mall.product.infrastructure.dao.enums.StatusEnum;
 import lombok.Data;
 
 import java.sql.Date;
@@ -66,7 +67,7 @@ public class ContentProductSpuBo {
     /**
      * 是否被删除：0->已删除;1->未删除;
      */
-    private Integer deleted;
+    private StatusEnum deleted;
 
     /**
      * 创建时间

@@ -1,5 +1,6 @@
 package com.ethan.domain.mall.product.domain.bo.attr.key;
 
+import com.ethan.domain.mall.product.infrastructure.dao.enums.StatusEnum;
 import lombok.Data;
 
 /**
@@ -18,5 +19,5 @@ public class UpdateProductAttrKeyBo {
     /**
      * 状态
      */
-    private Integer status;
+    private StatusEnum status;
 }

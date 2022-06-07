@@ -1,5 +1,6 @@
 package com.ethan.domain.mall.product.domain.bo.sku;
 
+import com.ethan.domain.mall.product.infrastructure.dao.enums.StatusEnum;
 import lombok.Data;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class CreateProductSkuBo {
     /**
      * 状态
      */
-    private Integer status;
+    private StatusEnum status;
 
     /**
      * 图片地址
