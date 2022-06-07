@@ -1,8 +1,6 @@
 package com.ethan.domain.mall.product.infrastructure.dao.enums;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
-import com.baomidou.mybatisplus.annotation.IEnum;
-import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -13,7 +11,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum StatusEnum implements IEnum<Integer> {
+public enum StatusEnum {
 
     NUMBER_0(0, "关闭"),
 
@@ -22,6 +20,5 @@ public enum StatusEnum implements IEnum<Integer> {
     @EnumValue
     private Integer value;
 
-    @JsonValue
     private String message;
 }
