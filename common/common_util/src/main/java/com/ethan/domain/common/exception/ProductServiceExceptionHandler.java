@@ -2,6 +2,8 @@ package com.ethan.domain.common.exception;
 
 import com.ethan.domain.common.api.CommonResult;
 import com.ethan.domain.mall.product.infrastructure.exception.ProductServiceException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -23,7 +25,7 @@ public class ProductServiceExceptionHandler {
     }
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    public CommonResult<Void> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+    public ResponseEntity<Void> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         BindingResult bindingResult = e.getBindingResult();
         String message = null;
         if (bindingResult.hasErrors()) {
@@ -32,6 +34,6 @@ public class ProductServiceExceptionHandler {
                 message = fieldError.getField() + fieldError.getDefaultMessage();
             }
         }
-        return CommonResult.validateFailed(message);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }

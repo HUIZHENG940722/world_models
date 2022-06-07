@@ -4,8 +4,9 @@ import com.ethan.domain.mall.product.domain.bo.attr.key.ContentProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.key.CreateProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.key.UpdateProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.repository.ProductAttrKeyRepository;
-import com.ethan.domain.common.api.Asserts;
+import com.ethan.domain.mall.product.infrastructure.exception.ProductException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 /**
@@ -31,7 +32,7 @@ public class ProductAttrKeyDomainService {
         // 1.1 校验规格键名字是否重复
         ContentProductAttrKeyBo contentProductAttrKeyBo = productAttrKeyRepository.getByName(createProductAttrKeyBo.getName());
         if (contentProductAttrKeyBo != null) {
-            Asserts.fail("商品规格键重复");
+            throw new ProductException(HttpStatus.CONFLICT, "商品规格键重复");
         }
         // 2 核心业务
         return productAttrKeyRepository.add(createProductAttrKeyBo);
@@ -51,12 +52,12 @@ public class ProductAttrKeyDomainService {
         // 1.1 校验规格键是否存在
         ContentProductAttrKeyBo contentProductAttrKeyBo = productAttrKeyRepository.getById(attrKeyId);
         if (contentProductAttrKeyBo == null) {
-            Asserts.fail("无效的商品规格键");
+            throw new ProductException(HttpStatus.NOT_FOUND, "无效的商品规格键");
         }
         // 1.2 校验规格键的名字是否重复
         ContentProductAttrKeyBo byName = productAttrKeyRepository.getByName(updateProductAttrKeyBo.getName());
         if (byName != null && !byName.getId().equals(attrKeyId)) {
-            Asserts.fail("商品规格键名字重复");
+            throw new ProductException(HttpStatus.CONFLICT, "商品规格键名字重复");
         }
         // 2 核心业务
         return productAttrKeyRepository.updateById(attrKeyId, updateProductAttrKeyBo);

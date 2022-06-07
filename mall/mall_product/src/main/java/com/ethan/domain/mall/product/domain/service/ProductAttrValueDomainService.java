@@ -5,8 +5,9 @@ import com.ethan.domain.mall.product.domain.bo.attr.value.ContentProductAttrValu
 import com.ethan.domain.mall.product.domain.bo.attr.value.CreateProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.bo.attr.value.UpdateProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.repository.ProductAttrValueRepository;
-import com.ethan.domain.common.api.Asserts;
+import com.ethan.domain.mall.product.infrastructure.exception.ProductException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 /**
@@ -34,12 +35,12 @@ public class ProductAttrValueDomainService {
         // 1.1 校验商品规格键是否存在
         ContentProductAttrKeyBo contentProductAttrKeyBo = productAttrKeyDomainService.getById(attrKeyId);
         if (contentProductAttrKeyBo == null) {
-            Asserts.fail("商品规格键不存在");
+            throw new ProductException(HttpStatus.NOT_FOUND, "商品规格键不存在");
         }
         // 1.2 校验商品规格值的名字是否重复
         ContentProductAttrValueBo byName = productAttrValueRepository.getByName(createProductAttrValueBo.getName());
         if (byName !=null && !byName.getId().equals(attrKeyId)) {
-            Asserts.fail("商品规格值名字重复");
+            throw new ProductException(HttpStatus.CONFLICT, "商品规格值名字重复");
         }
         // 2 核心业务
         createProductAttrValueBo.setAttrKeyId(attrKeyId);
@@ -58,12 +59,12 @@ public class ProductAttrValueDomainService {
         // 1.1 校验商品规格值是否存在
         ContentProductAttrValueBo contentProductAttrValueBo = productAttrValueRepository.getById(attrValueId);
         if (contentProductAttrValueBo == null) {
-            Asserts.fail("商品规格值不存在");
+            throw new ProductException(HttpStatus.NOT_FOUND, "商品规格值不存在");
         }
         // 1.2 校验商品规格名称是否重复
         ContentProductAttrValueBo byName = productAttrValueRepository.getByName(updateProductAttrValueBo.getName());
         if (byName!=null && !byName.getId().equals(contentProductAttrValueBo.getId())) {
-            Asserts.fail("商品规格值名称重复");
+            throw new ProductException(HttpStatus.CONFLICT, "商品规格值名字重复");
         }
         // 2 核心业务
         return productAttrValueRepository.updateById(attrValueId, updateProductAttrValueBo);

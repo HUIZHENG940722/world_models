@@ -1,10 +1,6 @@
 package com.ethan.domain.mall.product.infrastructure.dao.po.brand;
 
-import com.baomidou.mybatisplus.annotation.FieldStrategy;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.ethan.domain.mall.product.infrastructure.dao.enums.DeletedEnum;
 import com.ethan.domain.mall.product.infrastructure.dao.enums.StatusEnum;
 import lombok.Data;
@@ -44,11 +40,13 @@ public class ProductBrandPo implements Serializable {
     /**
      * 状态
      */
+    @EnumValue
     private StatusEnum status;
 
     /**
      * 是否被删除：0->已删除;1->未删除;
      */
+    @EnumValue
     private DeletedEnum deleted;
 
     /**

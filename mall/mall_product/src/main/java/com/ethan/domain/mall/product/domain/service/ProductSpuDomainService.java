@@ -7,8 +7,9 @@ import com.ethan.domain.mall.product.domain.bo.spu.PageDetailsProductSpuBo;
 import com.ethan.domain.mall.product.domain.bo.spu.PageQueryProductSpuBo;
 import com.ethan.domain.mall.product.domain.bo.spu.UpdateProductSpuBo;
 import com.ethan.domain.mall.product.domain.repository.ProductSpuRepository;
-import com.ethan.domain.common.api.Asserts;
+import com.ethan.domain.mall.product.infrastructure.exception.ProductException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +26,7 @@ public class ProductSpuDomainService {
 
     /**
      * 领域服务：创建商品SPU
+     *
      * @param createProductSpuBo
      * @return
      */
@@ -34,7 +36,7 @@ public class ProductSpuDomainService {
         // 1.1 校验商品SPU名称是否存在
         ContentProductSpuBo contentProductSpuBo = productSpuRepository.getByName(createProductSpuBo.getName());
         if (contentProductSpuBo != null) {
-            Asserts.fail("商品SPU名称已存在");
+            throw new ProductException(HttpStatus.CONFLICT, "商品SPU名称已存在");
         }
         // 2 核心业务
         return productSpuRepository.add(createProductSpuBo);
@@ -43,6 +45,7 @@ public class ProductSpuDomainService {
 
     /**
      * 领域服务：更新商品SPU
+     *
      * @param updateProductSpuBo
      * @return
      */
@@ -52,7 +55,7 @@ public class ProductSpuDomainService {
         // 1.1 校验商品SPU是否存在
         ContentProductSpuBo contentProductSpuBo = productSpuRepository.getById(id);
         if (contentProductSpuBo == null) {
-            Asserts.fail("商品SPU非法");
+            throw new ProductException(HttpStatus.NOT_FOUND, "商品SPU非法");
         }
         // 2 核心业务
         return productSpuRepository.updateById(id, updateProductSpuBo);
@@ -61,6 +64,7 @@ public class ProductSpuDomainService {
 
     /**
      * 领域服务：获取商品SPU详情
+     *
      * @param productSpuId
      * @return
      */
@@ -73,6 +77,7 @@ public class ProductSpuDomainService {
 
     /**
      * 领域服务：分页查询商品SPU详情列表
+     *
      * @param queryProductSpuBo
      * @return
      */

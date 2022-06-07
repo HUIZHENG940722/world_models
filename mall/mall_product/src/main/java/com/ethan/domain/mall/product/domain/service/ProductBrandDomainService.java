@@ -2,8 +2,9 @@ package com.ethan.domain.mall.product.domain.service;
 
 import com.ethan.domain.mall.product.domain.bo.brand.*;
 import com.ethan.domain.mall.product.domain.repository.ProductBrandRepository;
-import com.ethan.domain.common.api.Asserts;
+import com.ethan.domain.mall.product.infrastructure.exception.ProductException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 /**
@@ -28,7 +29,7 @@ public class ProductBrandDomainService {
         // 1.1 校验商品品牌名称是否重复
         ContentProductBrandBo byName = productBrandRepository.getByName(createProductBrandBo.getName());
         if (byName != null) {
-            Asserts.fail("该商品品牌已添加");
+            throw new ProductException(HttpStatus.CONFLICT, "该商品品牌已添加");
         }
         // 2 核心业务
         return productBrandRepository.add(createProductBrandBo);
@@ -47,12 +48,12 @@ public class ProductBrandDomainService {
         // 1.1 校验商品品牌是否存在
         ContentProductBrandBo byId = productBrandRepository.getById(brandId);
         if (byId == null) {
-            Asserts.fail("商品品牌不存在");
+            throw new ProductException(HttpStatus.NOT_FOUND, "商品品牌不存在");
         }
         // 1.2 校验商品品牌名称是否存在
         ContentProductBrandBo byName = productBrandRepository.getByName(updateProductBrandBo.getName());
         if (byName != null && !byName.getName().equalsIgnoreCase(byId.getName())) {
-            Asserts.fail("商品品牌名称已存在");
+            throw new ProductException(HttpStatus.CONFLICT, "商品品牌名称已存在");
         }
         // 2 核心业务
         return productBrandRepository.updateById(brandId, updateProductBrandBo);
@@ -70,7 +71,7 @@ public class ProductBrandDomainService {
         // 1.1 校验商品品牌是否存在
         ContentProductBrandBo byId = productBrandRepository.getById(brandId);
         if (byId == null) {
-            Asserts.fail("商品品牌不存在");
+            throw new ProductException(HttpStatus.NOT_FOUND, "商品品牌不存在");
         }
         // 2 核心业务
         return productBrandRepository.getById(brandId);
@@ -100,7 +101,7 @@ public class ProductBrandDomainService {
         // 1.1 校验商品品牌是否存在
         ContentProductBrandBo byId = productBrandRepository.getById(brandId);
         if (byId == null) {
-            Asserts.fail("商品品牌不存在");
+            throw new ProductException(HttpStatus.NOT_FOUND, "商品品牌不存在");
         }
         // 2 核心业务
         return productBrandRepository.deleteById(brandId);

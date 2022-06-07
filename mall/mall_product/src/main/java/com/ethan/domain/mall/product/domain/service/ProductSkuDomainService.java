@@ -3,8 +3,9 @@ package com.ethan.domain.mall.product.domain.service;
 import com.ethan.domain.mall.product.domain.bo.sku.CreateProductSkuBo;
 import com.ethan.domain.mall.product.domain.bo.spu.DetailsProductSpuBo;
 import com.ethan.domain.mall.product.domain.repository.ProductSkuRepository;
-import com.ethan.domain.common.api.Asserts;
+import com.ethan.domain.mall.product.infrastructure.exception.ProductException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,7 +37,7 @@ public class ProductSkuDomainService {
         // 1.1 校验商品spu是否存在
         DetailsProductSpuBo productSpu = productSpuDomainService.getProductSpu(spuId);
         if (productSpu == null) {
-            Asserts.fail("商品SPU不存在");
+            throw new ProductException(HttpStatus.NOT_FOUND, "商品SPU不存在");
         }
         // 2 核心业务
         // 2.1 初始化商品spuId
