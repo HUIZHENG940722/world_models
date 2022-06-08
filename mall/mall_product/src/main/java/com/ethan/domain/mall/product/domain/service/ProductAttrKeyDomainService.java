@@ -2,6 +2,8 @@ package com.ethan.domain.mall.product.domain.service;
 
 import com.ethan.domain.mall.product.domain.bo.attr.key.ContentProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.key.CreateProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.key.PageProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.key.PageQueryProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.key.UpdateProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.repository.ProductAttrKeyRepository;
 import com.ethan.domain.mall.product.infrastructure.exception.ProductException;
@@ -64,7 +66,29 @@ public class ProductAttrKeyDomainService {
         // 3 返回结果
     }
 
+    /**
+     * 领域服务：获取商品规格键内容
+     *
+     * @param attrKeyId
+     * @return
+     */
     public ContentProductAttrKeyBo getById(Integer attrKeyId) {
+        // 1 核心校验
+        // 2 核心业务
+        // 3 返回结果
         return productAttrKeyRepository.getById(attrKeyId);
+    }
+
+    /**
+     * 领域服务：分页获取商品规格键内容
+     *
+     * @param pageQueryProductAttrKeyBo
+     * @return
+     */
+    public PageProductAttrKeyBo page(PageQueryProductAttrKeyBo pageQueryProductAttrKeyBo) {
+        // 1 核心校验
+        // 2 核心业务
+        return productAttrKeyRepository.page(pageQueryProductAttrKeyBo);
+        // 3 返回结果
     }
 }

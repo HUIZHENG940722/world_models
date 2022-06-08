@@ -12,6 +12,8 @@ import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 /**
  * @Author zWX1058539
  * @Description 商品规格键PO转换器
@@ -23,6 +25,8 @@ public interface ProductAttrKeyPoConvert {
     ProductAttrKeyPoConvert INSTANCE = Mappers.getMapper(ProductAttrKeyPoConvert.class);
 
     ContentProductAttrKeyBo toContent(ProductAttrKeyPo selectOne);
+
+    List<ContentProductAttrKeyBo> toContent(List<ProductAttrKeyPo> records);
 
     @Mappings({
         @Mapping(target = "id", ignore = true),
