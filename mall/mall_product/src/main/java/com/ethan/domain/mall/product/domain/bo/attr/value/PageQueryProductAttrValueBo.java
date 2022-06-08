@@ -4,15 +4,19 @@ import com.ethan.domain.mall.product.infrastructure.dao.enums.StatusEnum;
 import lombok.Data;
 
 /**
- * @author zhenghui
- * @Description 创建商品规格值BO
- * @Date 2022/6/1
+ * @Author zWX1058539
+ * @Description 分页查询商品规格值BO
+ * @Date 2022/6/8
  */
 @Data
-public class CreateProductAttrValueBo {
+public class PageQueryProductAttrValueBo {
+
+    private Integer pageNo;
+
+    private Integer pageSize;
 
     /**
-     * 规格键编码
+     * 规格键编号
      */
     private Integer attrKeyId;
 

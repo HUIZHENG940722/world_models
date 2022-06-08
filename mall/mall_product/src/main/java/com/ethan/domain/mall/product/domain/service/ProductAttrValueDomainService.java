@@ -3,6 +3,8 @@ package com.ethan.domain.mall.product.domain.service;
 import com.ethan.domain.mall.product.domain.bo.attr.key.ContentProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.value.ContentProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.bo.attr.value.CreateProductAttrValueBo;
+import com.ethan.domain.mall.product.domain.bo.attr.value.PageProductAttrValueBo;
+import com.ethan.domain.mall.product.domain.bo.attr.value.PageQueryProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.bo.attr.value.UpdateProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.repository.ProductAttrValueRepository;
 import com.ethan.domain.mall.product.infrastructure.exception.ProductException;
@@ -75,6 +77,44 @@ public class ProductAttrValueDomainService {
         }
         // 2 核心业务
         return productAttrValueRepository.updateById(attrValueId, updateProductAttrValueBo);
+        // 3 返回结果
+    }
+
+    /**
+     * 领域服务：获取商品规格值内容
+     *
+     * @param attrValueId
+     * @return
+     */
+    public ContentProductAttrValueBo getById(Integer attrValueId) {
+        // 1 核心校验
+        // 1.1 判断商品规格值编码是否有效
+        ContentProductAttrValueBo byId = productAttrValueRepository.getById(attrValueId);
+        if (byId == null) {
+            throw new ProductException(HttpStatus.NOT_FOUND, "商品规格值编码无效");
+        }
+        // 2 核心业务
+        // 3 返回结果
+        return byId;
+    }
+
+    /**
+     * 领域服务：分页查询商品规格值
+     *
+     * @param pageQueryProductAttrValueBo
+     * @return
+     */
+    public PageProductAttrValueBo page(PageQueryProductAttrValueBo pageQueryProductAttrValueBo) {
+        // 1 核心校验
+        // 1.1 校验规格键编码是否正确
+        if (pageQueryProductAttrValueBo.getAttrKeyId() != null) {
+            ContentProductAttrKeyBo byId = productAttrKeyDomainService.getById(pageQueryProductAttrValueBo.getAttrKeyId());
+            if (byId == null) {
+                throw new ProductException(HttpStatus.CONFLICT, "商品规格键编码非法");
+            }
+        }
+        // 2 核心业务
+        return productAttrValueRepository.page(pageQueryProductAttrValueBo);
         // 3 返回结果
     }
 }

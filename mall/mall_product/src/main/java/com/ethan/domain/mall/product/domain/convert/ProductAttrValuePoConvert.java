@@ -9,6 +9,8 @@ import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 /**
  * @author zhenghui
  * @Description 商品规格值转换器
@@ -21,6 +23,8 @@ public interface ProductAttrValuePoConvert {
 
     ContentProductAttrValueBo toContent(ProductAttrValuePo selectOne);
 
+    List<ContentProductAttrValueBo> toContent(List<ProductAttrValuePo> records);
+
     @Mappings({
             @Mapping(target = "id", ignore = true),
             @Mapping(target = "deleted", ignore = true),
@@ -28,4 +32,6 @@ public interface ProductAttrValuePoConvert {
             @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))")
     })
     ProductAttrValuePo updateBoToPo(UpdateProductAttrValueBo updateProductAttrValueBo);
+
+
 }

@@ -5,7 +5,10 @@ import com.ethan.domain.mall.product.domain.bo.attr.key.CreateProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.key.PageProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.key.PageQueryProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.key.UpdateProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.value.ContentProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.bo.attr.value.CreateProductAttrValueBo;
+import com.ethan.domain.mall.product.domain.bo.attr.value.PageProductAttrValueBo;
+import com.ethan.domain.mall.product.domain.bo.attr.value.PageQueryProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.bo.attr.value.UpdateProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.service.ProductAttrKeyDomainService;
 import com.ethan.domain.mall.product.domain.service.ProductAttrValueDomainService;
@@ -105,6 +108,32 @@ public class ProductAttrService {
         // 2 业务
         updateProductAttrValueBO.setAttrKeyId(attrKeyId);
         return productAttrValueDomainService.updateProductAttrValue(attrValueId, updateProductAttrValueBO);
+        // 3 返回结果
+    }
+
+    /**
+     * 应用服务：获取商品规格值内容
+     *
+     * @param attrValueId
+     * @return
+     */
+    public ContentProductAttrValueBo getProductAttrValue(Integer attrValueId) {
+        // 1 校验
+        // 2 业务
+        return productAttrValueDomainService.getById(attrValueId);
+        // 3 返回结果
+    }
+
+    /**
+     * 应用服务：分页查询商品规格值
+     *
+     * @param pageQueryProductAttrValueBo
+     * @return
+     */
+    public PageProductAttrValueBo pageProductAttrValueBo(PageQueryProductAttrValueBo pageQueryProductAttrValueBo) {
+        // 1 校验
+        // 2 业务
+        return productAttrValueDomainService.page(pageQueryProductAttrValueBo);
         // 3 返回结果
     }
 }
