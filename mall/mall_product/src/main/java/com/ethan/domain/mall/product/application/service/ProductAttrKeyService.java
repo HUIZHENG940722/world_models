@@ -21,13 +21,10 @@ import org.springframework.stereotype.Service;
  * @Date 2022/6/2
  */
 @Service
-public class ProductAttrService {
+public class ProductAttrKeyService {
 
     @Autowired
     private ProductAttrKeyDomainService productAttrKeyDomainService;
-
-    @Autowired
-    private ProductAttrValueDomainService productAttrValueDomainService;
 
     /**
      * 应用服务：创建商品规格键
@@ -78,62 +75,6 @@ public class ProductAttrService {
         // 1 校验
         // 2 业务
         return productAttrKeyDomainService.page(pageQueryProductAttrKeyBo);
-        // 3 返回结果
-    }
-
-    /**
-     * 应用服务：创建商品规格值
-     *
-     * @param attrKeyId
-     * @param createProductAttrValueBo
-     * @return
-     */
-    public Integer createProductAttrValue(Integer attrKeyId, CreateProductAttrValueBo createProductAttrValueBo) {
-        // 1 校验
-        // 2 业务
-        return productAttrValueDomainService.createProductAttrValue(attrKeyId, createProductAttrValueBo);
-        // 3 返回结果
-    }
-
-    /**
-     * 应用服务：更新商品规格值
-     *
-     * @param attrKeyId
-     * @param attrValueId
-     * @param updateProductAttrValueBO
-     * @return
-     */
-    public Integer updateProductAttrValue(Integer attrKeyId, Integer attrValueId, UpdateProductAttrValueBo updateProductAttrValueBO) {
-        // 1 校验
-        // 2 业务
-        updateProductAttrValueBO.setAttrKeyId(attrKeyId);
-        return productAttrValueDomainService.updateProductAttrValue(attrValueId, updateProductAttrValueBO);
-        // 3 返回结果
-    }
-
-    /**
-     * 应用服务：获取商品规格值内容
-     *
-     * @param attrValueId
-     * @return
-     */
-    public ContentProductAttrValueBo getProductAttrValue(Integer attrValueId) {
-        // 1 校验
-        // 2 业务
-        return productAttrValueDomainService.getById(attrValueId);
-        // 3 返回结果
-    }
-
-    /**
-     * 应用服务：分页查询商品规格值
-     *
-     * @param pageQueryProductAttrValueBo
-     * @return
-     */
-    public PageProductAttrValueBo pageProductAttrValueBo(PageQueryProductAttrValueBo pageQueryProductAttrValueBo) {
-        // 1 校验
-        // 2 业务
-        return productAttrValueDomainService.page(pageQueryProductAttrValueBo);
         // 3 返回结果
     }
 }

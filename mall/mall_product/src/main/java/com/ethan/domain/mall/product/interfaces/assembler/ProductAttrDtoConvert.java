@@ -1,12 +1,20 @@
 package com.ethan.domain.mall.product.interfaces.assembler;
 
+import com.ethan.domain.mall.product.domain.bo.attr.key.ContentProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.key.CreateProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.key.PageProductAttrKeyBo;
+import com.ethan.domain.mall.product.domain.bo.attr.key.PageQueryProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.key.UpdateProductAttrKeyBo;
-import com.ethan.domain.mall.product.interfaces.api.dto.CreateProductAttrKeyReq;
-import com.ethan.domain.mall.product.interfaces.api.dto.UpdateProductAttrKeyReq;
+import com.ethan.domain.mall.product.domain.bo.attr.value.ContentProductAttrValueBo;
+import com.ethan.domain.mall.product.domain.bo.attr.value.CreateProductAttrValueBo;
+import com.ethan.domain.mall.product.domain.bo.attr.value.PageProductAttrValueBo;
+import com.ethan.domain.mall.product.domain.bo.attr.value.PageQueryProductAttrValueBo;
+import com.ethan.domain.mall.product.domain.bo.attr.value.UpdateProductAttrValueBo;
+import com.ethan.domain.mall.product.interfaces.api.dto.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
+import org.springframework.http.ResponseEntity;
 
 /**
  * @Author zWX1058539
@@ -23,4 +31,20 @@ public interface ProductAttrDtoConvert {
 
 
     UpdateProductAttrKeyBo toBo(UpdateProductAttrKeyReq updateProductAttrKeyReq);
+
+    ContentProductAttrKeyResp toContentResp(ContentProductAttrKeyBo productAttrKey);
+
+    PageQueryProductAttrKeyBo toBo(PageQueryProductAttrKeyReq pageQueryProductAttrKeyReq);
+
+    PageProductAttrKeyResp toPageResp(PageProductAttrKeyBo pageProductAttrKeyBo);
+
+    CreateProductAttrValueBo toBo(CreateProductAttrValueReq createProductAttrValueReq);
+
+    ContentProductAttrValueResp toContentResp(ContentProductAttrValueBo productAttrValue);
+
+    PageQueryProductAttrValueBo toBo(PageQueryProductAttrValueReq pageQueryProductAttrValueReq);
+
+    PageProductAttrValueResp toPageResp(PageProductAttrValueBo pageProductAttrValueBo);
+
+    UpdateProductAttrValueBo toBo(UpdateProductAttrValueReq updateProductAttrValueReq);
 }
