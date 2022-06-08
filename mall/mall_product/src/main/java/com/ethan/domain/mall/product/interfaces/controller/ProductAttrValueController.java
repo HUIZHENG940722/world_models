@@ -30,7 +30,7 @@ public class ProductAttrValueController implements MallProductAttrValueApi {
     private ProductAttrValueService productAttrValueService;
 
     @Override
-    public ResponseEntity<Integer> createProductAttrValue(Integer attrKeyId,CreateProductAttrValueReq createProductAttrValueReq) {
+    public ResponseEntity<Integer> createProductAttrValue(Integer attrKeyId, CreateProductAttrValueReq createProductAttrValueReq) {
         // 1 数据转换
         CreateProductAttrValueBo createProductAttrValueBo = ProductAttrDtoConvert.INSTANCE.toBo(createProductAttrValueReq);
         // 2 业务

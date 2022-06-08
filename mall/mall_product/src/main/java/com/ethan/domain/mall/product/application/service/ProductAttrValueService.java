@@ -30,7 +30,8 @@ public class ProductAttrValueService {
     public Integer createProductAttrValue(Integer attrKeyId, CreateProductAttrValueBo createProductAttrValueBo) {
         // 1 校验
         // 2 业务
-        return productAttrValueDomainService.createProductAttrValue(attrKeyId, createProductAttrValueBo);
+        createProductAttrValueBo.setAttrKeyId(attrKeyId);
+        return productAttrValueDomainService.createProductAttrValue(createProductAttrValueBo);
         // 3 返回结果
     }
 

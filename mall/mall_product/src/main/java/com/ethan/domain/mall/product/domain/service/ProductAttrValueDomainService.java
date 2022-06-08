@@ -29,24 +29,22 @@ public class ProductAttrValueDomainService {
     /**
      * 领域服务：创建商品规格值
      *
-     * @param attrKeyId
      * @param createProductAttrValueBo
      * @return
      */
-    public Integer createProductAttrValue(Integer attrKeyId, CreateProductAttrValueBo createProductAttrValueBo) {
+    public Integer createProductAttrValue(CreateProductAttrValueBo createProductAttrValueBo) {
         // 1 核心校验
         // 1.1 校验商品规格键是否存在
-        ContentProductAttrKeyBo contentProductAttrKeyBo = productAttrKeyDomainService.getById(attrKeyId);
+        ContentProductAttrKeyBo contentProductAttrKeyBo = productAttrKeyDomainService.getById(createProductAttrValueBo.getAttrKeyId());
         if (contentProductAttrKeyBo == null) {
             throw new ProductException(HttpStatus.NOT_FOUND, "商品规格键不存在");
         }
         // 1.2 校验商品规格值的名字是否重复
         ContentProductAttrValueBo byName = productAttrValueRepository.getByName(createProductAttrValueBo.getName());
-        if (byName != null && !byName.getId().equals(attrKeyId)) {
+        if (byName != null && !byName.getId().equals(createProductAttrValueBo.getAttrKeyId())) {
             throw new ProductException(HttpStatus.CONFLICT, "商品规格值名字重复");
         }
         // 2 核心业务
-        createProductAttrValueBo.setAttrKeyId(attrKeyId);
         return productAttrValueRepository.add(createProductAttrValueBo);
         // 3 返回结果
     }
