@@ -6,6 +6,7 @@ import com.ethan.domain.mall.product.domain.bo.attr.key.PageProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.key.PageQueryProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.key.UpdateProductAttrKeyBo;
 import com.ethan.domain.mall.product.domain.bo.attr.value.CreateProductAttrValueBo;
+import com.ethan.domain.mall.product.domain.bo.attr.value.UpdateProductAttrValueBo;
 import com.ethan.domain.mall.product.domain.service.ProductAttrKeyDomainService;
 import com.ethan.domain.mall.product.domain.service.ProductAttrValueDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,7 +79,7 @@ public class ProductAttrService {
     }
 
     /**
-     * 领域服务：创建商品规格值
+     * 应用服务：创建商品规格值
      *
      * @param attrKeyId
      * @param createProductAttrValueBo
@@ -88,6 +89,22 @@ public class ProductAttrService {
         // 1 校验
         // 2 业务
         return productAttrValueDomainService.createProductAttrValue(attrKeyId, createProductAttrValueBo);
+        // 3 返回结果
+    }
+
+    /**
+     * 应用服务：更新商品规格值
+     *
+     * @param attrKeyId
+     * @param attrValueId
+     * @param updateProductAttrValueBO
+     * @return
+     */
+    public Integer updateProductAttrValue(Integer attrKeyId, Integer attrValueId, UpdateProductAttrValueBo updateProductAttrValueBO) {
+        // 1 校验
+        // 2 业务
+        updateProductAttrValueBO.setAttrKeyId(attrKeyId);
+        return productAttrValueDomainService.updateProductAttrValue(attrValueId, updateProductAttrValueBO);
         // 3 返回结果
     }
 }

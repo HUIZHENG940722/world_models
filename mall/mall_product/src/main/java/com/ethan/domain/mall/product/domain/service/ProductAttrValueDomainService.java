@@ -26,6 +26,7 @@ public class ProductAttrValueDomainService {
 
     /**
      * 领域服务：创建商品规格值
+     *
      * @param attrKeyId
      * @param createProductAttrValueBo
      * @return
@@ -39,7 +40,7 @@ public class ProductAttrValueDomainService {
         }
         // 1.2 校验商品规格值的名字是否重复
         ContentProductAttrValueBo byName = productAttrValueRepository.getByName(createProductAttrValueBo.getName());
-        if (byName !=null && !byName.getId().equals(attrKeyId)) {
+        if (byName != null && !byName.getId().equals(attrKeyId)) {
             throw new ProductException(HttpStatus.CONFLICT, "商品规格值名字重复");
         }
         // 2 核心业务
@@ -50,6 +51,7 @@ public class ProductAttrValueDomainService {
 
     /**
      * 领域服务：更新商品规格值
+     *
      * @param attrValueId
      * @param updateProductAttrValueBo
      * @return
@@ -61,10 +63,15 @@ public class ProductAttrValueDomainService {
         if (contentProductAttrValueBo == null) {
             throw new ProductException(HttpStatus.NOT_FOUND, "商品规格值不存在");
         }
-        // 1.2 校验商品规格名称是否重复
+        // 1.2 校验商品规格值名称是否重复
         ContentProductAttrValueBo byName = productAttrValueRepository.getByName(updateProductAttrValueBo.getName());
-        if (byName!=null && !byName.getId().equals(contentProductAttrValueBo.getId())) {
+        if (byName != null && !byName.getId().equals(contentProductAttrValueBo.getId())) {
             throw new ProductException(HttpStatus.CONFLICT, "商品规格值名字重复");
+        }
+        // 1.3 校验商品规格键是否存在
+        ContentProductAttrKeyBo byId = productAttrKeyDomainService.getById(updateProductAttrValueBo.getAttrKeyId());
+        if (byId == null) {
+            throw new ProductException(HttpStatus.NOT_FOUND, "商品规格键不存在");
         }
         // 2 核心业务
         return productAttrValueRepository.updateById(attrValueId, updateProductAttrValueBo);
