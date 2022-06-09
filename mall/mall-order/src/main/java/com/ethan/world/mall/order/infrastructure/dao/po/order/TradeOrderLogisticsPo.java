@@ -45,7 +45,7 @@ public class TradeOrderLogisticsPo {
 
 
     @TableField(typeHandler = FastjsonTypeHandler.class)
-    private List<ProductItem> items;
+    private List<ProductSkuItemPo> items;
 
     /**
      * 是否删除

@@ -44,7 +44,7 @@ public class TradeOrderPo implements Serializable {
     /**
      * 备注
      */
-    private Integer remark;
+    private String remark;
 
     /**
      * 校验关闭或完成的时间

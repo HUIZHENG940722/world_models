@@ -8,7 +8,7 @@ import lombok.Data;
  * @Date 2022/6/9
  */
 @Data
-public class ProductItem {
+public class ProductSkuItemPo {
 
     /**
      * 商品SKU编码
