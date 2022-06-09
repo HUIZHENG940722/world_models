@@ -1,5 +1,10 @@
 package com.ethan.world.mall.order.domain.repositiry;
 
+import com.ethan.world.mall.order.domain.bo.order.CreateTradeOrderBo;
+import com.ethan.world.mall.order.domain.convert.TradeOrderPoConvert;
+import com.ethan.world.mall.order.infrastructure.dao.TradeOrderMapper;
+import com.ethan.world.mall.order.infrastructure.dao.po.order.TradeOrderPo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,4 +14,12 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class TradeOrderRepository {
+
+    @Autowired
+    private TradeOrderMapper tradeOrderMapper;
+
+    public Integer add(CreateTradeOrderBo createTradeOrderBo) {
+        TradeOrderPo tradeOrderPo = TradeOrderPoConvert.INSTANCE.createBoToPo(createTradeOrderBo);
+        return tradeOrderMapper.insert(tradeOrderPo);
+    }
 }
