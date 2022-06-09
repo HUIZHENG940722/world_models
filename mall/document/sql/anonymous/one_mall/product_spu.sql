@@ -13,11 +13,13 @@ create table if not exists product_spu
     quantity    int                  null comment '库存数量，目前的计算方式是，以SKU库存累加为准',
     deleted     int        default 1 not null comment '是否被删除：0->已删除;1->未删除;',
     create_time datetime             not null comment '创建时间',
-    update_time datetime             not null comment '更新时间',
+    update_time datetime             null comment '更新时间',
     constraint product_spu_id_uindex
         unique (id)
 )
     comment '商品SPU表' charset = utf8mb4;
+
+4;
 
 _spu_id_uindex
         unique (id)
