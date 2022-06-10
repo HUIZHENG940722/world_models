@@ -1,7 +1,12 @@
 package com.ethan.world.mall.order.domain.repositiry;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ethan.world.mall.order.domain.bo.order.product.CreateTradeOrderProductItemBo;
+import com.ethan.world.mall.order.domain.bo.order.product.UpdateTradeOrderProductBo;
 import com.ethan.world.mall.order.domain.convert.TradeOrderPoConvert;
+import com.ethan.world.mall.order.domain.convert.TradeOrderProductPoConvert;
 import com.ethan.world.mall.order.infrastructure.dao.TradeOrderProductMapper;
 import com.ethan.world.mall.order.infrastructure.dao.po.order.TradeOrderPo;
 import com.ethan.world.mall.order.infrastructure.dao.po.order.TradeOrderProductItemPo;
@@ -27,5 +32,20 @@ public class TradeOrderProductRepository {
             tradeOrderProductMapper.insert(tradeOrderProductItemPo);
         }
         return createTradeOrderProductItemBoList.size();
+    }
+
+    public Integer updateByOrderId(Integer orderId, UpdateTradeOrderProductBo updateTradeOrderProductBo) {
+        TradeOrderProductItemPo tradeOrderProductItemPo = TradeOrderProductPoConvert.INSTANCE.updateToPo(updateTradeOrderProductBo);
+        LambdaUpdateWrapper<TradeOrderProductItemPo> lambdaUpdateWrapper = getLambdaUpdateWrapper();
+        lambdaUpdateWrapper.eq(TradeOrderProductItemPo::getOrderId, orderId);
+        return tradeOrderProductMapper.update(tradeOrderProductItemPo, lambdaUpdateWrapper);
+    }
+
+    private LambdaQueryWrapper<TradeOrderProductItemPo> getLambdaQueryWrapper() {
+        return Wrappers.lambdaQuery(TradeOrderProductItemPo.class);
+    }
+
+    private LambdaUpdateWrapper<TradeOrderProductItemPo> getLambdaUpdateWrapper() {
+        return Wrappers.lambdaUpdate(TradeOrderProductItemPo.class);
     }
 }

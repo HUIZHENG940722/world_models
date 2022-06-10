@@ -1,6 +1,7 @@
 package com.ethan.world.mall.order.domain.convert;
 
 import com.ethan.world.mall.order.domain.bo.order.product.CreateTradeOrderProductItemBo;
+import com.ethan.world.mall.order.domain.bo.order.product.UpdateTradeOrderProductBo;
 import com.ethan.world.mall.order.infrastructure.dao.enums.TradeOrderAfterSaleStatusEnum;
 import com.ethan.world.mall.order.infrastructure.dao.po.order.TradeOrderProductItemPo;
 import org.mapstruct.Mapper;
@@ -29,4 +30,9 @@ public interface TradeOrderProductPoConvert {
         @Mapping(target = "updateTime", ignore = true),
     })
     TradeOrderProductItemPo createBoToPo(CreateTradeOrderProductItemBo createTradeOrderProductItemBo);
+
+    @Mappings({
+        @Mapping(target = "", ignore = true)
+    })
+    TradeOrderProductItemPo updateToPo(UpdateTradeOrderProductBo updateTradeOrderProductBo);
 }

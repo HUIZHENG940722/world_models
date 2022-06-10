@@ -1,6 +1,7 @@
 package com.ethan.world.mall.order.domain.service;
 
 import com.ethan.world.mall.order.domain.bo.order.product.CreateTradeOrderProductItemBo;
+import com.ethan.world.mall.order.domain.bo.order.product.UpdateTradeOrderProductBo;
 import com.ethan.world.mall.order.domain.repositiry.TradeOrderProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,18 @@ public class TradeOrderProductDomainService {
         });
         return tradeOrderProductRepository.addList(createTradeOrderProductItemBoList);
         // 3 返回结果
+    }
+
+    /**
+     * 领域服务：更新订单商品信息
+     *
+     * @param orderId
+     * @return
+     */
+    public Integer updateTradeOrderProduct(Integer orderId, UpdateTradeOrderProductBo updateTradeOrderProductBo) {
+        // 1 核心校验
+        // 2 核心业务
+        // 3 返回结果
+        return tradeOrderProductRepository.updateByOrderId(orderId, updateTradeOrderProductBo);
     }
 }
