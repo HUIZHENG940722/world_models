@@ -1,5 +1,6 @@
 package com.ethan.world.mall.order.domain.convert;
 
+import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.ethan.world.mall.order.domain.bo.order.ContentTradeOrderBo;
 import com.ethan.world.mall.order.domain.bo.order.CreateTradeOrderBo;
 import com.ethan.world.mall.order.domain.bo.order.UpdateTradeOrderBo;
@@ -10,6 +11,7 @@ import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -63,4 +65,6 @@ public interface TradeOrderPoConvert {
         @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))")
     })
     TradeOrderPo updateBotoPo(UpdateTradeOrderBo updateTradeOrderBo);
+
+    List<ContentTradeOrderBo> toContentBo(List<TradeOrderPo> tradeOrderPoList);
 }

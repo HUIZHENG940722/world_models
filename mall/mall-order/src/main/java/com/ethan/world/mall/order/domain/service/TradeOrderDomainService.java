@@ -2,6 +2,8 @@ package com.ethan.world.mall.order.domain.service;
 
 import com.ethan.world.mall.order.domain.bo.order.ContentTradeOrderBo;
 import com.ethan.world.mall.order.domain.bo.order.CreateTradeOrderBo;
+import com.ethan.world.mall.order.domain.bo.order.PageQueryTradeOrderBo;
+import com.ethan.world.mall.order.domain.bo.order.PageTradeOrderBo;
 import com.ethan.world.mall.order.domain.bo.order.UpdateTradeOrderBo;
 import com.ethan.world.mall.order.domain.repositiry.TradeOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +73,19 @@ public class TradeOrderDomainService {
         // 2 核心业务
         // 2.1 获取交易订单内容
         return tradeOrderRepository.get(tradeOrderId);
+        // 3 返回结果
+    }
+
+    /**
+     * 领域服务：分页获取交易订单内容
+     *
+     * @param pageQueryTradeOrderBo
+     * @return
+     */
+    public PageTradeOrderBo page(PageQueryTradeOrderBo pageQueryTradeOrderBo) {
+        // 1 核心校验
+        // 2 核心业务
+        return tradeOrderRepository.page(pageQueryTradeOrderBo);
         // 3 返回结果
     }
 }
