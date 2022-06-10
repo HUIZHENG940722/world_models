@@ -1,29 +1,21 @@
-package com.ethan.world.mall.order.infrastructure.dao.po.order;
+package com.ethan.world.mall.order.domain.bo.order;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.ethan.world.mall.order.infrastructure.dao.enums.LogisticsDeliveryTypeEnum;
 import com.ethan.world.mall.order.infrastructure.dao.enums.TradeOrderAfterSaleStatusEnum;
 import com.ethan.world.mall.order.infrastructure.dao.enums.TradeOrderStatusEnum;
-import lombok.Data;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @Author zWX1058539
- * @Description 交易订单PO
- * @Date 2022/6/9
+ * @Description 交易订单内容BO
+ * @Date 2022/6/10
  */
-@Data
-@TableName(value = "trade_order")
-public class TradeOrderPo implements Serializable {
+public class ContentTradeOrderBo {
 
     /**
      * 订单编号
      */
-    @TableId(type = IdType.AUTO)
     private Integer id;
 
     /**
@@ -34,7 +26,7 @@ public class TradeOrderPo implements Serializable {
     /**
      * 订单编号（业务）
      */
-    private String orderNo;
+    private Integer orderNo;
 
     /**
      * 状态值
@@ -47,7 +39,7 @@ public class TradeOrderPo implements Serializable {
     private String remark;
 
     /**
-     * 交易关闭或完成的时间
+     * 校验关闭或完成的时间
      */
     private Date endTime;
 
