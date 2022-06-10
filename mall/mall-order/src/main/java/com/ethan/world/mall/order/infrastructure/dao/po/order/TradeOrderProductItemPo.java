@@ -15,7 +15,7 @@ import java.util.Date;
  */
 @Data
 @TableName(value = "trade_order_product")
-public class TradeOrderProductPo {
+public class TradeOrderProductItemPo {
 
     /**
      * 编码

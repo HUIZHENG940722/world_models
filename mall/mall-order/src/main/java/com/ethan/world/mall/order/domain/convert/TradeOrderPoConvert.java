@@ -4,7 +4,9 @@ import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.ethan.world.mall.order.domain.bo.order.ContentTradeOrderBo;
 import com.ethan.world.mall.order.domain.bo.order.CreateTradeOrderBo;
 import com.ethan.world.mall.order.domain.bo.order.UpdateTradeOrderBo;
+import com.ethan.world.mall.order.domain.bo.order.product.CreateTradeOrderProductItemBo;
 import com.ethan.world.mall.order.infrastructure.dao.po.order.TradeOrderPo;
+import com.ethan.world.mall.order.infrastructure.dao.po.order.TradeOrderProductItemPo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -67,4 +69,6 @@ public interface TradeOrderPoConvert {
     TradeOrderPo updateBotoPo(UpdateTradeOrderBo updateTradeOrderBo);
 
     List<ContentTradeOrderBo> toContentBo(List<TradeOrderPo> tradeOrderPoList);
+
+    List<TradeOrderProductItemPo> createBoToPo(List<CreateTradeOrderProductItemBo> createTradeOrderProductItemBoList);
 }
