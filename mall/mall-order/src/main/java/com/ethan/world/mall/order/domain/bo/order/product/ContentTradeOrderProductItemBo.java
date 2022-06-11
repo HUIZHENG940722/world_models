@@ -1,8 +1,5 @@
-package com.ethan.world.mall.order.infrastructure.dao.po.order;
+package com.ethan.world.mall.order.domain.bo.order.product;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.ethan.world.mall.order.infrastructure.dao.enums.TradeOrderAfterSaleStatusEnum;
 import com.ethan.world.mall.order.infrastructure.dao.enums.TradeOrderStatusEnum;
 import lombok.Data;
@@ -10,18 +7,16 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @Author zWX1058539
- * @Description 交易订单商品信息PO
- * @Date 2022/6/9
+ * @author zhenghui
+ * @Description 订单商品项内容
+ * @Date 2022/6/11
  */
 @Data
-@TableName(value = "trade_order_product")
-public class TradeOrderProductItemPo {
+public class ContentTradeOrderProductItemBo {
 
     /**
      * 编码
      */
-    @TableId(type = IdType.AUTO)
     private Integer id;
 
     /**
@@ -123,5 +118,4 @@ public class TradeOrderProductItemPo {
      * 最后更新时间
      */
     private Date updateTime;
-
 }

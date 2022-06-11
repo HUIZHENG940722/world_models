@@ -1,6 +1,8 @@
 package com.ethan.world.mall.order.infrastructure.dao.po.order;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
 import com.ethan.world.mall.order.infrastructure.dao.enums.LogisticsDeliveryTypeEnum;
@@ -21,6 +23,7 @@ public class TradeOrderLogisticsPo {
     /**
      * 物流订单编码
      */
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
     /**

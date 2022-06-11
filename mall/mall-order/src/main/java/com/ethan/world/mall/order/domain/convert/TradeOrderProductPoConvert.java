@@ -1,5 +1,6 @@
 package com.ethan.world.mall.order.domain.convert;
 
+import com.ethan.world.mall.order.domain.bo.order.product.ContentTradeOrderProductItemBo;
 import com.ethan.world.mall.order.domain.bo.order.product.CreateTradeOrderProductItemBo;
 import com.ethan.world.mall.order.domain.bo.order.product.UpdateTradeOrderProductBo;
 import com.ethan.world.mall.order.infrastructure.dao.enums.TradeOrderAfterSaleStatusEnum;
@@ -8,6 +9,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
+
+import java.util.List;
 
 /**
  * @Author zWX1058539
@@ -50,4 +53,6 @@ public interface TradeOrderProductPoConvert {
         @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
     })
     TradeOrderProductItemPo updateToPo(UpdateTradeOrderProductBo updateTradeOrderProductBo);
+
+    List<ContentTradeOrderProductItemBo> toContentBo(List<TradeOrderProductItemPo> tradeOrderProductItemPos);
 }

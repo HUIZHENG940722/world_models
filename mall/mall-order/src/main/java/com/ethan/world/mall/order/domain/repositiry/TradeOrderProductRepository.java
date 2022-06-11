@@ -3,6 +3,7 @@ package com.ethan.world.mall.order.domain.repositiry;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.ethan.world.mall.order.domain.bo.order.product.ContentTradeOrderProductItemBo;
 import com.ethan.world.mall.order.domain.bo.order.product.CreateTradeOrderProductItemBo;
 import com.ethan.world.mall.order.domain.bo.order.product.UpdateTradeOrderProductBo;
 import com.ethan.world.mall.order.domain.convert.TradeOrderPoConvert;
@@ -39,6 +40,13 @@ public class TradeOrderProductRepository {
         LambdaUpdateWrapper<TradeOrderProductItemPo> lambdaUpdateWrapper = getLambdaUpdateWrapper();
         lambdaUpdateWrapper.eq(TradeOrderProductItemPo::getOrderId, orderId);
         return tradeOrderProductMapper.update(tradeOrderProductItemPo, lambdaUpdateWrapper);
+    }
+
+    public List<ContentTradeOrderProductItemBo> getTradeOrderProduct(Integer orderId) {
+        LambdaQueryWrapper<TradeOrderProductItemPo> lambdaQueryWrapper = getLambdaQueryWrapper();
+        lambdaQueryWrapper.eq(TradeOrderProductItemPo::getOrderId, orderId);
+        List<TradeOrderProductItemPo> tradeOrderProductItemPos = tradeOrderProductMapper.selectList(lambdaQueryWrapper);
+        return TradeOrderProductPoConvert.INSTANCE.toContentBo(tradeOrderProductItemPos);
     }
 
     private LambdaQueryWrapper<TradeOrderProductItemPo> getLambdaQueryWrapper() {
