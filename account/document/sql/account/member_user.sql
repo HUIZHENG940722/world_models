@@ -1,6 +1,6 @@
-create table if not exists member_user
+create table member_user
 (
-    id          bigint auto_increment comment '用户编码'
+    id          int auto_increment comment '用户编码'
         primary key,
     nick_name   varchar(32)   null comment '用户昵称',
     avatar      varchar(255)  null comment '用户头像',
@@ -18,4 +18,6 @@ create table if not exists member_user
         unique (id)
 )
     comment '会员用户';
+
+'会员用户';
 

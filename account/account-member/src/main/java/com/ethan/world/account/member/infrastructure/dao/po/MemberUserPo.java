@@ -18,7 +18,7 @@ public class MemberUserPo {
      * 用户编码
      */
     @TableId(type = IdType.AUTO)
-    private Long id;
+    private Integer id;
 
     /**
      * 用户昵称

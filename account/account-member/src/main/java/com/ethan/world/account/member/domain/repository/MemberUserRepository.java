@@ -34,16 +34,17 @@ public class MemberUserRepository {
         return MemberUserPoConvert.INSTANCE.toContentBo(memberUserMapper.selectOne(lambdaQueryWrapper));
     }
 
-    public Long add(CreateMemberUserBo createMemberUserBo) {
+    public Integer add(CreateMemberUserBo createMemberUserBo) {
         MemberUserPo memberUserPo = MemberUserPoConvert.INSTANCE.createBotoPo(createMemberUserBo);
-        return Long.valueOf(memberUserMapper.insert(memberUserPo));
+        memberUserMapper.insert(memberUserPo);
+        return memberUserPo.getId();
     }
 
-    public ContentMemberUserBo getById(Long memberUserId) {
+    public ContentMemberUserBo getById(Integer memberUserId) {
         return MemberUserPoConvert.INSTANCE.toContentBo(memberUserMapper.selectById(memberUserId));
     }
 
-    public Integer updateById(Long memberUserId, UpdateMemberUserBo updateMemberUserBo) {
+    public Integer updateById(Integer memberUserId, UpdateMemberUserBo updateMemberUserBo) {
         MemberUserPo memberUserPo = MemberUserPoConvert.INSTANCE.updateBoToPo(updateMemberUserBo);
         memberUserPo.setId(memberUserId);
         return memberUserMapper.updateById(memberUserPo);

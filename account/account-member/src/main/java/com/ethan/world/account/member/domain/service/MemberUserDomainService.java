@@ -24,7 +24,7 @@ public class MemberUserDomainService {
      * @param createMemberUserBo
      * @return
      */
-    public Long createMemberUser(CreateMemberUserBo createMemberUserBo) {
+    public Integer createMemberUser(CreateMemberUserBo createMemberUserBo) {
         // 1 核心校验
         // 1.1 校验用户名是否重复
         ContentMemberUserBo byName = memberUserRepository.getByName(createMemberUserBo.getUsername());
@@ -48,7 +48,7 @@ public class MemberUserDomainService {
      * @param updateMemberUserBo
      * @return
      */
-    public Integer updateMemberUser(Long memberUserId, UpdateMemberUserBo updateMemberUserBo) {
+    public Integer updateMemberUser(Integer memberUserId, UpdateMemberUserBo updateMemberUserBo) {
         // 1 核心校验
         // 1.1 校验会员用户是否存在
         ContentMemberUserBo byId = memberUserRepository.getById(memberUserId);
