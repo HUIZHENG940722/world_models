@@ -32,7 +32,22 @@ public interface TradeOrderProductPoConvert {
     TradeOrderProductItemPo createBoToPo(CreateTradeOrderProductItemBo createTradeOrderProductItemBo);
 
     @Mappings({
-        @Mapping(target = "", ignore = true)
+        @Mapping(target = "id", ignore = true),
+        @Mapping(target = "orderId", ignore = true),
+        @Mapping(target = "spuId", ignore = true),
+        @Mapping(target = "skuId", ignore = true),
+        @Mapping(target = "skuName", ignore = true),
+        @Mapping(target = "skuImage", ignore = true),
+        @Mapping(target = "quantity", ignore = true),
+        @Mapping(target = "originPrice", ignore = true),
+        @Mapping(target = "buyPrice", ignore = true),
+        @Mapping(target = "presentPrice", ignore = true),
+        @Mapping(target = "buyTotal", ignore = true),
+        @Mapping(target = "discountTotal", ignore = true),
+        @Mapping(target = "logisticsId", ignore = true),
+        @Mapping(target = "deleted", ignore = true),
+        @Mapping(target = "createTime", ignore = true),
+        @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
     })
     TradeOrderProductItemPo updateToPo(UpdateTradeOrderProductBo updateTradeOrderProductBo);
 }

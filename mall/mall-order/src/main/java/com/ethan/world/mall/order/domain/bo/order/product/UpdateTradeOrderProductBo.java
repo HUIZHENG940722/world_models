@@ -2,12 +2,14 @@ package com.ethan.world.mall.order.domain.bo.order.product;
 
 import com.ethan.world.mall.order.infrastructure.dao.enums.TradeOrderAfterSaleStatusEnum;
 import com.ethan.world.mall.order.infrastructure.dao.enums.TradeOrderStatusEnum;
+import lombok.Data;
 
 /**
  * @Author zWX1058539
  * @Description 更新交易订单商品项BO
  * @Date 2022/6/10
  */
+@Data
 public class UpdateTradeOrderProductBo {
 
     /**
