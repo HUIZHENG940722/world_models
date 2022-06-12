@@ -10,8 +10,13 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://rm-bp1d1n5p12wh85975ao.mysql.rds.aliyuncs.com:3306/one_mall?serverTimezone=Asia/Shanghai
-    username: huizheng940722
+    username: mall
     password: "@Ahui940722"
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://rm-bp1d1n5p12wh85975.mysql.rds.aliyuncs.com:3306/one_mall?serverTimezone=Asia/Shanghai
+#    username: mall
+#    password: "@Ahui940722"
 
 #      datasource:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
