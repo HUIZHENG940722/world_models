@@ -1,4 +1,4 @@
-create table if not exists pay_notify_task
+create table pay_notify_task
 (
     id                int auto_increment comment '编码'
         primary key,

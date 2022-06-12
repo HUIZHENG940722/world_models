@@ -1,4 +1,4 @@
-create table if not exists trade_order
+create table trade_order
 (
     id                      int auto_increment comment '编码'
         primary key,

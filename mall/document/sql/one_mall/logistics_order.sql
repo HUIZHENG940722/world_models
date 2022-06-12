@@ -1,4 +1,4 @@
-create table if not exists logistics_order
+create table logistics_order
 (
     id             int auto_increment comment '编码'
         primary key,

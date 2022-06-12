@@ -7,16 +7,23 @@ mybatis-plus:
 spring:
   application:
     name: mall-product
-#  datasource:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-bp1d1n5p12wh85975ao.mysql.rds.aliyuncs.com:3306/one_mall?serverTimezone=Asia/Shanghai
+    username: huizheng940722
+    password: "@Ahui940722"
+
+#      datasource:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #    url: jdbc:mysql://100.85.113.163:3306/one_mall?serverTimezone=Asia/Shanghai
 #    username: root
 #    password: Imc@124!
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/one_mall?serverTimezone=Asia/Shanghai
-    username: root
-    password: ahui940722
+
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/one_mall?serverTimezone=Asia/Shanghai
+#    username: root
+#    password: ahui940722
     hikari:
       minimum-idle: 5 # 池中最小空闲连接数量，默认值10
       idle-timeout: 600000 # 空闲时间
@@ -26,5 +33,6 @@ spring:
       max-lifetime: 1800000 # 连接池中连接的最大生命周期
       connection-timeout: 30000 # 连接超时时间。默认30s
       connection-test-query: select 1
+
 
 

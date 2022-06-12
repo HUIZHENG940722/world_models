@@ -19,5 +19,3 @@ create table member_user
 )
     comment '会员用户';
 
-'会员用户';
-

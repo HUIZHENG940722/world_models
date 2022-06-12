@@ -1,4 +1,4 @@
-create table if not exists cart_product
+create table cart_product
 (
     id          int auto_increment comment '编码'
         primary key,

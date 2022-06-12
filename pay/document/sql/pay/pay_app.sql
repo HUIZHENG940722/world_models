@@ -1,4 +1,4 @@
-create table if not exists pay_app
+create table pay_app
 (
     id                int auto_increment comment '应用编码'
         primary key,

@@ -1,4 +1,4 @@
-create table if not exists pay_notify_log
+create table pay_notify_log
 (
     id          int auto_increment comment '日志编码'
         primary key,
